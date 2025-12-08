@@ -6,12 +6,6 @@ export default {
   type: "document",
   fields: [
     {
-      name: "eyebrow",
-      title: "Eyebrow",
-      type: "string",
-      description: "Short text above the heading (e.g. 'Gartner 4.8/5').",
-    },
-    {
       name: "rating",
       title: "Rating",
       type: "object",
@@ -35,7 +29,7 @@ export default {
     {
       name: "description",
       title: "Description",
-      type: "text",
+      type: "richText",
       description: "Longer paragraph describing the product or section.",
     },
     {
