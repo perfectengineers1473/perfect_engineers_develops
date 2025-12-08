@@ -8,6 +8,7 @@ import homeHeroSection from "./homeHeroSection";
 import productionTimeSection from "./productionTimeSection";
 import recentPostSection from "./recentPostSection";
 import heroRemediateSection from "./heroRemediateSection";
+import demoSection from "./demoSection";
 
 export const documentsTypes = [
   author,
@@ -20,5 +21,6 @@ export const documentsTypes = [
   footerbottom,
   productionTimeSection,
   heroRemediateSection,
+  demoSection
 ];
 export default documentsTypes;
