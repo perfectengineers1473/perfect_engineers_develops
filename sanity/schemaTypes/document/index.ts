@@ -7,6 +7,7 @@ import navlink from "./header/navlink";
 import homeHeroSection from "./homeHeroSection";
 import productionTimeSection from "./productionTimeSection";
 import recentPostSection from "./recentPostSection";
+import heroRemediateSection from "./heroRemediateSection";
 
 export const documentsTypes = [
   author,
@@ -17,6 +18,7 @@ export const documentsTypes = [
   recentPostSection,
   footer,
   footerbottom,
-  productionTimeSection
+  productionTimeSection,
+  heroRemediateSection,
 ];
 export default documentsTypes;
