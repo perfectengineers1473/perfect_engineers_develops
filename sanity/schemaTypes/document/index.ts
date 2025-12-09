@@ -13,6 +13,7 @@ import aboutLeftRightImageSection from "./aboutLeftRightImageSection";
 import aboutHeroSection from "./aboutHeroSection";
 import titleTextSection from "./titleTextSection";
 import homeRightImageSection from "./homeRightImageSection";
+import imageSection from "./imageSection";
 
 export const documentsTypes = [
   author,
@@ -29,6 +30,7 @@ export const documentsTypes = [
   aboutLeftRightImageSection,
   aboutHeroSection,
   titleTextSection,
-  homeRightImageSection
+  homeRightImageSection,
+  imageSection
 ];
 export default documentsTypes;
