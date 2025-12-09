@@ -37,19 +37,7 @@ export default {
         {
           type: "object",
           name: "button",
-          title: "Button",
-          fields: [
-            {
-              name: "label",
-              title: "Button Label",
-              type: "string"
-            },
-             {
-              name: "labelurl",
-              title: "Button Label url",
-              type: "url"
-            },
-          ]
+          title: "button",
         }
       ],
     },
