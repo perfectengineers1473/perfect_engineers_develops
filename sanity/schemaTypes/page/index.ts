@@ -35,33 +35,19 @@ export default {
       },
       group: "main",
     },
-    // {
-    //   name: "pageBuilder",
-    //   type: "array",
-    //   of: [{ type: "reference", to: { type: "section" } }],
-    //   group: "main",
-    // },
-    // {
-    //   name: "hasWithBackGround",
-    //   title: "Has WithBackGround",
-    //   description: "This field is only used for Footer Banner.",
-    //   type: "boolean",
-    //   group: "main",
-    //   initialValue: false,
-    // },
-    // {
-    //   name: "footerBanner",
-    //   title: "Footer Banner",
-    //   type: "reference",
-    //   to: { type: "footerBanner" },
-    //   options: { disableNew: true },
-    //   group: "main",
-    // },
-    // {
-    //   name: "seo",
-    //   title: "SEO",
-    //   type: "seo",
-    //   group: "seo",
-    // },
+    {
+  name: "pageBuilder",
+  title: "Page Builder",
+  type: "array",
+  of: [
+    {
+      type: "reference",
+      to: [
+        { type: "aboutLeftRightImageSection" },
+        { type: "productionTimeSection" },
+      ],
+    },
+  ],
+}
   ],
 } as SchemaTypeDefinition;

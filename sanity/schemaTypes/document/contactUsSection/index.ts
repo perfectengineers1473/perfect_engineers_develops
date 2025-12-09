@@ -1,0 +1,70 @@
+import { SchemaTypeDefinition } from "sanity";
+
+export default {
+  name: "contactUsSection",
+  title: "Contact Us Section",
+  type: "document",
+  fields: [
+    {
+      name: "maintitle",
+      title: "Main Title",
+      type: "string",
+    },
+    {
+      name: "titletext",
+      title: "Title Text",
+      type: "string",
+    },
+    {
+      name: "contactUs",
+      title: "Contact Us Items",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "contactItem",
+          title: "Contact Item",
+          fields: [
+            { name: "image", title: "Image", type: "image" },
+            { name: "title", title: "Title", type: "string" },
+            { name: "text", title: "Text", type: "string" },
+            { name: "description", title: "Description", type: "string" },
+          ],
+        },
+      ],
+    },
+    {
+      name: "businessHour",
+      title: "Business Hours",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "businessHourItem",
+          title: "Business Hour Item",
+          fields: [
+            { name: "iconImage", title: "Icon Image", type: "image" },
+            { name: "icontitle", title: "Icon Title", type: "string" },
+
+            {
+              name: "textInfo",
+              title: "Text Info",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  name: "textInfoItem",
+                  title: "Text Info Item",
+                  fields: [
+                    { name: "textTime", title: "Text Time", type: "string" },
+                    { name: "descriptions", title: "Descriptions", type: "string" },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+} as SchemaTypeDefinition;

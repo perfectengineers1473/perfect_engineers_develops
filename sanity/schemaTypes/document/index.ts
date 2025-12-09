@@ -12,6 +12,8 @@ import demoSection from "./demoSection";
 import aboutLeftRightImageSection from "./aboutLeftRightImageSection";
 import aboutHeroSection from "./aboutHeroSection";
 import titleTextSection from "./titleTextSection";
+import contactHeroSection from "./contactHeroSection";
+import contactUsSection from "./contactUsSection";
 
 export const documentsTypes = [
   author,
@@ -28,5 +30,7 @@ export const documentsTypes = [
   aboutLeftRightImageSection,
   aboutHeroSection,
   titleTextSection,
+  contactHeroSection,
+  contactUsSection,
 ];
 export default documentsTypes;
