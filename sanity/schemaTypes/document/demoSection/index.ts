@@ -49,7 +49,7 @@ export default {
     {
       name: "disclaimer",
       title: "Privacy Disclaimer",
-      type: "richtext",
+      type: "richText",
     },
     {
       name: "submitButtonText",

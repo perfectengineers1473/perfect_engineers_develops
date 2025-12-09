@@ -9,6 +9,9 @@ import productionTimeSection from "./productionTimeSection";
 import recentPostSection from "./recentPostSection";
 import heroRemediateSection from "./heroRemediateSection";
 import demoSection from "./demoSection";
+import aboutLeftRightImageSection from "./aboutLeftRightImageSection";
+import aboutHeroSection from "./aboutHeroSection";
+import titleTextSection from "./titleTextSection";
 
 export const documentsTypes = [
   author,
@@ -21,6 +24,9 @@ export const documentsTypes = [
   footerbottom,
   productionTimeSection,
   heroRemediateSection,
-  demoSection
+  demoSection,
+  aboutLeftRightImageSection,
+  aboutHeroSection,
+  titleTextSection,
 ];
 export default documentsTypes;
