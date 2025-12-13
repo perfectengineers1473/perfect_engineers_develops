@@ -3,7 +3,7 @@ import { SchemaTypeDefinition } from "sanity";
 export default {
   name: "productionTimeSection",
   title: "Production Time Section",
-  type: "document",
+  type: "object",
   fields: [
     {
       name: "Production",

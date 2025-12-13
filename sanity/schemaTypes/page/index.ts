@@ -38,15 +38,14 @@ export default {
     {
   name: "pageBuilder",
   title: "Page Builder",
+   group: "main",
   type: "array",
   of: [
-    {
-      type: "reference",
-      to: [
+    
+        { type: "homeHeroSections" },
         { type: "aboutLeftRightImageSection" },
         { type: "productionTimeSection" },
-      ],
-    },
+
   ],
 }
   ],

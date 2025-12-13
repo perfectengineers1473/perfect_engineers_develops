@@ -16,7 +16,7 @@ export type MakeGroqQueryParam = {
 export type FetchSanityQuery = {
   groqQuery: string
   makeGroqQuery?: (p: MakeGroqQueryParam, filters?: string) => string
-  handleError: (err: Error, mockData: unknown) => unknown
+  handleError?: (err: Error, mockData: unknown) => unknown
 }
 type FetchSanityQueryParams = { [key: string]: unknown }
 type FetchSanityParams = {
@@ -54,6 +54,6 @@ export const fetchDataFromSanity = async <T = unknown>({
     const data = await client.fetch(clientGroqQuery, queryParams)
     return data
   } catch (error) {
-    return handleError(error as Error, mockData) as T
+    throw error
   }
 }

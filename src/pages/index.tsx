@@ -1,56 +1,51 @@
-import Page from "@/components/page";
 import React from "react";
-import { client } from "../../lib/client";
-import {
-  featurepostquery,
-  footerbottomquery,
-  footerquery,
-  headerquery,
-  homeheroquery,
-  navlinkquery,
-  recentpostquery,
-} from "../../lib/sanity";
+import dynamic from "next/dynamic";
+import { GetStaticProps, NextPage } from "next";
+import { SharedPageProps } from "../../lib/sanity/types";
+import { Page } from "../../lib/sanity/types/page";
+import { fetchDataFromSanity, homeheroquery, readToken } from "../../lib/sanity";
+import { filterSanityDataToSingleItem } from "../../lib/sanity/utils/filterSanityDataToSingleItem";
+import { REVALIDATE_DURATION } from "../../lib/constants";
 
-const Home = ({
-  homeherodata,
-  headerdata,
-  navlinkdata,
-  featurepostdata,
-  recentpostdata,
-  footerdata,
-  footerbottomdata,
-}: any) => {
+
+export interface PageProps extends SharedPageProps {
+  page: Page;
+}
+const Home: NextPage<PageProps> = ({ page, draftMode }) => {
+console.log(page);
+
+ 
   return (
-    <Page
-      homeherodata={homeherodata}
-      headerdata={headerdata}
-      navlinkdata={navlinkdata}
-      featurepostdata={featurepostdata}
-      recentpostdata={recentpostdata}
-      footerdata={footerdata}
-      footerbottomdata={footerbottomdata}
-    />
+<>hi</>
+
   );
 };
-export const getStaticProps = async () => {
-  const homeherodata = await client.fetch(homeheroquery);
-  const headerdata = await client.fetch(headerquery);
-  const navlinkdata = await client.fetch(navlinkquery);
-  const featurepostdata = await client.fetch(featurepostquery);
-  const recentpostdata = await client.fetch(recentpostquery);
-  const footerdata = await client.fetch(footerquery);
-  const footerbottomdata = await client.fetch(footerbottomquery);
+export const getStaticProps: GetStaticProps<PageProps> = async ({
+  draftMode = false,
+}) => {
+  const homePageData = await fetchDataFromSanity<Page[]>({
+    query: {groqQuery:homeheroquery},
+    queryParams: {
+      slug: "/",
+    },
+    isPreview: draftMode,
+  });
+  const page = filterSanityDataToSingleItem({
+    data: homePageData,
+    isPreview: draftMode,
+  });
+  if (!page) {
+    return {
+      notFound: true,
+    };
+  }
   return {
     props: {
-      homeherodata,
-      headerdata,
-      navlinkdata,
-      featurepostdata,
-      recentpostdata,
-      footerdata,
-      footerbottomdata,
+      page,
+      draftMode,
+      token: draftMode ? readToken : "",
     },
-    revalidate: 10,
+    revalidate: REVALIDATE_DURATION,
   };
 };
 export default Home;

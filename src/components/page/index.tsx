@@ -14,7 +14,8 @@ const Page = ({
   recentpostdata,
   footerdata,
   footerbottomdata,
-}: any) => {
+}: any) => {console.log(homeherodata, "homeher");
+
   return (
     <div className="dark:bg-black/90">
       <HeaderSection data={headerdata} />
