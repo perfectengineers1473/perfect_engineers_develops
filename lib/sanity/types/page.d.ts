@@ -46,9 +46,11 @@ export type SectionType =
   | ServiceAboutSectionType
   | RelatedBlogsSectionType
   | PlanAndPricingSectionType
-  | AllBlogPostSectionType;
+  | AllBlogPostSectionType
+  | AboutLeftImageSection;
 
 export interface Page extends SanityDocument {
+  hasWithBackGround: any;
   slug: string;
   _id: string;
   seo: SeoType;
@@ -78,6 +80,21 @@ export interface HeroSectionType {
   jsonFileSize?: string;
   jsonFileId?: string;
 }
+
+export interface AboutLeftImageSection {
+  _type: "aboutLeftImag";
+  id?: string;
+  headline?: string;
+  title?: RichTextType;
+  image?: CustomImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+}
+
+
 export interface PlanAndPricingSectionType {
   _type: "planAndPricingSection";
   id?: string;
