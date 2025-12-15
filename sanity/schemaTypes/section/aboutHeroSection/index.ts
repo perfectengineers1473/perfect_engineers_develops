@@ -2,7 +2,7 @@ import { SchemaTypeDefinition } from "sanity";
 
 export default {
   name: "aboutHeroSection",
-  type: "document",
+  type: "object",
   fields: [
     {
       name: "bgimage",

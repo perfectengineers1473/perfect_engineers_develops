@@ -2,7 +2,7 @@ import { SchemaTypeDefinition } from "sanity";
 
 export default {
   name: "contactHeroSection",
-  type: "document",
+  type: "object",
   fields: [
     {
       name: "image",

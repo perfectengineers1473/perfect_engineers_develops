@@ -2,7 +2,7 @@ import { SchemaTypeDefinition } from "sanity";
 
 export default {
   name: "featuredpost",
-  type: "document",
+  type: "object",
   fields: [
     {
       name: "maintitle",

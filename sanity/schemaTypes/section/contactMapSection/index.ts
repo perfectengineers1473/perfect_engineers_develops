@@ -1,14 +1,9 @@
 import { SchemaTypeDefinition } from "sanity";
 
 export default {
-  name: "homeHeroSection",
-  type: "document",
+  name: "contactMapSection",
+  type: "object",
   fields: [
-    {
-      name: "bgimage",
-      title: "BgImage",
-      type: "image",
-    },
     {
       name: "title",
       title: "Title",
@@ -20,8 +15,8 @@ export default {
       type: "string",
     },
     {
-      name: "btn",
-      title: "btn",
+      name: "button",
+      title: "Button",
       type: "button",
     },
   ],

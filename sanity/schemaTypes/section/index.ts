@@ -1,4 +1,32 @@
+import aboutHeroSection from "./aboutHeroSection";
+import aboutLeftRightImageSection from "./aboutLeftRightImageSection";
+import contactHeroSection from "./contactHeroSection";
+import contactMapSection from "./contactMapSection";
+import contactUsSection from "./contactUsSection";
+import demoSection from "./demoSection";
+import featuredPostSection from "./featuredPostSection";
+import heroRemediateSection from "./heroRemediateSection";
 import homeHeroSection from "./homeHeroSection";
+import homeRightImageSection from "./homeRightImageSection";
+import imageSection from "./imageSection";
+import productionTimeSection from "./productionTimeSection";
+import recentPostSection from "./recentPostSection";
+import titleTextSection from "./titleTextSection";
 
-export const sectionsTypes = [homeHeroSection];
+export const sectionsTypes = [
+  homeHeroSection,
+  aboutHeroSection,
+  aboutLeftRightImageSection,
+  contactHeroSection,
+  contactMapSection,
+  contactUsSection,
+  demoSection,
+  featuredPostSection,
+  heroRemediateSection,
+  homeRightImageSection,
+  imageSection,
+  productionTimeSection,
+  recentPostSection,
+  titleTextSection,
+];
 export default sectionsTypes;

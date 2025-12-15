@@ -3,7 +3,7 @@ import { SchemaTypeDefinition } from "sanity";
 export default {
   name: "demoSection",
   title: "Demo Request Section",
-  type: "document",
+  type: "object",
   fields: [
     {
       name: "title",
