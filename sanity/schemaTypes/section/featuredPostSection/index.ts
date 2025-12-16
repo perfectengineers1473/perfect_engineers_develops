@@ -1,7 +1,7 @@
 import { SchemaTypeDefinition } from "sanity";
 
 export default {
-  name: "featuredpost",
+  name: "featuredPostSection",
   type: "object",
   fields: [
     {

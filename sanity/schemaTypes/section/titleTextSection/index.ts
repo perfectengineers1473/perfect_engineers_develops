@@ -2,7 +2,7 @@ import { SchemaTypeDefinition } from "sanity";
 
 export default {
   name: "titleTextSection",
-  type: "document",
+  type: "object",
   fields: [
     {
       name: "titleText",

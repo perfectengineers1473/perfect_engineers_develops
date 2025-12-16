@@ -1,9 +1,9 @@
 import { SchemaTypeDefinition } from "sanity";
 
 export default {
-  name: "recentpost",
-  title: "Recentpost",
-  type: "document",
+  name: "recentPostSection",
+  title: "Recent Post Section",
+  type: "object",
   fields: [
     {
       name: "title",

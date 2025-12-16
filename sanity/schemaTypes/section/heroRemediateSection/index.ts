@@ -1,9 +1,9 @@
 import { SchemaTypeDefinition } from "sanity";
 
 export default {
-  name: "heroRemediate",
+  name: "heroRemediateSection",
   title: "Hero Remediate Section",
-  type: "document",
+  type: "object",
   fields: [
     {
       name: "rating",

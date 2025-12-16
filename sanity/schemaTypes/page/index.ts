@@ -41,11 +41,21 @@ export default {
    group: "main",
   type: "array",
   of: [
-    
+
         { type: "homeHeroSections" },
         { type: "aboutLeftRightImageSection" },
         { type: "productionTimeSection" },
-
+        { type: "aboutHeroSection" },
+        { type: "contactHeroSection" },
+        { type: "contactMapSection" },
+        { type: "contactUsSection" },
+        { type: "demoSection" },
+        { type: "featuredPostSection" },
+        { type: "heroRemediateSection" },
+        { type: "homeRightImageSection" },
+        { type: "imageSection" },
+        { type: "recentPostSection" },
+        { type: "titleTextSection" },
   ],
 }
   ],
