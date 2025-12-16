@@ -26,4 +26,4 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
 export default HomeHeroSection;
 
 
-vinit
+vinit pubg kyre ramvi che
