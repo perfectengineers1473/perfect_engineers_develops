@@ -24,3 +24,6 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
 };
 
 export default HomeHeroSection;
+
+
+vinit
