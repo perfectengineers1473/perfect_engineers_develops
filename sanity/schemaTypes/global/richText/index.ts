@@ -1,8 +1,6 @@
 import { SchemaTypeDefinition } from "sanity";
-import { IoColorPaletteOutline } from "react-icons/io5";
-import { PiTextAUnderline } from "react-icons/pi";
 
-export default {
+const richText: SchemaTypeDefinition = {
   name: "richText",
   title: "Rich Text",
   type: "object",
@@ -67,4 +65,6 @@ export default {
       ],
     },
   ],
-} as SchemaTypeDefinition;
+};
+
+export default richText;

@@ -8,7 +8,7 @@ const Image: React.FC<
     src: string | CustomImageType;
     alt: string;
   }
-> = ({ src, quality, alt, ...props }) => {
+> = ({ src, alt, ...props }) => {
   switch (typeof src) {
     case "object":
       return <SanityImage src={src} {...props} />;

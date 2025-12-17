@@ -28,8 +28,8 @@ export const useSanityImage = function (
       imageBuilder: options?.imageBuilder ?? defaultImageBuilder,
     });
     return imageProps;
-  } catch (error) {
-    // TODO: catch error
+  } catch {
+    // Swallow image builder errors and return null so UI can fallback gracefully
     return null;
   }
 };

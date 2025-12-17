@@ -1,8 +1,19 @@
 import React from "react";
 import RichText from "../commons/richText";
 import SanityImage from "../commons/sanityImage";
+import type { CustomImageType, RichTextType } from "../../../lib/sanity/types";
 
-const AboutLeftImageSection: React.FC<any> = ({
+type TextItem = {
+  titleText?: RichTextType;
+  image?: CustomImageType;
+};
+
+interface AboutLeftImageSectionProps {
+  rightImageText?: TextItem[];
+  leftImageText?: TextItem[];
+}
+
+const AboutLeftImageSection: React.FC<AboutLeftImageSectionProps> = ({
   rightImageText,
   leftImageText,
 }) => {
@@ -17,11 +28,14 @@ const AboutLeftImageSection: React.FC<any> = ({
   const image = firstRight?.image || firstLeft?.image;
   const description = firstRight?.titleText || firstLeft?.titleText;
 
+  const hasTitle = Boolean(title);
+  const hasDescription = Boolean(description);
+
   return (
     <div className="container">
       <div className="flex flex-col items-center gap-4 max-w-[1920px] w-full mx-auto">
         <div className="max-w-[1000px] w-full mx-auto flex flex-col gap-5">
-          {title && (
+          {hasTitle && title && (
             <div className="text-[32px] sm:text-[46px] md:text-[56px] xl:text-[72px] leading-[110%] tracking-[-0.02em] text-white font-bold text-center [&>p]:leading-[110%]">
               <RichText block={title} />
             </div>
@@ -31,7 +45,7 @@ const AboutLeftImageSection: React.FC<any> = ({
               <SanityImage src={image} />
             </div>
           )}
-          {description && (
+          {hasDescription && description && (
             <div className="text-white text-center">
               <RichText block={description} />
             </div>

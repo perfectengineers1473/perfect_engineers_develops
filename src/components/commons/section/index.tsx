@@ -1,9 +1,12 @@
 import React from "react";
 import HomeHeroSection from "@/components/homeHeroSection";
 import AboutLeftImageSection from "@/components/aboutLeftImageSection";
+import type { HomeHeroSectionType, PageBuilderType, SectionType } from "../../../../lib/sanity/types/page";
+
+type SectionData = PageBuilderType | SectionType | HomeHeroSectionType;
 
 interface SectionProps {
-  data: any;
+  data: SectionData;
   hasFooterBannerBackGround: boolean;
 }
 
@@ -12,16 +15,15 @@ const Section: React.FC<SectionProps> = ({
   hasFooterBannerBackGround,
 }) => {
   // Debug: see which section types are being rendered
-  if (typeof window !== "undefined") {
-    console.log("SECTION DATA:", data?._type, data);
-  }
+  const sectionData =
+    (data as PageBuilderType)?.content?.[0] ?? (data as SectionType | HomeHeroSectionType);
 
-  switch (data?._type) {
+  switch ((sectionData as SectionType | HomeHeroSectionType | undefined)?._type) {
     case "homeHeroSections":
-      return <HomeHeroSection {...data} />;
+      return <HomeHeroSection {...(sectionData as HomeHeroSectionType)} />;
 
     case "aboutLeftRightImageSection":
-      return <AboutLeftImageSection {...data} />;
+      return <AboutLeftImageSection {...(sectionData as SectionType)} />;
 
     default:
       return null;

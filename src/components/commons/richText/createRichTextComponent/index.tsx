@@ -1,6 +1,6 @@
 import React from "react";
 import { RichTextLinkType } from "../../../../../lib/sanity/types";
-import { PortableTextComponents } from "@portabletext/react";
+import type { PortableTextComponents, PortableTextBlockComponent } from "@portabletext/react";
 import CustomUnderline from "../customUnderline";
 import RichTextColor from "../richTextColor";
 import RichTextImage from "../richTextImage";
@@ -37,7 +37,7 @@ const CreateRichTextComponent = ({
       bullet: BulletList,
       number: NumberList,
     },
-    block: isRichTextBlock ? RichTextBlock : undefined,
+    block: isRichTextBlock ? (RichTextBlock as PortableTextBlockComponent) : undefined,
   };
 };
 

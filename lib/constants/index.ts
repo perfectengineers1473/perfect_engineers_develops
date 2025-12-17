@@ -1,17 +1,3 @@
-function assertValue<T>(
-  v: T | undefined,
-  errorMessage: string,
-  serverOnly = false
-): T {
-  if (
-    (typeof window === "undefined" ? serverOnly : !serverOnly) &&
-    v === undefined
-  ) {
-    throw new Error(errorMessage);
-  }
-
-  return v!;
-}
 export const REVALIDATE_DURATION =
   Number(process.env.REVALIDATE_DURATION) || 10;
 const defaultUrl = typeof window !== "undefined" ? window.location.href : "";

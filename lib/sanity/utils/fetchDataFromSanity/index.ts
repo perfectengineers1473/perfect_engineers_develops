@@ -54,6 +54,15 @@ export const fetchDataFromSanity = async <T = unknown>({
     const data = await client.fetch(clientGroqQuery, queryParams)
     return data
   } catch (error) {
-    return  error
+    if (handleError && typeof handleError === 'function') {
+      const handled = handleError(error as Error, mockData)
+      return handled as T
+    }
+
+    if (typeof mockData !== 'undefined') {
+      return mockData as T
+    }
+
+    throw error
   }
 }

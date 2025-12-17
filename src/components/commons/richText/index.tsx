@@ -8,12 +8,14 @@ export interface RichTextProps {
 }
 
 const RichText: React.FC<RichTextProps> = ({ block, isRichTextBlock }) => {
-  const { custom_rich_text, richTextLinks } = block || {};
+  const { custom_rich_text, richTextLinks = [] } = block || {};
+
+  const richTextValue = custom_rich_text ?? [];
 
   const RichTextComponents = CreateRichTextComponent({ richTextLinks, isRichTextBlock });
 
   return (
-    <PortableText value={custom_rich_text} components={RichTextComponents} />
+    <PortableText value={richTextValue} components={RichTextComponents} />
   );
 };
 export default RichText;

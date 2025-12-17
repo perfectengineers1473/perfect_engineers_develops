@@ -1,31 +1,18 @@
 import React from "react";
-import HomeHeroSection from "../homeHeroSection";
-import HeaderSection from "../headerSection";
-import NavbarSection from "../headerSection/navbarSection";
-import FeaturePostSection from "../featurePostSection";
-import BlogSerction from "../blogSerction";
-import FooterSection from "../footerSection";
 
-const Page = ({
-  homeherodata,
-  headerdata,
-  navlinkdata,
-  featurepostdata,
-  recentpostdata,
-  footerdata,
-  footerbottomdata,
-}: any) => {console.log(homeherodata, "homeher");
+export interface PageProps {
+  homeherodata: unknown;
+  headerdata: unknown;
+  navlinkdata: unknown;
+  featurepostdata: unknown;
+  recentpostdata: unknown;
+  footerdata: unknown;
+  footerbottomdata: unknown;
+}
 
-  return (
-    <div className="dark:bg-black/90">
-      <HeaderSection data={headerdata} />
-      <NavbarSection data={navlinkdata} />
-      <HomeHeroSection data={homeherodata} />
-      <FeaturePostSection data={featurepostdata} />
-      <BlogSerction data={recentpostdata} />
-      <FooterSection data={footerdata} footerbottomdata={footerbottomdata} />
-    </div>
-  );
+const Page: React.FC<PageProps> = () => {
+  // Legacy component not currently used in the app.
+  return null;
 };
 
 export default Page;

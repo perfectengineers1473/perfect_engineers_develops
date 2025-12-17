@@ -1,4 +1,3 @@
-import { Slug } from "sanity";
 import { FooterType, HeaderType, SeoType } from "./settings";
 import {
   AuthorType,
@@ -50,7 +49,7 @@ export type SectionType =
   | AboutLeftImageSection;
 
 export interface Page extends SanityDocument {
-  hasWithBackGround: any;
+  hasWithBackGround?: boolean;
   slug: string;
   _id: string;
   seo: SeoType;

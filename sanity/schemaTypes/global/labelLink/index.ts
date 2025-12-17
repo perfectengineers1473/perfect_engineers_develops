@@ -1,4 +1,4 @@
-export default {
+const labelLink = {
   name: 'labelLink',
   title: 'Label Link',
   type: 'object',
@@ -20,3 +20,5 @@ export default {
     },
   },
 }
+
+export default labelLink;
