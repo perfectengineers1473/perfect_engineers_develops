@@ -47,7 +47,9 @@ export type SectionType =
   | RelatedBlogsSectionType
   | PlanAndPricingSectionType
   | AllBlogPostSectionType
-  | AboutLeftImageSection;
+  | AboutLeftImageSection
+  | AboutHomeHeroSectionType;
+
 
 export interface Page extends SanityDocument {
   hasWithBackGround: any;
@@ -56,6 +58,19 @@ export interface Page extends SanityDocument {
   seo: SeoType;
   layoutProps: LayoutPropsType;
   pageBuilder?: PageBuilderType[];
+}
+
+export interface AboutHomeHeroSectionType {
+  _type: "homeHeroSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
 }
 
 export interface HomeHeroSectionType {
