@@ -48,8 +48,23 @@ export type SectionType =
   | PlanAndPricingSectionType
   | AllBlogPostSectionType
   | AboutLeftImageSection
-  | AboutHeroSectionType;
+  | AboutHeroSectionType
+  | ContactHeroSectionType;
 
+
+
+export interface ContactHeroSectionType {
+  _type: "ContactHeroSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+}
 
 export interface Page extends SanityDocument {
   hasWithBackGround: any;
