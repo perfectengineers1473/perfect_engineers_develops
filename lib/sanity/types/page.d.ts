@@ -49,9 +49,147 @@ export type SectionType =
   | AllBlogPostSectionType
   | AboutLeftImageSection
   | AboutHeroSectionType
-  | ContactHeroSectionType;
+  | ContactHeroSectionType
+  | ContactMapSectionType
+  | ContactUsSectionType
+  | DemoSectionType
+  | FeaturedPostSectionType
+  | HeroRemediateSectionType
+  | HomeRightImageSectionType
+  | ImageSectionType
+  | ProductionTimeSectionType
+  | RecentPostSectionType
+  | TitleTextSectionType;
 
+  export interface TitleTextSectionType {
+  _type: "TitleTextSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+  }
 
+export interface RecentPostSectionType {
+  _type: "RecentPostSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+  }
+
+export interface ProductionTimeSectionType {
+  _type: "ProductionTimeSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+  }
+
+export interface ImageSectionType {
+  _type: "ImageSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+  }
+
+  export interface HomeRightImageSectionType {
+  _type: "HomeRightImageSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+  }
+  
+  export interface HeroRemediateSectionType {
+  _type: "HeroRemediateSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+  }
+
+  export interface FeaturedPostSectionType {
+  _type: "FeaturedPostSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+  }
+
+  export interface DemoSectionType {
+  _type: "DemoSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+  }
+
+export interface ContactUsSectionType {
+  _type: "ContactUsSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+}
+
+export interface ContactMapSectionType {
+  _type: "ContactMapSection";
+  id?: string;
+  headline?: string;
+  title?: string;
+  bgimage?: ImageType;
+  description?: RichTextType;
+  jsonFileUrl?: string;
+  jsonFileExtension?: string;
+  jsonFileSize?: string;
+  jsonFileId?: string;
+}
 
 export interface ContactHeroSectionType {
   _type: "ContactHeroSection";
