@@ -1,9 +1,9 @@
 import React from "react";
-import { AboutHomeHeroSectionType } from "../../../lib/sanity/types/page";
+import { AboutHeroSectionType } from "../../../lib/sanity/types/page";
 import { urlFor } from "../../../lib/image";
 
 
-const AboutHomeHeroSection: React.FC<AboutHomeHeroSectionType> = ({
+const AboutHeroSection: React.FC<AboutHeroSectionType> = ({
   title,bgimage
 }) => {
 
@@ -18,4 +18,4 @@ const AboutHomeHeroSection: React.FC<AboutHomeHeroSectionType> = ({
   );
 };
 
-export default AboutHomeHeroSection;
+export default AboutHeroSection;

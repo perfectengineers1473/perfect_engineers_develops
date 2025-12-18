@@ -48,7 +48,7 @@ export type SectionType =
   | PlanAndPricingSectionType
   | AllBlogPostSectionType
   | AboutLeftImageSection
-  | AboutHomeHeroSectionType;
+  | AboutHeroSectionType;
 
 
 export interface Page extends SanityDocument {
@@ -60,7 +60,7 @@ export interface Page extends SanityDocument {
   pageBuilder?: PageBuilderType[];
 }
 
-export interface AboutHomeHeroSectionType {
+export interface AboutHeroSectionType {
   _type: "homeHeroSection";
   id?: string;
   headline?: string;

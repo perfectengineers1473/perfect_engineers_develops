@@ -1,7 +1,8 @@
 import React from "react";
 import HomeHeroSection from "@/components/homeHeroSection";
 import AboutLeftImageSection from "@/components/aboutLeftImageSection";
-import AboutHomeHeroSection from "@/components/aboutHomeHeroSection";
+import AboutHeroSection from "@/components/aboutHeroSection";
+
 
 interface SectionProps {
   data: any;
@@ -25,7 +26,7 @@ const Section: React.FC<SectionProps> = ({
       return <AboutLeftImageSection {...data} />;
 
       case "aboutHeroSection":
-      return <AboutHomeHeroSection {...data} />;
+      return <AboutHeroSection {...data} />;
 
     default:
       return null;
