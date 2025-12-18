@@ -2,6 +2,17 @@ import React from "react";
 import HomeHeroSection from "@/components/homeHeroSection";
 import AboutLeftImageSection from "@/components/aboutLeftImageSection";
 import AboutHeroSection from "@/components/aboutHeroSection";
+import ContactHeroSection from "@/components/contactHeroSection";
+import ContactMapSection from "@/components/contactMapSection";
+import ContactUsSection from "@/components/contactUsSection";
+import DemoSection from "@/components/demoSection";
+import FeaturedPostSection from "@/components/featuredPostSection";
+import HeroRemediateSection from "@/components/heroRemediateSection";
+import HomeRightImageSection from "@/components/homeRightImageSection";
+import ImageSection from "@/components/imageSection";
+import ProductionTimeSection from "@/components/productionTimeSection";
+import RecentPostSection from "@/components/recentPostSection/inddex";
+import TitleTextSection from "@/components/titleTextSection";
 
 
 interface SectionProps {
@@ -10,10 +21,8 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({
-  data,
-  hasFooterBannerBackGround,
+  data
 }) => {
-  // Debug: see which section types are being rendered
   if (typeof window !== "undefined") {
     console.log("SECTION DATA:", data?._type, data);
   }
@@ -25,8 +34,41 @@ const Section: React.FC<SectionProps> = ({
     case "aboutLeftRightImageSection":
       return <AboutLeftImageSection {...data} />;
 
-      case "aboutHeroSection":
+    case "aboutHeroSection":
       return <AboutHeroSection {...data} />;
+
+    case "contactHeroSection":
+      return <ContactHeroSection {...data} />;
+
+    case "contactMapSection":
+      return <ContactMapSection {...data} />;
+
+    case "contactUsSection":
+      return <ContactUsSection {...data} />;
+
+    case "demoSection":
+      return <DemoSection {...data} />;
+
+    case "featuredPostSection":
+      return <FeaturedPostSection {...data} />;
+
+    case "homeRightImageSection":
+      return <HomeRightImageSection {...data} />;
+
+    case "imageSection":
+      return <ImageSection {...data} />;
+
+    case "productionTimeSection":
+      return <ProductionTimeSection {...data} />;
+
+    case "recentPostSection":
+      return <RecentPostSection {...data} />;
+
+    case "TitleTextSection":
+      return <TitleTextSection {...data} />;
+
+    case "HeroRemediateSection":
+      return <HeroRemediateSection {...data} />;
 
     default:
       return null;

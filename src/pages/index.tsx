@@ -14,7 +14,7 @@ export interface PageProps extends SharedPageProps {
 }
 
 const Home: NextPage<PageProps> = ({ page }) => {
-  console.log("PAGE DATA:", page);
+
 
   return (
     <>
