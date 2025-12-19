@@ -214,16 +214,10 @@ export interface Page extends SanityDocument {
 }
 
 export interface AboutHeroSectionType {
-  _type: "homeHeroSection";
-  id?: string;
-  headline?: string;
+  _type: "AboutHeroSection";
   title?: string;
   bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
+  btn?: ButtonType[];
 }
 
 export interface HomeHeroSectionType {
