@@ -18,6 +18,9 @@ import {
   FeaturedPostFeatureType,
   ContactUsItemType,
   BusinessHourItemType,
+  HeroRemediateRatingType,
+  HeroRemediateButtonType,
+
 
 } from "./common";
 
@@ -122,18 +125,12 @@ export interface ImageSectionType {
   jsonFileId?: string;
   }
   
-  import { ButtonType, HeroRatingType } from "./common";
-import { RichTextType } from "./richText";
-
 export interface HeroRemediateSectionType {
   _type: "heroRemediateSection";
-  id?: string;
-
+  rating?: HeroRemediateRatingType;
   title?: string;
   description?: RichTextType;
-
-  rating?: HeroRatingType;
-  buttons?: ButtonType[];
+  buttons?: HeroRemediateButtonType[];
 }
 
 

@@ -64,10 +64,12 @@ const Section: React.FC<SectionProps> = ({
     case "recentPostSection":
       return <RecentPostSection {...data} />;
 
-    case "TitleTextSection":
+    // Matches Sanity schema name "titleTextSection"
+    case "titleTextSection":
       return <TitleTextSection {...data} />;
 
-    case "HeroRemediateSection":
+    // Matches Sanity schema name "heroRemediateSection"
+    case "heroRemediateSection":
       return <HeroRemediateSection {...data} />;
 
     default:

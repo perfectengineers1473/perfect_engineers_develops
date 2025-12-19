@@ -14,6 +14,18 @@ export interface HeroRatingType {
   numericValue?: number;
   max?: number;
 }
+export interface HeroRemediateRatingType {
+  source?: string;
+  value?: string;        // e.g. "4.8/5"
+  numericValue?: number; // e.g. 4.8
+  max?: number;          // e.g. 5
+}
+
+export interface HeroRemediateButtonType {
+  label?: string;
+  url?: string;
+}
+
 
 export interface IconProps {
   className?: string;

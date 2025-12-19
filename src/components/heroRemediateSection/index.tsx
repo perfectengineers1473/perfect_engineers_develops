@@ -1,8 +1,6 @@
 import React from "react";
-import {
-  HeroRemediateSectionType,
-  ButtonType,
-} from "../../../lib/sanity/types/page";
+import { HeroRemediateSectionType } from "../../../lib/sanity/types/page";
+import RichText from "../commons/richText";
 
 const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
   title,
@@ -10,36 +8,31 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
   rating,
   buttons,
 }) => {
-  
-  console.log(title,"prem");
   return (
     <section className="container bg-green-600 max-w-full py-20 text-center">
-      {/* Rating */}
+      
       {rating && (
-        <div className="flex justify-center items-center gap-2 mb-4 text-sm text-gray-500">
+        <div className="flex justify-center items-center gap-2 mb-4 text-sm text-white">
           {rating.source && <span>{rating.source}</span>}
           {rating.value && <span>{rating.value}</span>}
         </div>
       )}
 
-      {/* Title */}
       {title && (
-        <h1 className="text-[32px] sm:text-[48px] md:text-[64px] font-bold mb-6">
+        <h1 className="text-[32px] sm:text-[48px] md:text-[64px] font-bold mb-6 text-white">
           {title}
         </h1>
       )}
 
-      {/* Description */}
       {description && (
-        <div className="max-w-3xl mx-auto mb-10 text-gray-600">
-          {/* Render RichText here */}
+        <div className="max-w-3xl mx-auto mb-10 text-white">
+          <RichText block={description} />
         </div>
       )}
 
-      {/* Buttons */}
       {buttons && buttons.length > 0 && (
         <div className="flex justify-center gap-4">
-          {buttons.map((btn: ButtonType, index: number) => (
+          {buttons.map((btn, index) => (
             <a
               key={index}
               href={btn.url}
