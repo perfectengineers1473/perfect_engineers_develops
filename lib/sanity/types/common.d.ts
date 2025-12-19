@@ -21,6 +21,26 @@ export type LeftRightContentSectionType = {
   rightContent?: RichTextType;
 };
 
+export interface ContactUsItemType {
+  image?: ImageType;
+  title?: string;
+  text?: string;
+  description?: string;
+}
+
+export interface BusinessHourTextInfoType {
+  textTime?: string;
+  descriptions?: string;
+}
+
+export interface BusinessHourItemType {
+  iconImage?: ImageType;
+  icontitle?: string;
+  textInfo?: BusinessHourTextInfoType[];
+}
+
+
+
 export interface FeaturedPostFeatureType {
   _key?: string;
   type?: string;

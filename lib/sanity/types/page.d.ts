@@ -16,6 +16,8 @@ import {
   TitleImageContentType,
   TitleImageType,
   FeaturedPostFeatureType,
+  ContactUsItemType,
+  BusinessHourItemType,
 
 } from "./common";
 
@@ -157,42 +159,26 @@ export interface ImageSectionType {
   }
 
 export interface ContactUsSectionType {
-  _type: "ContactUsSection";
-  id?: string;
-  headline?: string;
-  title?: string;
-  bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
+  _type: "contactUsSection";
+  maintitle?: string;
+  titletext?: string;
+  contactUs?: ContactUsItemType[];
+  businessHour?: BusinessHourItemType[];
 }
 
 export interface ContactMapSectionType {
   _type: "ContactMapSection";
-  id?: string;
-  headline?: string;
   title?: string;
-  bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
+  description?: string;
+  button?: ButtonType;
 }
 
 export interface ContactHeroSectionType {
   _type: "ContactHeroSection";
-  id?: string;
-  headline?: string;
   title?: string;
-  bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
+  image?: ImageType;
+  description?: string;
+  button?: ButtonType[];
 }
 
 export interface Page extends SanityDocument {
