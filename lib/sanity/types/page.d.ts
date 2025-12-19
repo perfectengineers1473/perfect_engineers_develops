@@ -142,7 +142,6 @@ export interface ImageSectionType {
 
  export interface DemoSectionType {
   _type: "demoSection";
-
   title?: string;
   heroImage?: ImageType;
 
@@ -154,7 +153,7 @@ export interface ImageSectionType {
   sourceLabel?: string;
 
   disclaimer?: RichTextType;
-  submitButtonText?: string;
+  submitButtonText?: ButtonType;
 }
 
 export interface ContactUsSectionType {

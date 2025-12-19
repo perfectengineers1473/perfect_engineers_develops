@@ -3,6 +3,7 @@ import { LinkType } from "./linkType";
 import { JSX } from "react/jsx-runtime";
 // ---------- Button ----------
 export interface ButtonType {
+  link: string;
   label?: string;
   url?: string;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { DemoSectionType } from "../../../lib/sanity/types/page";
 import { urlFor } from "../../../lib/image";
-
+import RichText from "../commons/richText";
 
 const DemoSection: React.FC<DemoSectionType> = ({
   title,
@@ -16,86 +16,27 @@ const DemoSection: React.FC<DemoSectionType> = ({
   submitButtonText,
 }) => {
   return (
-    <section className="container max-w-full py-20">
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
-        {/* Left Side – Content */}
-        <div>
-          {title && (
-            <h2 className="text-[32px] sm:text-[40px] font-bold mb-8">
-              {title}
-            </h2>
-          )}
-
-          <form className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* First Name */}
-            <input
-              type="text"
-              placeholder={firstNameLabel || "First Name"}
-              className="border rounded-md px-4 py-3 w-full"
-            />
-
-            {/* Last Name */}
-            <input
-              type="text"
-              placeholder={lastNameLabel || "Last Name"}
-              className="border rounded-md px-4 py-3 w-full"
-            />
-
-            {/* Email */}
-            <input
-              type="email"
-              placeholder={emailLabel || "Email"}
-              className="border rounded-md px-4 py-3 w-full sm:col-span-2"
-            />
-
-            {/* Company */}
-            <input
-              type="text"
-              placeholder={companyLabel || "Company"}
-              className="border rounded-md px-4 py-3 w-full sm:col-span-2"
-            />
-
-            {/* Region */}
-            <select className="border rounded-md px-4 py-3 w-full sm:col-span-2">
-              <option>{regionLabel || "Select Region"}</option>
-            </select>
-
-            {/* Source */}
-            <textarea
-              placeholder={sourceLabel || "How did you hear about us?"}
-              className="border rounded-md px-4 py-3 w-full sm:col-span-2"
-            />
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="bg-black text-white py-3 px-6 rounded-md sm:col-span-2 hover:bg-gray-800 transition"
-            >
-              {submitButtonText || "Submit"}
-            </button>
-          </form>
-
-          {/* Disclaimer */}
-          {disclaimer && (
-            <div className="mt-4 text-sm text-gray-500">
-              {/* Render RichText here */}
-            </div>
-          )}
-        </div>
-
-        {/* Right Side – Image */}
-        {heroImage && (
-          <div className="flex justify-center">
-            <img
-              src={urlFor(heroImage).url()}
-              alt="Demo"
-              className="rounded-xl max-w-full"
-            />
-          </div>
-        )}
+    <div className="container bg-emerald-500 max-w-full">
+      <h1 className="text-[32px] sm:text-[46px] md:text-[56px] xl:text-[72px] text-white font-bold text-center">
+        {title}
+      </h1>
+      <img src={urlFor(heroImage).url()} />
+      <div className="flex justify-center mt-6">
+        {firstNameLabel}{lastNameLabel}{emailLabel}{companyLabel}{regionLabel}{sourceLabel}
       </div>
-    </section>
+      {disclaimer && (
+        <div className="text-white text-center">
+          <RichText block={disclaimer} />
+        </div>
+      )}
+      {submitButtonText && (
+        <a
+          href={submitButtonText.link as string}
+          className="mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg"
+        >
+          {submitButtonText.label}
+        </a>)}
+    </div>
   );
 };
 
