@@ -15,6 +15,8 @@ import {
   TitleImageContentJsonFileType,
   TitleImageContentType,
   TitleImageType,
+  FeaturedPostFeatureType,
+
 } from "./common";
 
 export interface LayoutPropsType {
@@ -102,15 +104,7 @@ export interface ProductionTimeSectionType {
 
 export interface ImageSectionType {
   _type: "ImageSection";
-  id?: string;
-  headline?: string;
-  title?: string;
-  bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
+  image?: ImageType;
   }
 
   export interface HomeRightImageSectionType {
@@ -140,17 +134,14 @@ export interface ImageSectionType {
   }
 
   export interface FeaturedPostSectionType {
-  _type: "FeaturedPostSection";
+  _type: "featuredPostSection";
   id?: string;
-  headline?: string;
+  maintitle?: string;
   title?: string;
-  bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
-  }
+  image?: ImageType;
+  button?: ButtonType;
+  features?: FeaturedPostFeatureType[];
+}
 
   export interface DemoSectionType {
   _type: "DemoSection";

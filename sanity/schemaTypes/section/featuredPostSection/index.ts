@@ -19,15 +19,10 @@ export default {
       title: "Image",
       type: "image",
     },
-    {
-      name: "buttonText",
-      title: "Button Text",
-      type: "string",
-    },
-    {
-      name: "buttonUrl",
-      title: "Button URL",
-      type: "url",
+     {
+      name: "button",
+      title: "Button",
+      type: "button",
     },
     {
       name: "features",

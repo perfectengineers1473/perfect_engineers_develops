@@ -4,7 +4,7 @@ import { FeaturedPostSectionType } from "../../../lib/sanity/types/page";
 
 
 const FeaturedPostSection: React.FC<FeaturedPostSectionType> = ({
-  
+  _type,buttonText,buttonUrl,features,id,image,maintitle,title
 }) => {
 
 

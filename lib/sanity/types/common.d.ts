@@ -21,6 +21,15 @@ export type LeftRightContentSectionType = {
   rightContent?: RichTextType;
 };
 
+export interface FeaturedPostFeatureType {
+  _key?: string;
+  type?: string;
+  title?: string;
+  date?: string; // Sanity date = string
+  featureImage?: ImageType;
+}
+
+
 export type RichTextType = {
   _type: "richText";
   custom_rich_text?: PortableTextBlock[];
