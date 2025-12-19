@@ -10,9 +10,23 @@ export default {
       title: "Rating",
       type: "object",
       fields: [
-        { name: "source", title: "Source", type: "string", initialValue: "Gartner" },
-        { name: "value", title: "Value", type: "string", description: "e.g. 4.8/5" },
-        { name: "numericValue", title: "Numeric value", type: "number", description: "Optional numeric value for sorting / calculations" },
+        {
+          name: "source",
+          title: "Source",
+          type: "string",
+          initialValue: "Gartner",
+        },
+        {
+          name: "value",
+          title: "Value",
+          type: "string",
+          description: "Example: 4.8/5",
+        },
+        {
+          name: "numericValue",
+          title: "Numeric Value",
+          type: "number",
+        },
         {
           name: "max",
           title: "Maximum",
@@ -30,7 +44,6 @@ export default {
       name: "description",
       title: "Description",
       type: "richText",
-      description: "Longer paragraph describing the product or section.",
     },
     {
       name: "buttons",
@@ -40,14 +53,21 @@ export default {
         {
           type: "object",
           name: "button",
-          title: "Button",
           fields: [
-            { name: "label", title: "Label", type: "string"},
-            { name: "url", title: "URL", type: "url"},
+            {
+              name: "label",
+              title: "Label",
+              type: "string",
+            },
+            {
+              name: "url",
+              title: "URL",
+              type: "url",
+            },
           ],
         },
       ],
-      description: "Add 1 or 2 CTAs (primary then secondary).",
+      validation: (Rule) => Rule.max(2),
     },
   ],
 } as SchemaTypeDefinition;

@@ -122,26 +122,27 @@ export interface ImageSectionType {
   jsonFileId?: string;
   }
   
-  export interface HeroRemediateSectionType {
-  _type: "HeroRemediateSection";
+  import { ButtonType, HeroRatingType } from "./common";
+import { RichTextType } from "./richText";
+
+export interface HeroRemediateSectionType {
+  _type: "heroRemediateSection";
   id?: string;
-  headline?: string;
+
   title?: string;
-  bgimage?: ImageType;
   description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
-  }
+
+  rating?: HeroRatingType;
+  buttons?: ButtonType[];
+}
+
 
   export interface FeaturedPostSectionType {
   _type: "featuredPostSection";
-  id?: string;
   maintitle?: string;
   title?: string;
-  image?: ImageType;
-  button?: ButtonType;
+  image?: MimeType;
+  button?: ButtonType[];
   features?: FeaturedPostFeatureType[];
 }
 
@@ -356,3 +357,5 @@ export interface AllBlogPostSectionType {
   blogs?: BlogsType[];
   categories?: CategoryType[];
 }
+export { ButtonType };
+

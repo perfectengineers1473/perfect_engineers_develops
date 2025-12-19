@@ -1,5 +1,19 @@
 import { PortableTextBlock, Slug } from "sanity";
 import { LinkType } from "./linkType";
+import { JSX } from "react/jsx-runtime";
+// ---------- Button ----------
+export interface ButtonType {
+  label?: string;
+  url?: string;
+}
+
+// ---------- Hero Rating ----------
+export interface HeroRatingType {
+  source?: string;
+  value?: string;
+  numericValue?: number;
+  max?: number;
+}
 
 export interface IconProps {
   className?: string;
@@ -61,6 +75,8 @@ export type LabelLinkType = {
   link?: LinkType;
 };
 export type ButtonType = {
+  url: string | undefined;
+  map(arg0: (btn: { url: string | undefined; label: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | Iterable<React.ReactNode> | null | undefined; }, index: React.Key | null | undefined) => JSX.Element): import("react").ReactNode | Iterable<import("react").ReactNode>;
   _type: "button";
   variant?: ButtonVariantType;
   label?: string;
