@@ -48,4 +48,16 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+      firstPost: "blog.0.blogtitle",
+    },
+    prepare({ title, firstPost }) {
+      return {
+        title: title || "Recent Post Section",
+        subtitle: firstPost ? `Latest: ${firstPost}` : undefined,
+      };
+    },
+  },
 } as SchemaTypeDefinition;

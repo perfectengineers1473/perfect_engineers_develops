@@ -70,4 +70,16 @@ export default {
       validation: (Rule) => Rule.max(2),
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "rating.value",
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title: title || "Hero Remediate Section",
+        subtitle: subtitle ? `Rating: ${subtitle}` : undefined,
+      };
+    },
+  },
 } as SchemaTypeDefinition;

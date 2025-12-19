@@ -40,4 +40,15 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      firstTitle: "items.0.title",
+    },
+    prepare({ firstTitle }) {
+      return {
+        title: firstTitle || "Home Right Image Section",
+        subtitle: firstTitle ? "Multiple items" : undefined,
+      };
+    },
+  },
 } as SchemaTypeDefinition;

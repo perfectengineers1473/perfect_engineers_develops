@@ -14,4 +14,14 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      media: "image",
+    },
+    prepare() {
+      return {
+        title: "Image Section",
+      };
+    },
+  },
 } as SchemaTypeDefinition;

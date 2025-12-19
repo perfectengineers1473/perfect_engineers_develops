@@ -27,4 +27,14 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      firstTitle: "titleText.0.title",
+    },
+    prepare({ firstTitle }) {
+      return {
+        title: firstTitle || "Title Text Section",
+      };
+    },
+  },
 } as SchemaTypeDefinition;

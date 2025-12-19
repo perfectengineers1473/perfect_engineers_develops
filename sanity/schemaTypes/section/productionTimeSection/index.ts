@@ -42,4 +42,17 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      firstStat: "Production.0",
+    },
+    prepare({ firstStat }) {
+      const statLabel = firstStat?.label || "";
+      const statValue = firstStat?.value || "";
+      return {
+        title: "Production Time Section",
+        subtitle: statLabel && statValue ? `${statLabel}: ${statValue}` : undefined,
+      };
+    },
+  },
 } as SchemaTypeDefinition;

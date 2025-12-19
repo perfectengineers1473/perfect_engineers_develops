@@ -67,4 +67,16 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: "maintitle",
+      subtitle: "titletext",
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title: title || "Contact Us Section",
+        subtitle: subtitle,
+      };
+    },
+  },
 } as SchemaTypeDefinition;

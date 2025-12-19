@@ -1,4 +1,5 @@
 import { Slug } from "sanity";
+import { SanityDocument } from "next-sanity";
 import { FooterType, HeaderType, SeoType } from "./settings";
 import {
   AuthorType,
@@ -164,11 +165,11 @@ export interface ContactHeroSectionType {
 
 export interface Page extends SanityDocument {
   hasWithBackGround: any;
-  slug: string;
+  slug: Slug;
   _id: string;
   seo: SeoType;
   layoutProps: LayoutPropsType;
-  pageBuilder?: PageBuilderType[];
+  pageBuilder?: SectionType[];
 }
 
 export interface AboutHeroSectionType {
@@ -179,7 +180,7 @@ export interface AboutHeroSectionType {
 }
 
 export interface HomeHeroSectionType {
-  _type: "homeHeroSection";
+  _type: "homeHeroSections";
   id?: string;
   title?: RichTextType;
   description?: RichTextType;

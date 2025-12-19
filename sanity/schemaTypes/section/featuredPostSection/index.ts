@@ -63,4 +63,17 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "maintitle",
+      media: "image",
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title: title || subtitle || "Featured Post Section",
+        subtitle: subtitle,
+      };
+    },
+  },
 } as SchemaTypeDefinition;

@@ -2,6 +2,7 @@ import { SchemaTypeDefinition } from "sanity";
 
 export default {
   name: "aboutHeroSection",
+  title: "About Hero Section",
   type: "object",
   fields: [
     {
@@ -27,4 +28,16 @@ export default {
       ]
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+      media: "bgimage",
+    },
+    prepare({ title, media }) {
+      return {
+        title: title || "About Hero Section",
+        media,
+      };
+    },
+  },
 } as SchemaTypeDefinition;

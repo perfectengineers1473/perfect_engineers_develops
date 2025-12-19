@@ -58,4 +58,15 @@ export default {
     },
     
   ],
+  preview: {
+    select: {
+      title: "title",
+      media: "heroImage",
+    },
+    prepare({ title }) {
+      return {
+        title: title || "Demo Request Section",
+      };
+    },
+  },
 } as SchemaTypeDefinition;

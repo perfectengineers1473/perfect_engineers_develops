@@ -75,4 +75,17 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      firstRightTitle: "rightImageText.0.title",
+      firstLeftTitle: "leftImageText.0.title",
+    },
+    prepare({ firstRightTitle, firstLeftTitle }) {
+      const title = firstRightTitle || firstLeftTitle;
+      return {
+        title: title || "About Left Right Image Section",
+        subtitle: firstRightTitle && firstLeftTitle ? "Left & Right sections" : undefined,
+      };
+    },
+  },
 } as SchemaTypeDefinition;
