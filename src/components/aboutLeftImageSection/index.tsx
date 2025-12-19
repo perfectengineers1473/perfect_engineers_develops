@@ -18,7 +18,7 @@ const AboutLeftImageSection: React.FC<any> = ({
   const description = firstRight?.titleText || firstLeft?.titleText;
 
   return (
-    <div className="container">
+    <div className="container  bg-blue-400  max-w-full">
       <div className="flex flex-col items-center gap-4 max-w-[1920px] w-full mx-auto">
         <div className="max-w-[1000px] w-full mx-auto flex flex-col gap-5">
           {title && (

@@ -4,11 +4,11 @@ import { urlFor } from "../../../lib/image";
 
 
 const AboutHeroSection: React.FC<AboutHeroSectionType> = ({
-  title,bgimage,btn
+  bgimage,btn,title
 }) => {
 
   return (
-     <div className="container bg-amber-400 max-w-full">
+     <div className="container bg-red-600 max-w-full">
       <h1 className="text-[32px] sm:text-[46px] md:text-[56px] xl:text-[72px] text-white font-bold text-center">
         {title}
       </h1>

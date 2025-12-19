@@ -9,7 +9,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
 
 
   return (
-      <div className="container">
+      <div className="container bg-pink-400  max-w-full">
         <div className="flex flex-col items-center gap-4 max-w-[1920px] w-full mx-auto">
           <div className="max-w-[1000px] w-full mx-auto flex flex-col gap-5">
             {title?.custom_rich_text && (
