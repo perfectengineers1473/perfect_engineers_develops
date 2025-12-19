@@ -18,9 +18,6 @@ import {
   FeaturedPostFeatureType,
   ContactUsItemType,
   BusinessHourItemType,
-  HeroRemediateRatingType,
-  HeroRemediateButtonType,
-
 
 } from "./common";
 
@@ -125,7 +122,7 @@ export interface ImageSectionType {
   jsonFileId?: string;
   }
   
-export interface HeroRemediateSectionType {
+  export interface HeroRemediateSectionType {
   _type: "heroRemediateSection";
   rating?: HeroRemediateRatingType;
   title?: string;
@@ -143,18 +140,22 @@ export interface HeroRemediateSectionType {
   features?: FeaturedPostFeatureType[];
 }
 
-  export interface DemoSectionType {
-  _type: "DemoSection";
-  id?: string;
-  headline?: string;
+ export interface DemoSectionType {
+  _type: "demoSection";
+
   title?: string;
-  bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
-  }
+  heroImage?: ImageType;
+
+  firstNameLabel?: string;
+  lastNameLabel?: string;
+  emailLabel?: string;
+  companyLabel?: string;
+  regionLabel?: string;
+  sourceLabel?: string;
+
+  disclaimer?: RichTextType;
+  submitButtonText?: string;
+}
 
 export interface ContactUsSectionType {
   _type: "contactUsSection";
