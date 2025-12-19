@@ -13,7 +13,7 @@ const FeaturedPostSection: React.FC<FeaturedPostSectionType> = ({
   features,
 }) => {
   return (
-    <section className="container max-w-full py-16">
+    <section className="container max-w-full bg-lime-950 py-16">
       {/* Main Title */}
       {maintitle && (
         <h4 className="text-sm uppercase text-gray-500 text-center mb-2">

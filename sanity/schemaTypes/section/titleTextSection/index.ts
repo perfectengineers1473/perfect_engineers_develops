@@ -10,14 +10,19 @@ export default {
       type: "array",
       of: [
         {
-            name: "title",
-            title: "Title",
-            type: "string",
-        },
-        {
-            name: "description",
-            title: "Description",
-            type: "string",
+          type: "object",
+          fields: [
+            {
+              name: "title",
+              title: "Title",
+              type: "string",
+            },
+            {
+              name: "description",
+              title: "Description",
+              type: "richText",
+            },
+          ],
         },
       ],
     },

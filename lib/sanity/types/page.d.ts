@@ -18,6 +18,8 @@ import {
   FeaturedPostFeatureType,
   ContactUsItemType,
   BusinessHourItemType,
+  TitleTextSectionsType,
+  BlogType,
 
 } from "./common";
 
@@ -65,64 +67,45 @@ export type SectionType =
   | RecentPostSectionType
   | TitleTextSectionType;
 
-  export interface TitleTextSectionType {
+export interface TitleTextSectionType {
   _type: "TitleTextSection";
-  id?: string;
-  headline?: string;
-  title?: string;
-  bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
-  }
+  titleText?: TitleTextSectionsType[];
+}
 
 export interface RecentPostSectionType {
   _type: "RecentPostSection";
-  id?: string;
-  headline?: string;
   title?: string;
-  bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
-  }
+  seemore?: string;
+  blog?: BlogType[];
+}
 
 export interface ProductionTimeSectionType {
-  _type: "ProductionTimeSection";
-  id?: string;
-  headline?: string;
-  title?: string;
-  bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
-  }
+  _type: "productionTimeSection";
+  Production?: {
+    _key?: string;
+    value?: string;
+    label?: string;
+  }[];
+  buttons?: ButtonType[];
+}
 
 export interface ImageSectionType {
   _type: "ImageSection";
   image?: ImageType;
-  }
+}
 
-  export interface HomeRightImageSectionType {
-  _type: "HomeRightImageSection";
-  id?: string;
-  headline?: string;
-  title?: string;
-  bgimage?: ImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
-  }
-  
-  export interface HeroRemediateSectionType {
+export interface HomeRightImageSectionType {
+  _type: "homeRightImageSection";
+  items?: {
+    _key?: string;
+    title?: string;
+    titleText?: RichTextType;
+    button?: ButtonType;
+    image?: ImageType;
+  }[];
+}
+
+export interface HeroRemediateSectionType {
   _type: "heroRemediateSection";
   rating?: HeroRemediateRatingType;
   title?: string;
@@ -131,7 +114,7 @@ export interface ImageSectionType {
 }
 
 
-  export interface FeaturedPostSectionType {
+export interface FeaturedPostSectionType {
   _type: "featuredPostSection";
   maintitle?: string;
   title?: string;
@@ -140,7 +123,7 @@ export interface ImageSectionType {
   features?: FeaturedPostFeatureType[];
 }
 
- export interface DemoSectionType {
+export interface DemoSectionType {
   _type: "demoSection";
   title?: string;
   heroImage?: ImageType;
@@ -198,13 +181,13 @@ export interface AboutHeroSectionType {
 export interface HomeHeroSectionType {
   _type: "homeHeroSection";
   id?: string;
-  headline?: string;
   title?: RichTextType;
   description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
+ image?: CustomImageType;
+ mobileImage?: CustomImageType;
+ buttons?: ButtonType[];
+ lists?: string[];
+
 }
 export interface HeroSectionType {
   _type: "heroSection";

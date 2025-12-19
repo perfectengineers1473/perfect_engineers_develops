@@ -22,11 +22,27 @@ export interface HeroRemediateRatingType {
   max?: number;          // e.g. 5
 }
 
+
+export interface ItemTypes {
+  image?: ImageType;
+  type?: string;
+  blogtitle?: string;
+  date?: string;
+
+}
+
 export interface HeroRemediateButtonType {
   label?: string;
   url?: string;
 }
 
+export interface BlogType {
+  image?: ImageType;
+  type?: string;
+  blogtitle?: string;
+  date?: string;
+
+}
 
 export interface IconProps {
   className?: string;
@@ -66,6 +82,10 @@ export interface BusinessHourItemType {
   textInfo?: BusinessHourTextInfoType[];
 }
 
+export interface TitleTextSectionsType {
+  title?: string;
+  description?: RichTextType;
+}
 
 
 export interface FeaturedPostFeatureType {
