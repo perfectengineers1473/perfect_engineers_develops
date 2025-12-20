@@ -1,20 +1,22 @@
 import React from "react";
 import { ImageSectionType } from "../../../lib/sanity/types/page";
-import { urlFor } from "../../../lib/image";
-
-
+import SanityImage from "../commons/sanityImage";
 
 const ImageSection: React.FC<ImageSectionType> = ({
   image
 }) => {
-
-
   return (
-      <div className="container bg-amber-950 max-w-full" >
-       <img src={urlFor(image).url()} />
-        <div className="flex flex-col items-center gap-4 max-w-[1920px] w-full mx-auto">
+    <section className="relative w-full bg-white py-8 lg:py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        {image && (
+          <div className="w-full animate-fade-in">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl">
+              <SanityImage src={image} />
+            </div>
           </div>
-        </div>
+        )}
+      </div>
+    </section>
   );
 };
 
