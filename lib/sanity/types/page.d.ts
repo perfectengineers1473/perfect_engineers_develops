@@ -1,4 +1,4 @@
-import { Slug } from "sanity";
+import { Image, Slug } from "sanity";
 import { SanityDocument } from "next-sanity";
 import { FooterType, HeaderType, SeoType } from "./settings";
 import {
@@ -119,7 +119,7 @@ export interface FeaturedPostSectionType {
   _type: "featuredPostSection";
   maintitle?: string;
   title?: string;
-  image?: MimeType;
+  image?: CustomImageType;
   button?: ButtonType[];
   features?: FeaturedPostFeatureType[];
 }

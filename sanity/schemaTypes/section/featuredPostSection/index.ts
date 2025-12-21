@@ -19,11 +19,6 @@ export default {
       title: "Image",
       type: "image",
     },
-     {
-      name: "button",
-      title: "Button",
-      type: "button",
-    },
     {
       name: "features",
       title: "Features",
