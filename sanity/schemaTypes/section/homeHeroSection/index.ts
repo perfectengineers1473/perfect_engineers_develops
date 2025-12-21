@@ -38,12 +38,12 @@ export default {
     {
       name: "image",
       title: "Image",
-      type: "customImage",
+      type: "image",
     },
     {
       name: "mobileImage",
       title: "Mobile Image",
-      type: "customImage",
+      type: "image",
     },
   ],
   preview: {

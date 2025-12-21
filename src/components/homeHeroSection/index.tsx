@@ -1,24 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HomeHeroSectionType } from "../../../lib/sanity/types/page";
 import RichText from "../commons/richText";
 import SanityImage from "../commons/sanityImage";
 import Link from "../commons/link";
 
 const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
-  title, buttons, description, image, lists, mobileImage
+  title,
+  buttons,
+  description,
+  image,
+  lists,
+  mobileImage,
 }) => {
-  return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-white">
+  const [activeIndex, setActiveIndex] = useState(0);
 
-      {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-12 lg:py-20">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+  useEffect(() => {
+    if (!lists || lists.length === 0) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % lists.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [lists]);
+
+  return (
+    <section className="relative w-full min-h-screen overflow-hidden bg-white flex items-center">
+      {/* Wider container for large screens */}
+      <div className="relative  z-10 mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 py-16 lg:py-24 max-w-[2000px]">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-15">
+          
           {/* Text Content */}
-          <div className="flex-1 text-center lg:text-left w-full lg:w-1/2">
+          <div className="w-full lg:w-1/2 text-center lg:text-left">
+            
             {/* Title */}
             {title?.custom_rich_text && (
               <div className="mb-6 lg:mb-8">
-                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[110%] tracking-tight text-gray-900 [&>p]:leading-[110%] [&>p]:mb-0">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-[115%] tracking-tight text-gray-900 text-justify">
                   <RichText block={title} />
                 </div>
               </div>
@@ -26,39 +44,36 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
 
             {/* Description */}
             {description?.custom_rich_text && (
-              <div className="mb-6 lg:mb-8">
-                <div className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-600 [&>p]:leading-relaxed [&>p]:mb-0">
+              <div className="mb-6 lg:mb-8 max-w-xl xl:max-w-2xl mx-auto lg:mx-0 text-justify">
+                <div className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 leading-relaxed">
                   <RichText block={description} />
                 </div>
               </div>
             )}
 
-            {/* Lists */}
+            {/* Animated List (UNCHANGED) */}
             {lists && lists.length > 0 && (
-              <div className="mb-8 lg:mb-10 flex flex-col gap-3 sm:gap-4">
-                {lists.map((item, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-start gap-3 justify-center lg:justify-start"
-                  >
-                    <svg 
-                      className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mt-0.5 shrink-0" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
+              <div className="mb-10 flex justify-center lg:justify-start">
+                <div className="relative h-[36px] md:h-[40px] overflow-hidden">
+                  <div className="flex items-start gap-3 animate-fadeSlide">
+                    <svg
+                      className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mt-0.5 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M5 13l4 4L19 7" 
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span className="text-sm sm:text-base md:text-lg text-gray-700 flex-1">
-                      {item}
+                    <span className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700">
+                      {lists[activeIndex]}
                     </span>
                   </div>
-                ))}
+                </div>
               </div>
             )}
 
@@ -70,17 +85,11 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
                     key={index}
                     to={item.link || item.url || "#"}
                     ariaLabel={item.label || "Button"}
-                    className={`
-                      inline-flex items-center justify-center
-                      px-8 py-4
-                      text-base font-semibold
-                      transition-all duration-300
-                      ${
-                        index === 0
-                          ? "bg-gray-900 hover:bg-gray-800 text-white"
-                          : "bg-transparent border-2 border-gray-900 text-gray-900 hover:bg-gray-50"
-                      }
-                    `}
+                    className={`px-8 py-4 text-base font-semibold lg:text-xl rounded-2xl transition-all duration-300 ${
+                      index === 0
+                        ? "bg-gray-900 hover:bg-gray-800 text-white"
+                        : "bg-transparent border-2 border-gray-900 text-gray-900 hover:bg-gray-50"
+                    }`}
                   >
                     {item.label}
                   </Link>
@@ -89,32 +98,30 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
             )}
           </div>
 
-          {/* Image Content - Display as foreground element when images are provided */}
+          {/* Image Content */}
           {(image || mobileImage) && (
-            <div className="flex-1 w-full lg:w-1/2 flex items-center justify-center">
-              <div className="relative w-full max-w-lg">
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-4xl">
+                
                 {/* Desktop Image */}
                 {image && (
-                  <div className="hidden lg:block relative w-full rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                    <SanityImage 
-                      src={image}
-                    />
+                  <div className="hidden lg:block rounded-3xl overflow-hidden shadow-2xl">
+                    <SanityImage src={image} />
                   </div>
                 )}
+
                 {/* Mobile Image */}
                 {mobileImage && (
-                  <div className="block lg:hidden relative w-full rounded-2xl overflow-hidden shadow-2xl">
-                    <SanityImage 
-                      src={mobileImage}
-                    />
+                  <div className="block lg:hidden rounded-3xl overflow-hidden shadow-2xl">
+                    <SanityImage src={mobileImage} />
                   </div>
                 )}
+
               </div>
             </div>
           )}
         </div>
       </div>
-
     </section>
   );
 };
