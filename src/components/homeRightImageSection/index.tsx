@@ -14,21 +14,10 @@ const HomeRightImageSection: React.FC<HomeRightImageSectionType> = ({
           {items?.map((i, index) => (
             <div 
               key={index}
-              className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
+              className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12"
             >
-              {/* Image Section */}
-              {i?.image && (
-                <div className="w-full lg:w-1/2 flex justify-center animate-fade-in" style={{ animationDelay: `${index * 0.2}s`, animationFillMode: 'both' }}>
-                  <div className="relative w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                    <SanityImage src={i.image} />
-                  </div>
-                </div>
-              )}
-
-              {/* Content Section */}
-              <div className={`w-full lg:w-1/2 flex flex-col ${index % 2 === 1 ? 'lg:items-start lg:text-left' : 'lg:items-start lg:text-left'} items-center text-center animate-fade-in-up`} style={{ animationDelay: `${index * 0.2 + 0.1}s`, animationFillMode: 'both' }}>
+              {/* Content Section - Left */}
+              <div className="w-full lg:w-1/2 flex flex-col lg:items-start lg:text-left">
                 {i?.title && (
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                     {i.title}
@@ -45,12 +34,21 @@ const HomeRightImageSection: React.FC<HomeRightImageSectionType> = ({
                   <Link
                     to={i.button.link || i.button.url || "#"}
                     ariaLabel={i.button.label || "Button"}
-                    className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white text-base font-semibold transition-all duration-300"
                   >
                     {i.button.label}
                   </Link>
                 )}
               </div>
+
+              {/* Image Section - Right */}
+              {i?.image && (
+                <div className="w-full lg:w-1/2 flex justify-center">
+                  <div className="relative w-full max-w-lg overflow-hidden">
+                    <SanityImage src={i.image} />
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

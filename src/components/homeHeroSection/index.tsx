@@ -18,7 +18,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
             {/* Title */}
             {title?.custom_rich_text && (
               <div className="mb-6 lg:mb-8">
-                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[110%] tracking-tight text-gray-900 [&>p]:leading-[110%] [&>p]:mb-0 animate-fade-in-up">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[110%] tracking-tight text-gray-900 [&>p]:leading-[110%] [&>p]:mb-0">
                   <RichText block={title} />
                 </div>
               </div>
@@ -27,7 +27,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
             {/* Description */}
             {description?.custom_rich_text && (
               <div className="mb-6 lg:mb-8">
-                <div className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-600 [&>p]:leading-relaxed [&>p]:mb-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+                <div className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-600 [&>p]:leading-relaxed [&>p]:mb-0">
                   <RichText block={description} />
                 </div>
               </div>
@@ -72,15 +72,13 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
                     ariaLabel={item.label || "Button"}
                     className={`
                       inline-flex items-center justify-center
-                      px-6 sm:px-8 py-3 sm:py-4
-                      text-sm sm:text-base font-semibold
-                      rounded-lg transition-all duration-300
-                      transform hover:scale-105 active:scale-95
-                      shadow-lg hover:shadow-xl
+                      px-8 py-4
+                      text-base font-semibold
+                      transition-all duration-300
                       ${
                         index === 0
-                          ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl"
-                          : "bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-300 hover:border-gray-400 shadow-md hover:shadow-lg"
+                          ? "bg-gray-900 hover:bg-gray-800 text-white"
+                          : "bg-transparent border-2 border-gray-900 text-gray-900 hover:bg-gray-50"
                       }
                     `}
                   >
@@ -117,24 +115,6 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 hidden lg:block">
-        <div className="animate-bounce">
-          <svg 
-            className="w-6 h-6 text-gray-400" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-            />
-          </svg>
-        </div>
-      </div>
     </section>
   );
 };
