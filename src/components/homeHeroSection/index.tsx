@@ -54,7 +54,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
             {/* Animated List (UNCHANGED) */}
             {lists && lists.length > 0 && (
               <div className="mb-10 flex justify-center lg:justify-start">
-                <div className="relative h-[36px] md:h-[40px] overflow-hidden">
+                <div className="relative h-9 md:h-10 overflow-hidden">
                   <div className="flex items-start gap-3 animate-fadeSlide">
                     <svg
                       className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mt-0.5 shrink-0"
@@ -83,7 +83,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
                 {buttons.map((item, index) => (
                   <Link
                     key={index}
-                    to={item.link || item.url || "#"}
+                    to={item.link || item.url || "Home"}
                     ariaLabel={item.label || "Button"}
                     className={`px-8 py-4 text-base font-semibold lg:text-xl rounded-2xl transition-all duration-300 ${
                       index === 0
