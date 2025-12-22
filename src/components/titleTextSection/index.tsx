@@ -55,6 +55,7 @@ const TitleTextSection: React.FC<TitleTextSectionType> = ({
         )}
       </div>
     </section>
+    
   );
 };
 
