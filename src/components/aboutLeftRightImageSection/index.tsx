@@ -17,7 +17,7 @@ const AboutLeftRightImageSection: React.FC<AboutLeftRightImageSectionType> = ({
         className="grid lg:grid-cols-2 gap-4 lg:gap-16 items-start"
       >
         {/* TEXT */}
-        <div className={`${textOrder} flex flex-col justify-start`}>
+        <div className={`${textOrder} flex flex-col justify-start lg:mt-1`}>
           {item?.title && (
             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
               {item.title}
@@ -25,8 +25,8 @@ const AboutLeftRightImageSection: React.FC<AboutLeftRightImageSectionType> = ({
           )}
 
           {item?.titleText && (
-            <div className="text-base  sm:text-lg lg:text-xl text-gray-600 max-w-max text-justify [&>p]:leading-relaxed [&>p]:mb-2">
-              <RichText block={item.titleText}/>
+            <div className="text-base sm:text-lg lg:text-2xl text-gray-600 max-w-2xl text-justify [&>p]:leading-loose lg:[&>p]:leading-[1.90] [&>p]:mb-5">
+              <RichText block={item.titleText} />
             </div>
           )}
         </div>
@@ -47,8 +47,8 @@ const AboutLeftRightImageSection: React.FC<AboutLeftRightImageSectionType> = ({
   };
 
   return (
-    <section className="relative w-full bg-white py-16 lg:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl space-y-20">
+    <section className="relative w-full bg-white pt-5 lg:py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-9xl space-y-9">
         {rightImageText.map((item, index) =>
           renderItem(item, index, false)
         )}
