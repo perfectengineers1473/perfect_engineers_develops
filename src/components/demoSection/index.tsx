@@ -16,7 +16,7 @@ const DemoSection: React.FC<DemoSectionType> = ({
   submitButtonText,
 }) => {
   return (
-    <section className="relative w-full bg-gradient-to-b from-[#2b2f8f] via-[#1f246a] to-[#15184f] py-24">
+    <section className="relative w-full bg-linear-to-b from-[#2b2f8f] via-[#1f246a] to-[#15184f] py-24">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* TITLE */}
