@@ -12,105 +12,81 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
   buttons,
 }) => {
   const getButtonUrl = (btn: any): string => {
-    // Handle ButtonType with link property (LinkType object)
     if (btn.link && typeof btn.link === "object") {
       return resolveUrl(btn.link as LinkType) || "#";
     }
-    // Handle simple button with url property (string)
-    if (btn.url && typeof btn.url === "string") {
-      return btn.url;
-    }
-    // Handle link as string (fallback)
-    if (typeof btn.link === "string") {
-      return btn.link;
-    }
+    if (btn.url) return btn.url;
     return "#";
   };
 
-  const getButtonLabel = (btn: any): string => {
-    // Ensure label is always a string
-    if (typeof btn.label === "string") {
-      return btn.label;
-    }
-    return "";
-  };
-
-  // Helper to split title and apply purple to first part
-  const renderTitle = (titleText: string) => {
-    // Try to split on common patterns, but if not found, style the whole title
-    const parts = titleText.split(' vulnerabilities');
-    if (parts.length === 2) {
-      return (
-        <>
-          <span className="text-[#9333ea]">{parts[0]}</span>
-          <span className="text-gray-900"> vulnerabilities</span>
-        </>
-      );
-    }
-    // Fallback: style the whole title in purple
-    return <span className="text-[#9333ea]">{titleText}</span>;
+  const renderTitle = (text: string) => {
+    const words = text.split(" ");
+    return (
+      <>
+        <span className="text-indigo-600">{words[0]}</span>{" "}
+        <span className="text-gray-900">
+          {words.slice(1).join(" ")}
+        </span>
+      </>
+    );
   };
 
   return (
-    <section className="relative w-full bg-white py-16 lg:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <section className="relative items-center justify-center flex w-full lg:h-screen bg-linear-to-b from-indigo-50 to-white py-20 lg:py-28 overflow-hidden">
+      <div className="container  mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="flex flex-col items-center text-center">
+
+          {/* ⭐ Rating */}
           {rating && (
-            <div className="flex justify-center items-center gap-2 mb-6 text-sm text-gray-600">
-              {rating.source && (
-                <span className="font-semibold">{rating.source}</span>
-              )}
-              {rating.value && (
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-400">★</span>
-                  ))}
-                  <span className="font-bold text-gray-900 ml-1">{rating.value}</span>
-                </div>
-              )}
+            <div className="flex items-center gap-2 mb-6  text-xs sm:text-xl md:text-2xl lg:text-3xl text-gray-600">
+              <span className="font-semibold">{rating.source}</span>
+              <span>{rating.value}</span>
+              <div className="flex text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i}>★</span>
+                ))}
+              </div>
             </div>
           )}
 
+          {/* 🧠 Title */}
           {title && (
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
+            <h1 className="max-w-7xl text-xl sm:text-2xl md:text-4xl lg:text-6xl font-extrabold leading-tight mb-5">
               {renderTitle(title)}
             </h1>
           )}
 
+          {/* 📝 Description */}
           {description && (
-            <div className="max-w-3xl mx-auto mb-12 text-lg sm:text-xl text-gray-600 [&>p]:leading-relaxed [&>p]:mb-4">
+            <div className="max-w-3xl text-xs sm:text-xs md:text-xl lg:text-2xl text-gray-600 mb-4 [&>p]:leading-relaxed [&>p]:mb-4">
               <RichText block={description} />
             </div>
           )}
 
+          {/* 🔘 Buttons */}
           {buttons && buttons.length > 0 && (
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              {buttons.map((btn, index) => {
-                const buttonUrl = getButtonUrl(btn);
-                const buttonLabel = getButtonLabel(btn);
-                
-                if (!buttonLabel) return null;
-                
-                return (
-                  <Link
-                    key={index}
-                    href={buttonUrl || "#"}
-                    className={`
-                      inline-flex items-center justify-center
-                      px-8 py-4
-                      text-base font-semibold
-                      transition-all duration-300
-                      ${
-                        index === 0
-                          ? "bg-[#9333ea] hover:bg-[#7e22ce] text-white"
-                          : "bg-transparent border-2 border-[#9333ea] text-[#9333ea] hover:bg-[#9333ea]/10"
-                      }
-                    `}
-                  >
-                    {buttonLabel}
-                  </Link>
-                );
-              })}
+            <div className="flex sm:flex-row items-center gap-4">
+              {buttons.map((btn, index) => (
+                <Link
+                  key={index}
+                  href={getButtonUrl(btn)}
+                  className={`
+                    inline-flex items-center justify-center
+                    rounded-xl font-semibold transition-all duration-300
+                    px-6 py-3 text-xs sm:text-3xl md:text-lg lg:text-xl
+                    ${
+                      index === 0
+                        ? "bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg"
+                        : "bg-white text-indigo-600 border border-indigo-300 hover:bg-indigo-50"
+                    }
+                  `}
+                >
+                  {btn.label}
+                  {index === 0 && (
+                    <span className="ml-2">→</span>
+                  )}
+                </Link>
+              ))}
             </div>
           )}
         </div>
