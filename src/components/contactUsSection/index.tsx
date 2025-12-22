@@ -67,7 +67,7 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
 
         {/* Business Hours */}
         {businessHour && businessHour.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
             {businessHour.map((hour, index) => (
               <div
                 key={index}
@@ -94,6 +94,14 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
                         {info.textTime && (
                           <p className="text-base font-semibold text-gray-900">
                             {info.textTime}
+                            <br></br>
+                            {info.textTime1}
+                            <br></br>
+                            {info.textTime2}
+                            <br></br>
+                            {info.textTime3}
+                            <br></br>
+                            {info.textTime4}
                           </p>
                         )}
                         {info.descriptions && (

@@ -3,6 +3,7 @@ import { LinkType } from "./linkType";
 import { JSX } from "react/jsx-runtime";
 // ---------- Button ----------
 export interface ButtonType {
+  labelurl: string;
   link: string;
   label?: string;
   url?: string;
@@ -72,6 +73,10 @@ export interface ContactUsItemType {
 }
 
 export interface BusinessHourTextInfoType {
+  textTime4: ReactI18NextChildren | Iterable<ReactI18NextChildren>;
+  textTime3: ReactI18NextChildren | Iterable<ReactI18NextChildren>;
+  textTime2: ReactI18NextChildren | Iterable<ReactI18NextChildren>;
+  textTime1: ReactI18NextChildren | Iterable<ReactI18NextChildren>;
   textTime?: string;
   descriptions?: string;
 }

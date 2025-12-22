@@ -18,15 +18,15 @@ export default {
               name: "value",
               title: "Value",
               type: "string",
-              description: "Example: 80%, 22, $20K+"
+              description: "Example: 80%, 22, $20K+",
             },
             {
               name: "label",
               title: "Label",
               type: "string",
             },
-          ]
-        }
+          ],
+        },
       ],
     },
     {
@@ -38,7 +38,19 @@ export default {
           type: "object",
           name: "button",
           title: "button",
-        }
+          fields: [
+            {
+              name: "label",
+              title: "Label",
+              type: "string",
+            },
+            {
+              name: "labelurl",
+              title: "Button URL",
+              type: "url",
+            },
+          ],
+        },
       ],
     },
   ],
@@ -51,7 +63,8 @@ export default {
       const statValue = firstStat?.value || "";
       return {
         title: "Production Time Section",
-        subtitle: statLabel && statValue ? `${statLabel}: ${statValue}` : undefined,
+        subtitle:
+          statLabel && statValue ? `${statLabel}: ${statValue}` : undefined,
       };
     },
   },

@@ -57,6 +57,10 @@ export default {
                   title: "Text Info Item",
                   fields: [
                     { name: "textTime", title: "Text Time", type: "string" },
+                    { name: "textTime1", title: "Text Time", type: "string" },
+                    { name: "textTime2", title: "Text Time", type: "string" },
+                    { name: "textTime3", title: "Text Time", type: "string" },
+                    { name: "textTime4", title: "Text Time", type: "string" },
                     { name: "descriptions", title: "Descriptions", type: "string" },
                   ],
                 },
