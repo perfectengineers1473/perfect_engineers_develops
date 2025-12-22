@@ -54,7 +54,7 @@ export type SectionType =
   | RelatedBlogsSectionType
   | PlanAndPricingSectionType
   | AllBlogPostSectionType
-  | AboutLeftImageSection
+  | AboutLeftRightImageSectionType
   | AboutHeroSectionType
   | ContactHeroSectionType
   | ContactMapSectionType
@@ -202,17 +202,17 @@ export interface HeroSectionType {
   jsonFileId?: string;
 }
 
-export interface AboutLeftImageSection {
-  _type: "aboutLeftImag";
-  id?: string;
-  headline?: string;
-  title?: RichTextType;
+export interface AboutLeftRightImageItemType {
   image?: CustomImageType;
-  description?: RichTextType;
-  jsonFileUrl?: string;
-  jsonFileExtension?: string;
-  jsonFileSize?: string;
-  jsonFileId?: string;
+  title?: string;
+  titleText?: RichTextType;
+  button?: ButtonType;
+}
+
+export interface AboutLeftRightImageSectionType {
+  _type: "aboutLeftRightImageSection";
+  leftImageText?: AboutLeftRightImageItemType[];
+  rightImageText?: AboutLeftRightImageItemType[];
 }
 
 

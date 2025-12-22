@@ -1,6 +1,6 @@
 import React from "react";
 import HomeHeroSection from "@/components/homeHeroSection";
-import AboutLeftImageSection from "@/components/aboutLeftImageSection";
+import AboutLeftImageSection from "@/components/aboutLeftRightImageSection";
 import AboutHeroSection from "@/components/aboutHeroSection";
 import ContactHeroSection from "@/components/contactHeroSection";
 import ContactMapSection from "@/components/contactMapSection";
@@ -64,11 +64,9 @@ const Section: React.FC<SectionProps> = ({
     case "recentPostSection":
       return <RecentPostSection {...data} />;
 
-    // Matches Sanity schema name "titleTextSection"
     case "titleTextSection":
       return <TitleTextSection {...data} />;
 
-    // Matches Sanity schema name "heroRemediateSection"
     case "heroRemediateSection":
       return <HeroRemediateSection {...data} />;
 
