@@ -114,3 +114,14 @@ html {
 .animate-fadeSlide {
 animation: fadeSlide 5s ease-in-out infinite;
 }
+
+
+/* Hide scrollbar (Chrome, Safari, Edge) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar (Firefox) */
+.no-scrollbar {
+  scrollbar-width: none;
+}
