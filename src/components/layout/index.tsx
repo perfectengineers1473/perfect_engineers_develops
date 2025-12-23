@@ -22,7 +22,7 @@ const Layout: React.FC<LayoutProps> = ({
 
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-grow w-full">
+      <main className="grow w-full">
         {/* Content wrapper - centers content */}
         <div className="w-full mx-auto">
           {children}

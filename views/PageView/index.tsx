@@ -1,5 +1,5 @@
 import { Page } from "../../lib/sanity/types/page";
-import SectionView from "@/components/commons/sectionView";
+import SectionView from "@/src/components/commons/sectionView";
 
 export interface PageViewProps {
   preview?: boolean;

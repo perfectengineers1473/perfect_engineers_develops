@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+import type { AppContext, AppProps } from "next/app";
 import App from "next/app";
-import Layout from "@/components/layout";
+import Layout from "@/src/components/layout";
 import { fetchDataFromSanity } from "../../lib/sanity";
 import { footerquery, footerbottomquery } from "../../lib/queries";
 import { FooterType } from "../../lib/sanity/types/page";
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps, footerData, footerBottomData }: MyAppProp
   );
 }
 
-MyApp.getInitialProps = async (appContext) => {
+MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext);
 
   try {
