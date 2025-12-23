@@ -2,26 +2,31 @@ import { SchemaTypeDefinition } from "sanity";
 
 export default {
   name: "footer",
+  title: "Footer",
   type: "document",
   fields: [
     {
       name: "title",
-      title: "Title",
+      title: "Company Name",
       type: "string",
     },
     {
       name: "titletext",
-      title: "Title Text",
+      title: "Description",
       type: "string",
     },
+
+    // CTA BUTTON
     {
       name: "btn",
-      title: "btn",
+      title: "Back To Top Button",
       type: "button",
     },
+
+    // SOCIAL ICONS
     {
       name: "sociallogolink",
-      title: "Social Logo Link",
+      title: "Social Links",
       type: "array",
       of: [
         {
@@ -29,13 +34,62 @@ export default {
           fields: [
             {
               name: "sociallogo",
-              title: "Social Logo",
+              title: "Icon",
               type: "image",
             },
             {
               name: "sociallogolink",
-              title: "Social Logo Link",
+              title: "URL",
               type: "url",
+            },
+          ],
+        },
+      ],
+    },
+
+    // SITE MAP LINKS
+    {
+      name: "siteLinks",
+      title: "Site Map Links",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "label",
+              title: "Label",
+              type: "string",
+            },
+            {
+              name: "url",
+              title: "URL",
+              type: "string",
+              description: "Example: /contact",
+            },
+          ],
+        },
+      ],
+    },
+
+    // LEGAL LINKS
+    {
+      name: "legalLinks",
+      title: "Legal Links",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "label",
+              title: "Label",
+              type: "string",
+            },
+            {
+              name: "url",
+              title: "URL",
+              type: "string",
             },
           ],
         },

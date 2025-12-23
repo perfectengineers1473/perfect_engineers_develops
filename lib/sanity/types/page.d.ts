@@ -69,16 +69,28 @@ export type SectionType =
   | TitleTextSectionType
   | FooterType;
   
+import { ButtonType } from "./common";
+import { ImageType } from "./image";
+
+export interface FooterLinkType {
+  label?: string;
+  url?: string;
+}
+
 export interface FooterType {
-  _type: "footer";
   title?: string;
   titletext?: string;
   btn?: ButtonType;
+
   sociallogolink?: {
     sociallogo?: ImageType;
     sociallogolink?: string;
   }[];
+
+  siteLinks?: FooterLinkType[];
+  legalLinks?: FooterLinkType[];
 }
+
 
 export interface TitleTextSectionType {
   _type: "TitleTextSection";
