@@ -66,7 +66,19 @@ export type SectionType =
   | ImageSectionType
   | ProductionTimeSectionType
   | RecentPostSectionType
-  | TitleTextSectionType;
+  | TitleTextSectionType
+  | FooterType;
+  
+export interface FooterType {
+  _type: "footer";
+  title?: string;
+  titletext?: string;
+  btn?: ButtonType;
+  sociallogolink?: {
+    sociallogo?: ImageType;
+    sociallogolink?: string;
+  }[];
+}
 
 export interface TitleTextSectionType {
   _type: "TitleTextSection";
@@ -338,5 +350,5 @@ export interface AllBlogPostSectionType {
   blogs?: BlogsType[];
   categories?: CategoryType[];
 }
-export { ButtonType };
+export { ButtonType, FooterType };
 

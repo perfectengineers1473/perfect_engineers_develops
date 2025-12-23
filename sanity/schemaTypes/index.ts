@@ -3,7 +3,7 @@ import page from "./page";
 import documentsTypes from "./document";
 import globalTypes from "./global";
 import sectionsTypes from "./section";
-
+import footer from "./footer";
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [page, ...documentsTypes, ...globalTypes, ...sectionsTypes],
+  types: [page, ...documentsTypes, ...globalTypes, ...sectionsTypes, footer],
 };
