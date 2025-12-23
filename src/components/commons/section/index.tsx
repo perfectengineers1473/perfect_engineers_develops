@@ -1,4 +1,5 @@
 import React from "react";
+// FIXED: Removed 'src/' from all imports because tsconfig now handles it
 import HomeHeroSection from "@/components/homeHeroSection";
 import AboutLeftImageSection from "@/components/aboutLeftRightImageSection";
 import AboutHeroSection from "@/components/aboutHeroSection";
@@ -11,9 +12,8 @@ import HeroRemediateSection from "@/components/heroRemediateSection";
 import HomeRightImageSection from "@/components/homeRightImageSection";
 import ImageSection from "@/components/imageSection";
 import ProductionTimeSection from "@/components/productionTimeSection";
-import RecentPostSection from "@/components/recentPostSection/inddex";
+import RecentPostSection from "@/components/recentPostSection"; 
 import TitleTextSection from "@/components/titleTextSection";
-
 
 interface SectionProps {
   data: any;

@@ -68,7 +68,7 @@ export type SectionType =
   | RecentPostSectionType
   | TitleTextSectionType
   | FooterType;
-  0
+  
 import { ButtonType } from "./common";
 import { ImageType } from "./image";
 

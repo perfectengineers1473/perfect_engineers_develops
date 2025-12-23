@@ -1,5 +1,7 @@
 import { Page } from "../../lib/sanity/types/page";
-import SectionView from "@/src/components/commons/sectionView";
+// FIXED: Removed 'src/' from the path. 
+// Since @ points to ./src, this now resolves to ./src/components/commons/sectionView
+import SectionView from "@/components/commons/sectionView"; 
 
 export interface PageViewProps {
   preview?: boolean;

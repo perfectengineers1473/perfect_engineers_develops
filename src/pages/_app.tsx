@@ -1,7 +1,7 @@
-import "@/styles/globals.css";
-import type { AppContext, AppProps } from "next/app";
+import "@/styles/globals.css"; // REMOVED src/
+import type { AppProps, AppContext } from "next/app";
 import App from "next/app";
-import Layout from "@/src/components/layout";
+import Layout from "@/components/layout"; // REMOVED src/
 import { fetchDataFromSanity } from "../../lib/sanity";
 import { footerquery, footerbottomquery } from "../../lib/queries";
 import { FooterType } from "../../lib/sanity/types/page";
