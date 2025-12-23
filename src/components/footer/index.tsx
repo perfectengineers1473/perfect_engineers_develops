@@ -10,7 +10,7 @@ const Footer: React.FC<FooterType> = ({
   sociallogolink,
 }) => {
   return (
-    <footer className="w-full bg-white border-t border-gray-200">
+    <footer className="w-full bg-blue-500 border-t border-gray-200">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
