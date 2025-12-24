@@ -1,12 +1,21 @@
 import React from "react";
-// Ensure these paths match your folder structure
-import HomeHeroSection from "../homeHeroSection";
 
+// Imports - Corrected based on your folder structure
+// Using @/ alias as configured in your tsconfig.json
+import HomeHeroSection from "@/components/homeHeroSection";
+// Ensure these paths exist. If HeaderSection is inside 'header', update accordingly.
+import HeaderSection from "@/components/headerSection"; 
+import NavbarSection from "@/components/headerSection/navbarSection"; 
 
-// Fixed Imports: Corrected spellings and folder names based on your file list
-import FeaturePostSection from "../featuredPostSection"; // Changed from "../featurePostSection"
-import RecentPostSection from "../recentPostSection";    // Changed from "../blogSerction"
-import FooterSection from "../footer";                   // Changed from "../footerSection"
+// FIXED: Folder name is 'featuredPostSection' (with a 'd')
+import FeaturedPostSection from "@/components/featuredPostSection"; 
+
+// FIXED: Folder name is 'recentPostSection'
+// Renamed from BlogSerction to RecentPostSection to match the component name
+import RecentPostSection from "@/components/recentPostSection"; 
+
+// FIXED: Folder name is 'footer'
+import FooterSection from "@/components/footer"; 
 
 const Page = ({
   homeherodata,
@@ -17,24 +26,32 @@ const Page = ({
   footerdata,
   footerbottomdata,
 }: any) => {
-  console.log(homeherodata, "homeher");
+  
+  // Helper to safely get the first item from the array for Header and Navbar
+  const header = Array.isArray(headerdata) ? headerdata[0] : headerdata;
+  const nav = Array.isArray(navlinkdata) ? navlinkdata[0] : navlinkdata;
 
   return (
     <div className="dark:bg-black/90">
-      {/* If HeaderSection and NavbarSection are also defined like HomeHeroSection, 
-         you should change these to {...headerdata} as well. 
-         Leaving as-is since their code wasn't provided.
+      {/* Header Section */}
+      <HeaderSection data={headerdata} />
+      
+      {/* STEP 3 FIX: Pass the specific props our new Navbar expects */}
+      <NavbarSection 
+        logo={header?.logo} 
+        btn={header?.btn}
+        navlinks={nav?.links} 
+      />
+
+      {/* FIXED: Using Spread Operator (...) 
+        Your components (HomeHeroSection, etc.) expect props like 'title' directly, 
+        not wrapped in a 'data' prop.
       */}
-     
-
-      {/* FIXED: Spread the props instead of passing 'data={...}' */}
       <HomeHeroSection {...homeherodata} />
-
-      {/* FIXED: Spread props for other sections to prevent similar errors */}
-      <FeaturePostSection {...featurepostdata} />
+      <FeaturedPostSection {...featurepostdata} />
       <RecentPostSection {...recentpostdata} />
       
-      {/* FIXED: Spread footerdata, pass footerbottomdata separately if needed */}
+      {/* Footer Section */}
       <FooterSection {...footerdata} footerbottomdata={footerbottomdata} />
     </div>
   );

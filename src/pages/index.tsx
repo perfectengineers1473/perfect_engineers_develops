@@ -1,4 +1,3 @@
-import React from "react";
 import { GetStaticProps, NextPage } from "next";
 import { SharedPageProps } from "../../lib/sanity/types";
 import { Page } from "../../lib/sanity/types/page";
@@ -8,9 +7,10 @@ import { pageBySlugQuery } from "../../lib/queries";
 import { filterSanityDataToSingleItem } from "../../lib/sanity/utils/filterSanityDataToSingleItem";
 import { REVALIDATE_DURATION } from "../../lib/constants";
 import PageView from "../../views/PageView";
+// Make sure this points to the folder we just created
 
 export interface PageProps extends SharedPageProps {
-  page: Page;
+  page: Page;// Make sure this points to the folder we just created
 }
 
 const Home: NextPage<PageProps> = ({ page }) => {
