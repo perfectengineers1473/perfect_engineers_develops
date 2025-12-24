@@ -46,50 +46,24 @@ export default {
         },
       ],
     },
-
-    // SITE MAP LINKS
     {
-      name: "siteLinks",
-      title: "Site Map Links",
+      name: "titlelabellink",
+      title: "Title Label Link",
       type: "array",
       of: [
         {
           type: "object",
           fields: [
             {
-              name: "label",
-              title: "Label",
+              name: "maintitle",
+              title: "Main Title",
               type: "string",
             },
-            {
-              name: "url",
-              title: "URL",
-              type: "string",
-              description: "Example: /contact",
-            },
-          ],
-        },
-      ],
-    },
-
-    // LEGAL LINKS
-    {
-      name: "legalLinks",
-      title: "Legal Links",
-      type: "array",
-      of: [
-        {
-          type: "object",
-          fields: [
             {
               name: "label",
               title: "Label",
-              type: "string",
-            },
-            {
-              name: "url",
-              title: "URL",
-              type: "string",
+              type: "array",
+              of: [{ type: "labelLink" }],
             },
           ],
         },

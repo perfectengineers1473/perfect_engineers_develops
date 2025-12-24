@@ -21,6 +21,8 @@ import {
   BusinessHourItemType,
   TitleTextSectionsType,
   BlogType,
+  SocialLinkType,
+  FooterSectionType,
 
 } from "./common";
 
@@ -78,19 +80,13 @@ export interface FooterLinkType {
 }
 
 export interface FooterType {
+  _type: "footer";
   title?: string;
   titletext?: string;
   btn?: ButtonType;
-
-  sociallogolink?: {
-    sociallogo?: ImageType;
-    sociallogolink?: string;
-  }[];
-
-  siteLinks?: FooterLinkType[];
-  legalLinks?: FooterLinkType[];
+  sociallogolink?: SocialLinkType[];
+  titlelabellink?: FooterSectionType[];
 }
-
 
 export interface TitleTextSectionType {
   _type: "TitleTextSection";

@@ -25,14 +25,25 @@ export interface BottomFooterLinkType {
   label?: string;
   popUpData?: TitleContentButtonType
 }
-export interface FooterType {
-  _type: "footer";
-  logo?: CustomImageType
-  content?: RichTextType
-  footerLinks: FooterLinksType[];
-  bottomDescription?: string
-  bottomFooterLinks?: BottomFooterLinkType[]
+
+export interface SocialLinkType {
+  _type: "socialLinkType"
+  sociallogo?: CustomImageType;
+  sociallogolink?: string;
 }
+
+export interface FooterSectionType {
+  _type: "footerSectionType"
+  maintitle?: string;
+  label?: LabelLinkType[];
+}
+
+export interface LabelLinkType {
+  _type: "LabelLinkType"
+  label?: string;
+  link?: LinkType;
+}
+
 
 export type MetaAttributeType = {
   _type: "metaAttribute";

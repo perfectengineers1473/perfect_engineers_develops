@@ -4,9 +4,9 @@ import SanityImage from "../commons/sanityImage";
 
 const ImageSection: React.FC<ImageSectionType> = ({ image }) => {
   return (
-    <section className="relative w-full">
+    <section className="relative max-w-full">
       {image && (
-        <div className="relative w-screen overflow-hidden">
+        <div className="relative max-w-full">
           {/* Full-width image */}
           <div className="relative w-full h-full">
             <SanityImage

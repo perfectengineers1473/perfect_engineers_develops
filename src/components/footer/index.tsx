@@ -1,19 +1,26 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import { FooterType } from "../../../lib/sanity/types/page";
 import SanityImage from "../commons/sanityImage";
+import { resolveUrl } from "../../../lib/utils/resolveUrl";
 
 const Footer: React.FC<FooterType> = ({
   title,
   titletext,
   btn,
   sociallogolink,
-  siteLinks,
-  legalLinks,
+  titlelabellink,
 }) => {
-  return (
-    <footer className="relative w-full bg-[#0B2E2B] text-white overflow-hidden">
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  const toggleSection = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <footer className="relative max-w-full bg-[#0B2E2B] text-white overflow-hidden">
       {/* Background lines */}
       <div className="absolute inset-0 opacity-[0.12] pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 1440 500">
@@ -24,20 +31,18 @@ const Footer: React.FC<FooterType> = ({
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+        <div className="flex flex-col lg:flex-row gap-16">
 
           {/* LEFT */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">
-              {title}
-            </h3>
+            <h3 className="text-xl font-semibold mb-4">{title}</h3>
 
             <p className="text-sm text-[#C7D1CF] max-w-sm mb-6">
               {titletext}
             </p>
 
             {/* SOCIAL */}
-            {sociallogolink && (
+            {sociallogolink?.length > 0 && (
               <div className="flex gap-4 mb-8">
                 {sociallogolink.map((item, i) => (
                   <Link
@@ -69,39 +74,49 @@ const Footer: React.FC<FooterType> = ({
             )}
           </div>
 
-          {/* SITE MAP */}
-          <div>
-            <h4 className="text-sm font-semibold mb-6">Site Map</h4>
-            <ul className="space-y-3 text-sm text-[#C7D1CF]">
-              {siteLinks?.map((link, i) => (
-                <li key={i}>
-                  <Link
-                    href={link.url || "#"}
-                    className="hover:text-white transition"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* LINK SECTIONS */}
+          {titlelabellink?.map((section, index) => {
+            const isOpen = openIndex === index;
 
-          {/* LEGAL */}
-          <div>
-            <h4 className="text-sm font-semibold mb-6">Legal</h4>
-            <ul className="space-y-3 text-sm text-[#C7D1CF]">
-              {legalLinks?.map((link, i) => (
-                <li key={i}>
-                  <Link
-                    href={link.url || "#"}
-                    className="hover:text-white transition"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            return (
+              <div key={index} className="w-full lg:w-auto">
+                {/* TITLE */}
+                <button
+                  onClick={() => toggleSection(index)}
+                  className="flex items-center justify-center border border-white rounded-2xl py-2 w-full lg:cursor-default"
+                >
+                  <h4 className="text-sm font-semibold">
+                    {section.maintitle}
+                  </h4>
+
+                  {/* Arrow only on mobile */}
+                  <span className="lg:hidden text-lg">
+                    {isOpen ? "−" : "+"}
+                  </span>
+                </button>
+
+                {/* LIST */}
+                <ul
+                  className={`
+                    mt-4 space-y-3 text-sm text-[#C7D1CF]
+                    ${isOpen ? "block" : "hidden"}
+                    lg:block
+                  `}
+                >
+                  {section.label?.map((item, i) => (
+                    <li key={i}>
+                      <Link
+                        href={resolveUrl(item.link) || "#"}
+                        className="hover:text-white transition"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
 
         </div>
       </div>
