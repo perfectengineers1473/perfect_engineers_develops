@@ -6,30 +6,86 @@ const FooterBottom: React.FC<{ data: FooterBottomType }> = ({ data }) => {
   if (!data) return null;
 
   return (
-    <div className="w-full bg-gray-950 border-t border-gray-800">
-      <div className="mx-auto max-w-7xl px-6 py-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-
+    <div className="w-full bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 border-t border-white/10">
+      <div className="mx-auto max-w-7xl px-6 py-5">
+        <div
+          className="
+            flex flex-col md:flex-row
+            justify-between items-center
+            gap-4
+            text-xs text-gray-400
+            animate-fade-in
+          "
+        >
+          {/* LEFT */}
           {data.leftsidetext && (
-            <div>{data.leftsidetext}</div>
+            <div className="tracking-wide text-center md:text-left">
+              <Link
+                to={data.leftsidetext}
+                ariaLabel="Footer link"
+                className="
+                 sm:text-sm lg:text-md
+                  relative inline-block
+                  text-gray-400
+                  transition-all duration-300
+                  hover:text-white
+                  after:absolute after:left-0 after:-bottom-1
+                  after:h-px after:w-0 after:bg-white
+                  after:transition-all after:duration-300
+                  hover:after:w-full
+                "
+              >
+                {data.leftsidetext}
+              </Link>
+
+            </div>
           )}
 
+          {/* CENTER LINK */}
           {data.centertextlink && (
             <div>
               <Link
                 to={data.centertextlink}
                 ariaLabel="Footer link"
-                className="hover:text-gray-300 transition"
+                className="
+               sm:text-sm lg:text-md
+                  relative inline-block
+                  text-gray-400
+                  transition-all duration-300
+                  hover:text-white
+                  after:absolute after:left-0 after:-bottom-1
+                  after:h-px after:w-0 after:bg-white
+                  after:transition-all after:duration-300
+                  hover:after:w-full
+                "
               >
                 {data.centertextlink}
               </Link>
             </div>
           )}
 
+          {/* RIGHT */}
           {data.rightsidetext && (
-            <div>{data.rightsidetext}</div>
+            <div className="tracking-wide text-center md:text-right">
+              <Link
+                to={data.rightsidetext}
+                ariaLabel="Footer link"
+                className="
+                 sm:text-sm lg:text-md
+                  relative inline-block
+                  text-gray-400
+                  transition-all duration-300
+                  hover:text-white
+                  after:absolute after:left-0 after:-bottom-1
+                  after:h-px after:w-0 after:bg-white
+                  after:transition-all after:duration-300
+                  hover:after:w-full
+                "
+              >
+                {data.rightsidetext}
+              </Link>
+            </div>
           )}
-
         </div>
       </div>
     </div>

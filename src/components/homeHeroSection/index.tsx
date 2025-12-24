@@ -25,9 +25,9 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
   }, [lists]);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-white flex items-center">
+    <section className="relative w-full -mt-8 lg:h-screen overflow-hidden bg-white flex items-center">
       {/* Wider container for large screens */}
-      <div className="relative  z-10 mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 py-16 lg:py-24 max-w-[2000px]">
+      <div className="relative  z-10 mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 mb-10 lg:py-24 max-w-[2000px]">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-15">
           
           {/* Text Content */}
@@ -36,7 +36,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
             {/* Title */}
             {title?.custom_rich_text && (
               <div className="mb-6 lg:mb-8">
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-[115%] tracking-tight text-gray-900 text-justify">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold leading-[115%] tracking-tight text-gray-900 text-justify">
                   <RichText block={title} />
                 </div>
               </div>

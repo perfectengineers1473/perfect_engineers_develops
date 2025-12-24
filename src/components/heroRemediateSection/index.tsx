@@ -32,7 +32,7 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
   };
 
   return (
-    <section className="relative items-center justify-center flex w-full lg:h-screen bg-linear-to-b from-indigo-50 to-white py-20 lg:py-28 overflow-hidden">
+    <section className="relative items-center justify-center flex w-full lg:h-screen bg-linear-to-b from-green-100 to-gray-50 py-20 lg:py-28 overflow-hidden">
       <div className="container  mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="flex flex-col items-center text-center">
 
@@ -51,7 +51,7 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
 
           {/* 🧠 Title */}
           {title && (
-            <h1 className="max-w-7xl text-xl sm:text-2xl md:text-4xl lg:text-6xl font-extrabold leading-tight mb-5">
+            <h1 className="max-w-7xl text-xl sm:text-xl md:text-3xl lg:text-5xl xl:text-7xl font-extrabold leading-tight mb-5" style={{ fontFamily: "Lobster" }}>
               {renderTitle(title)}
             </h1>
           )}
@@ -73,7 +73,7 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
                   className={`
                     inline-flex items-center justify-center
                     rounded-xl font-semibold transition-all duration-300
-                    px-6 py-3 text-xs sm:text-3xl md:text-lg lg:text-xl
+                    px-6 py-3 text-xs sm:text-3xl md:text-lg lg:text-3xl
                     ${
                       index === 0
                         ? "bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg"

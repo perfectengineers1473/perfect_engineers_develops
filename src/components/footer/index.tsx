@@ -20,9 +20,10 @@ const Footer: React.FC<FooterType> = ({
   };
 
   return (
-    <footer className="relative max-w-full bg-[#0B2E2B] text-white overflow-hidden">
-      {/* Background lines */}
-      <div className="absolute inset-0 opacity-[0.12] pointer-events-none">
+    <footer className="relative w-full bg-linear-to-br from-[#0B2E2B] via-[#0F3A35] to-[#0A2624] text-white overflow-hidden">
+
+      {/* Decorative background lines */}
+      <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 1440 500">
           <path d="M200 0 L600 500" stroke="white" />
           <path d="M900 0 L500 500" stroke="white" />
@@ -30,30 +31,49 @@ const Footer: React.FC<FooterType> = ({
         </svg>
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-20">
-        <div className="flex flex-col lg:flex-row gap-16">
+      <div className="relative mx-auto max-w-7xl px-6 py-24 animate-fade-up">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
 
-          {/* LEFT */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">{title}</h3>
+          {/* ================= LEFT ================= */}
+          <div className="lg:col-span-2">
+            <h3 className="text-xl sm:text-2xl lg:text-5xl font-bold mb-4 tracking-tight">
+              {title}
+            </h3>
 
-            <p className="text-sm text-[#C7D1CF] max-w-sm mb-6">
+            <p className="text-sm sm:text-xl lg:text-3xl text-[#C7D1CF] max-w-md mb-8 leading-relaxed">
               {titletext}
             </p>
 
-            {/* SOCIAL */}
+            {/* SOCIAL ICONS */}
             {sociallogolink?.length > 0 && (
-              <div className="flex gap-4 mb-8">
+              <div className="flex gap-4 mb-10">
                 {sociallogolink.map((item, i) => (
                   <Link
                     key={i}
                     href={item.sociallogolink || "#"}
-                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/30 hover:bg-[#C9A24D] transition"
+                    className="
+          flex items-center justify-center
+          rounded-full border border-white/20
+          bg-white/5
+          transition-all duration-300
+          hover:bg-[#C9A24D] hover:border-[#C9A24D]
+          hover:-translate-y-1
+
+          /* SIZE RESPONSIVE */
+          w-10 h-10        /* mobile */
+          sm:w-12 sm:h-12  /* tablet */
+          lg:w-14 lg:h-14  /* desktop */
+        "
                   >
                     {item.sociallogo && (
                       <SanityImage
                         src={item.sociallogo}
-                        className="w-4 h-4"
+                        className="
+              transition-all duration-300
+              w-4 h-4        /* mobile */
+              sm:w-5 sm:h-5  /* tablet */
+              lg:w-7 lg:h-7  /* desktop */
+            "
                       />
                     )}
                   </Link>
@@ -61,44 +81,65 @@ const Footer: React.FC<FooterType> = ({
               </div>
             )}
 
+
             {/* BACK TO TOP */}
             {btn?.label && (
               <button
                 onClick={() =>
                   window.scrollTo({ top: 0, behavior: "smooth" })
                 }
-                className="px-5 py-3 text-xs font-semibold border border-[#C9A24D]/70 text-[#C9A24D] hover:bg-[#C9A24D] hover:text-[#0B2E2B] transition"
+                className="
+                  inline-flex items-center gap-2
+                  px-6 py-3 text-xs font-semibold uppercase tracking-wide
+                  border border-[#C9A24D]/60 text-[#C9A24D]
+                  rounded-full
+                  hover:bg-[#C9A24D] hover:text-[#0B2E2B]
+                  transition-all duration-300
+                  hover:scale-[1.05]
+                "
               >
                 ↑ {btn.label}
               </button>
             )}
           </div>
 
-          {/* LINK SECTIONS */}
+          {/* ================= LINK SECTIONS ================= */}
           {titlelabellink?.map((section, index) => {
             const isOpen = openIndex === index;
 
             return (
-              <div key={index} className="w-full lg:w-auto">
+              <div
+                key={index}
+                className="lg:col-span-1 animate-fade-up"
+                style={{ animationDelay: `${index * 80}ms` }}
+              >
                 {/* TITLE */}
                 <button
                   onClick={() => toggleSection(index)}
-                  className="flex items-center justify-center border border-white rounded-2xl py-2 w-full lg:cursor-default"
+                  className="
+                    flex items-center justify-between
+                    w-full
+                    text-left
+                    border-b border-white/20
+                    pb-3 mb-4
+                    lg:cursor-default
+                  "
                 >
-                  <h4 className="text-sm font-semibold">
+                  <h4 className="text-xl sm:text-2xl lg:text-3xl font-semibold tracking-wide">
                     {section.maintitle}
                   </h4>
 
-                  {/* Arrow only on mobile */}
-                  <span className="lg:hidden text-lg">
+                  {/* Mobile toggle */}
+                  <span className="lg:hidden text-lg  sm:text-xl lg:text-2xl">
                     {isOpen ? "−" : "+"}
                   </span>
                 </button>
 
-                {/* LIST */}
+                {/* LINKS */}
                 <ul
                   className={`
-                    mt-4 space-y-3 text-sm text-[#C7D1CF]
+                    space-y-3 text-lg  sm:text-xs lg:text-xl text-[#C7D1CF]
+                    transition-all duration-300
                     ${isOpen ? "block" : "hidden"}
                     lg:block
                   `}
@@ -107,7 +148,12 @@ const Footer: React.FC<FooterType> = ({
                     <li key={i}>
                       <Link
                         href={resolveUrl(item.link) || "#"}
-                        className="hover:text-white transition"
+                        className="
+                          inline-block
+                          hover:text-white
+                          hover:translate-x-1
+                          transition-all duration-200
+                        "
                       >
                         {item.label}
                       </Link>
@@ -117,12 +163,11 @@ const Footer: React.FC<FooterType> = ({
               </div>
             );
           })}
-
         </div>
       </div>
 
-      {/* BOTTOM */}
-      <div className="bg-[#0A2624] text-[#9FB6B2] text-xs text-center py-3">
+      {/* ================= BOTTOM ================= */}
+      <div className="bg-[#081F1D] text-[#9FB6B2] text-xs sm:text-md lg:text-lg  text-center py-4 animate-fade-down">
         © {new Date().getFullYear()} All Rights Reserved.
       </div>
     </footer>

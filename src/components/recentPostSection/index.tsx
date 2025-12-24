@@ -6,7 +6,6 @@ import { SlArrowRight, SlArrowLeft  } from "react-icons/sl";
 const RecentPostSection: React.FC<RecentPostSectionType> = ({
   blog,
   title,
-  seemore,
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -21,13 +20,13 @@ const RecentPostSection: React.FC<RecentPostSectionType> = ({
   };
 
   return (
-    <section className="relative w-full bg-white py-16 lg:py-24">
+    <section className="relative max-w-full  bg-white pb-16 lg:-mt-16 lg:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
 
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
           {title && (
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
               {title}
             </h2>
           )}
