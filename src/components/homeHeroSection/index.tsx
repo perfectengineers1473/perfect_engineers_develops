@@ -19,13 +19,16 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
 
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % lists.length);
-    }, 5000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [lists]);
 
   return (
     <section className="relative w-full -mt-8 lg:h-screen overflow-hidden bg-white flex items-center">
+      <div className="absolute lg:top-7 left-0 w-full flex justify-center items-start ">
+    <span className="block h-px w-0 lg:bg-gray-400 animate-divider"></span>
+  </div>
       {/* Wider container for large screens */}
       <div className="relative  z-10 mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 mb-10 lg:py-24 max-w-[2000px]">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-15">
@@ -122,6 +125,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
           )}
         </div>
       </div>
+      
     </section>
   );
 };

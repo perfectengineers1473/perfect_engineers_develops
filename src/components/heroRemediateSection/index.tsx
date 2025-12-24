@@ -87,10 +87,16 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
                   )}
                 </Link>
               ))}
+               <div className="absolute mt-20 left-0 w-full flex justify-center">
+    <span className="block h-px w-0 bg-gray-300 lg:bg-transparent animate-divider"></span>
+  </div>
             </div>
+            
           )}
+          
         </div>
       </div>
+      
     </section>
   );
 };
