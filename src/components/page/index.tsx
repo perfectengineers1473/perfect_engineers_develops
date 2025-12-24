@@ -4,7 +4,6 @@ import React from "react";
 // Using @/ alias as configured in your tsconfig.json
 import HomeHeroSection from "@/components/homeHeroSection";
 // Ensure these paths exist. If HeaderSection is inside 'header', update accordingly.
-import HeaderSection from "@/components/headerSection"; 
 import NavbarSection from "@/components/headerSection/navbarSection"; 
 
 // FIXED: Folder name is 'featuredPostSection' (with a 'd')
@@ -34,7 +33,7 @@ const Page = ({
   return (
     <div className="dark:bg-black/90">
       {/* Header Section */}
-      <HeaderSection data={headerdata} />
+      
       
       {/* STEP 3 FIX: Pass the specific props our new Navbar expects */}
       <NavbarSection 
