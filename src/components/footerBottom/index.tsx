@@ -6,11 +6,11 @@ const FooterBottom: React.FC<{ data: FooterBottomType }> = ({ data }) => {
   if (!data) return null;
 
   return (
-    <div className="w-full bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 border-t border-white/10">
+    <div className="w-full bg-gray-600 border-white/10">
       <div className="mx-auto max-w-7xl px-6 py-5">
         <div
           className="
-            flex flex-col md:flex-row
+            flex  md:flex-row
             justify-between items-center
             gap-4
             text-xs text-gray-400
