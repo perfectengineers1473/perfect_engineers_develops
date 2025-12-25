@@ -121,6 +121,7 @@ export type ButtonType = {
   link?: LinkType | string;
 };
 export type CustomImageType = {
+  logo: CustomImageType;
   _type: "customImage";
   caption?: string;
   alt?: string;

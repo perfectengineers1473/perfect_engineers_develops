@@ -15,6 +15,7 @@ import ImageSection from "@/components/imageSection";
 import ProductionTimeSection from "@/components/productionTimeSection";
 import RecentPostSection from "@/components/recentPostSection";
 import TitleTextSection from "@/components/titleTextSection";
+import SilentFeaturesSection from "@/components/silentFeaturesSection";
 
 // 1. IMPORT THE NEW SPECIFICATION SECTION
 import SpecificationSection from "@/components/specificationSection";
@@ -72,9 +73,11 @@ const Section: React.FC<SectionProps> = ({ data }) => {
     case "heroRemediateSection":
       return <HeroRemediateSection {...data} />;
 
-    // 2. ADD THE NEW CASE HERE
     case "specificationSection":
       return <SpecificationSection {...data} />;
+
+    case "silentFeaturesSection":
+      return <SilentFeaturesSection {...data} />;
 
     default:
       return null;

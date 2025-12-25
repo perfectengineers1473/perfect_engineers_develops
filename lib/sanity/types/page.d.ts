@@ -69,10 +69,10 @@ export type SectionType =
   | ProductionTimeSectionType
   | RecentPostSectionType
   | TitleTextSectionType
-  | FooterType;
+  | FooterType
+  | SilentFeaturesType;
   
 import { ButtonType } from "./common";
-import { ImageType } from "./image";
 
 // ... existing imports
 
@@ -107,6 +107,12 @@ export type SectionType =
 export interface FooterLinkType {
   label?: string;
   url?: string;
+}
+
+export interface SilentFeaturesType {
+  _type: "silentFeatures";
+  title?: string;
+  logo?: CustomImageType[];
 }
 
 export interface FooterType {

@@ -55,9 +55,8 @@ export default {
         { type: "imageSection" },
         { type: "recentPostSection" },
         { type: "titleTextSection" },
-        
-        // ADD THIS LINE:
         { type: "specificationSection" }, 
+        { type: "silentFeaturesSection" },
       ],
     },
   ],
