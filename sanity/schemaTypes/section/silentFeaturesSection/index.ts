@@ -1,42 +1,44 @@
-import { SchemaTypeDefinition } from "sanity";
+import { defineField, defineType } from "sanity";
 
-export default {
+// FIXED: Use 'export const' instead of 'export default'
+export const silentFeaturesSection = defineType({
   name: "silentFeaturesSection",
   title: "Silent Features Section",
   type: "object",
   fields: [
-    {
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
-    },
-    {
+    }),
+    defineField({
       name: "logo",
-      title: "Logo",
+      title: "Logos",
       type: "array",
       of: [
         {
-          title: "Logo Items",
+          title: "Logo Item",
           type: "object",
           fields: [
-            {
+            defineField({
               name: "logoImage",
               title: "Logo Image",
               type: "image",
-            },
+              options: { hotspot: true },
+            }),
           ],
         },
       ],
-    },
+    }),
   ],
   preview: {
     select: {
       title: "title",
     },
-    prepare({ title}) {
+    prepare({ title }) {
       return {
         title: title || "Silent Features Section",
       };
     },
   },
-} as SchemaTypeDefinition;
+});

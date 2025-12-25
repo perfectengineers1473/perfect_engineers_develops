@@ -11,7 +11,10 @@ import homeRightImageSection from "./homeRightImageSection";
 import imageSection from "./imageSection";
 import productionTimeSection from "./productionTimeSection";
 import recentPostSection from "./recentPostSection";
-import silentFeaturesSection from "./silentFeaturesSection";
+
+// FIXED: Added curly braces { } because this is a named export
+import { silentFeaturesSection } from "./silentFeaturesSection";
+
 import titleTextSection from "./titleTextSection";
 
 export const sectionsTypes = [
@@ -31,4 +34,5 @@ export const sectionsTypes = [
   titleTextSection,
   silentFeaturesSection,
 ];
+
 export default sectionsTypes;

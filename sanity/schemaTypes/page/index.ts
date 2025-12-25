@@ -1,6 +1,6 @@
-import { SchemaTypeDefinition } from "sanity";
+import { defineField, defineType } from "sanity";
 
-export default {
+export default defineType({
   name: "page",
   title: "Page",
   type: "document",
@@ -16,14 +16,14 @@ export default {
     },
   ],
   fields: [
-    {
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
       description: "This field is only used for CMS.",
       group: "main",
-    },
-    {
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -34,13 +34,14 @@ export default {
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
       group: "main",
-    },
-    {
+    }),
+    defineField({
       name: "pageBuilder",
       title: "Page Builder",
       group: "main",
       type: "array",
       of: [
+        // Existing Sections
         { type: "homeHeroSections" },
         { type: "aboutLeftRightImageSection" },
         { type: "productionTimeSection" },
@@ -55,9 +56,11 @@ export default {
         { type: "imageSection" },
         { type: "recentPostSection" },
         { type: "titleTextSection" },
-        { type: "specificationSection" }, 
-        { type: "silentFeaturesSection" },
+        
+        // New Sections
+        { type: "specificationSection" },
+        { type: "silentFeaturesSection" }, // <--- Your new section is here
       ],
-    },
+    }),
   ],
-} as SchemaTypeDefinition;
+});
