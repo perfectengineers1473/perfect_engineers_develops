@@ -1,5 +1,6 @@
 import React from "react";
-// FIXED: Removed 'src/' from all imports because tsconfig now handles it
+
+// Existing Imports
 import HomeHeroSection from "@/components/homeHeroSection";
 import AboutLeftImageSection from "@/components/aboutLeftRightImageSection";
 import AboutHeroSection from "@/components/aboutHeroSection";
@@ -12,17 +13,18 @@ import HeroRemediateSection from "@/components/heroRemediateSection";
 import HomeRightImageSection from "@/components/homeRightImageSection";
 import ImageSection from "@/components/imageSection";
 import ProductionTimeSection from "@/components/productionTimeSection";
-import RecentPostSection from "@/components/recentPostSection"; 
+import RecentPostSection from "@/components/recentPostSection";
 import TitleTextSection from "@/components/titleTextSection";
+
+// 1. IMPORT THE NEW SPECIFICATION SECTION
+import SpecificationSection from "@/components/specificationSection";
 
 interface SectionProps {
   data: any;
   hasFooterBannerBackGround: boolean;
 }
 
-const Section: React.FC<SectionProps> = ({
-  data
-}) => {
+const Section: React.FC<SectionProps> = ({ data }) => {
   if (typeof window !== "undefined") {
     console.log("SECTION DATA:", data?._type, data);
   }
@@ -69,6 +71,10 @@ const Section: React.FC<SectionProps> = ({
 
     case "heroRemediateSection":
       return <HeroRemediateSection {...data} />;
+
+    // 2. ADD THE NEW CASE HERE
+    case "specificationSection":
+      return <SpecificationSection {...data} />;
 
     default:
       return null;

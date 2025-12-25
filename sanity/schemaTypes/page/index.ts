@@ -36,12 +36,11 @@ export default {
       group: "main",
     },
     {
-  name: "pageBuilder",
-  title: "Page Builder",
-   group: "main",
-  type: "array",
-  of: [
-
+      name: "pageBuilder",
+      title: "Page Builder",
+      group: "main",
+      type: "array",
+      of: [
         { type: "homeHeroSections" },
         { type: "aboutLeftRightImageSection" },
         { type: "productionTimeSection" },
@@ -56,7 +55,10 @@ export default {
         { type: "imageSection" },
         { type: "recentPostSection" },
         { type: "titleTextSection" },
-  ],
-}
+        
+        // ADD THIS LINE:
+        { type: "specificationSection" }, 
+      ],
+    },
   ],
 } as SchemaTypeDefinition;

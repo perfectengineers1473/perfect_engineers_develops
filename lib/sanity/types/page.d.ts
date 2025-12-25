@@ -74,6 +74,36 @@ export type SectionType =
 import { ButtonType } from "./common";
 import { ImageType } from "./image";
 
+// ... existing imports
+
+// 1. Define Item and Category Types
+export interface SpecificationItemType {
+  _key: string;
+  label: string;
+  value: string;
+}
+
+export interface SpecificationCategoryType {
+  _key: string;
+  title: string;
+  items: SpecificationItemType[];
+}
+
+// 2. Define the main Section Type
+export interface SpecificationSectionType {
+  _type: "specificationSection";
+  headline?: string;
+  description?: string;
+  categories?: SpecificationCategoryType[];
+}
+
+// 3. Add to SectionType union
+export type SectionType =
+  | HomeHeroSectionType
+  // ... other sections ...
+  | SpecificationSectionType // <-- Add this line
+  | FooterType;
+  
 export interface FooterLinkType {
   label?: string;
   url?: string;

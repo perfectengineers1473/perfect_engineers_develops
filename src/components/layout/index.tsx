@@ -37,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({
         navlinks={navLinkData?.links} 
       />
 
-      <main className="flex-grow w-full">
+      <main className="grow w-full">
         <div className="w-full mx-auto">
           {children}
         </div>
