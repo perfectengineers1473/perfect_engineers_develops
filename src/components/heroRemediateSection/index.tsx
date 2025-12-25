@@ -73,7 +73,7 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
                   className={`
                     inline-flex items-center justify-center
                     rounded-xl font-semibold transition-all duration-300
-                    px-6 py-3 text-xs sm:text-3xl md:text-lg lg:text-3xl
+                    px-6 py-3 text-xs sm:text-3xl md:text-lg lg:text-xl
                     ${
                       index === 0
                         ? "bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg"

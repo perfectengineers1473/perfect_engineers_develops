@@ -2,7 +2,7 @@ import React from 'react'
 
 const MapSection = () => {
   return (
-     <section className="w-full bg-white py-12 lg:py-20">
+     <section className="w-full bg-white pb-12 lg:pb-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Section Title */}
         <div className="mb-8 text-center">

@@ -198,6 +198,7 @@ export interface DemoSectionType {
 
 export interface ContactUsSectionType {
   _type: "contactUsSection";
+   id?: string;
   maintitle?: string;
   titletext?: string;
   contactUs?: ContactUsItemType[];

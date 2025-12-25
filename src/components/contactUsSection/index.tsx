@@ -11,8 +11,7 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
   return (
     <section className="relative w-full bg-white py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        {/* Header */}
-        <div className="text-center mb-12 lg:mb-16 animate-fade-in-up">
+        {/* <div className="text-center mb-12 lg:mb-16 animate-fade-in-up">
           {maintitle && (
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
               {maintitle}
@@ -24,7 +23,7 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
               {titletext}
             </p>
           )}
-        </div>
+        </div> */}
 
         {/* Contact Cards */}
         {contactUs && contactUs.length > 0 && (
@@ -32,12 +31,12 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
             {contactUs.map((item, index) => (
               <div
                 key={index}
-                className="bg-white border border-gray-200 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up"
+                className="bg-linear-to-br from-white via-purple-400/45 to-white rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'both' }}
               >
                 {item.image && (
                   <div className="flex justify-center mb-6">
-                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 bg-transparent rounded-full flex items-center justify-center">
                       <SanityImage src={item.image} />
                     </div>
                   </div>
@@ -71,7 +70,7 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
             {businessHour.map((hour, index) => (
               <div
                 key={index}
-                className="bg-gray-50 border border-gray-200 rounded-2xl p-8 animate-fade-in-up"
+                className="bg-linear-to-br from-white via-purple-400/45 to-white rounded-2xl p-8 animate-fade-in-up"
                 style={{ animationDelay: `${0.4 + index * 0.1}s`, animationFillMode: 'both' }}
               >
                 <div className="flex items-center gap-4 mb-6">
