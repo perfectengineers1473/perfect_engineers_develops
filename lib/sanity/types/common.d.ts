@@ -23,6 +23,24 @@ export interface HeroRemediateRatingType {
   max?: number;          // e.g. 5
 }
 
+export interface SpecificationItem {
+  _key: string;
+  model?: string;
+  coolingCapacity?: string;
+  storageCapacity?: string;
+  height?: string;
+  depth?: string;
+  width?: string;
+  faucets?: string;
+}
+
+export interface SpecificationCategory {
+  _key: string;
+  title: string;
+  items: SpecificationItem[];
+}
+
+
 
 export interface ItemTypes {
   image?: ImageType;

@@ -1,30 +1,8 @@
+import { SpecificationCategoryType } from "lib/sanity/types/page";
 import React from "react";
 
-// Define the types locally to match the new schema
-interface SpecificationItem {
-  _key: string;
-  model?: string;
-  coolingCapacity?: string;
-  storageCapacity?: string;
-  height?: string;
-  depth?: string;
-  width?: string;
-  faucets?: string;
-}
 
-interface SpecificationCategory {
-  _key: string;
-  title: string;
-  items: SpecificationItem[];
-}
-
-interface SpecificationSectionProps {
-  headline?: string;
-  description?: string;
-  categories?: SpecificationCategory[];
-}
-
-const SpecificationSection: React.FC<SpecificationSectionProps> = ({
+const SpecificationSection: React.FC<SpecificationCategoryType> = ({
   headline,
   description,
   categories,

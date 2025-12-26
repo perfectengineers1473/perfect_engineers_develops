@@ -23,8 +23,11 @@ import {
   BlogType,
   SocialLinkType,
   FooterSectionType,
+  SpecificationCategory,
 
 } from "./common";
+
+
 
 export interface LayoutPropsType {
   _id: "settings";
@@ -70,32 +73,20 @@ export type SectionType =
   | RecentPostSectionType
   | TitleTextSectionType
   | FooterType
-  | SilentFeaturesType;
+  | SilentFeaturesType 
+  | SpecificationCategoryType;
   
 import { ButtonType } from "./common";
 
 // ... existing imports
 
-// 1. Define Item and Category Types
-export interface SpecificationItemType {
-  _key: string;
-  label: string;
-  value: string;
-}
-
 export interface SpecificationCategoryType {
-  _key: string;
-  title: string;
-  items: SpecificationItemType[];
-}
-
-// 2. Define the main Section Type
-export interface SpecificationSectionType {
-  _type: "specificationSection";
+  _type: "specificationCategory";
   headline?: string;
   description?: string;
-  categories?: SpecificationCategoryType[];
+  categories?: SpecificationCategory[];
 }
+
 
 // 3. Add to SectionType union
 export type SectionType =
