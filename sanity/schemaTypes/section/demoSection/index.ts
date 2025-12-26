@@ -56,7 +56,7 @@ export default {
       title: "Submit Button Text",
       type: "button",
     },
-    
+
   ],
   preview: {
     select: {

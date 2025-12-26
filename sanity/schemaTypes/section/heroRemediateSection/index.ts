@@ -49,25 +49,7 @@ export default {
       name: "buttons",
       title: "Buttons",
       type: "array",
-      of: [
-        {
-          type: "object",
-          name: "button",
-          fields: [
-            {
-              name: "label",
-              title: "Label",
-              type: "string",
-            },
-            {
-              name: "url",
-              title: "URL",
-              type: "url",
-            },
-          ],
-        },
-      ],
-      validation: (Rule) => Rule.max(2),
+      of: [{ type: "button" }],
     },
   ],
   preview: {

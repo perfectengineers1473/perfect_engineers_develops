@@ -1,6 +1,6 @@
 import { Image, Slug } from "sanity";
 import { SanityDocument } from "next-sanity";
-import { FooterType, HeaderType, SeoType } from "./settings";
+import { FooterType, HeaderType, SeoType, FooterSectionType } from "./settings";
 import {
   AuthorType,
   BlogsType,
@@ -22,7 +22,7 @@ import {
   TitleTextSectionsType,
   BlogType,
   SocialLinkType,
-  FooterSectionType,
+
   SpecificationCategory,
 
 } from "./common";
@@ -73,10 +73,9 @@ export type SectionType =
   | RecentPostSectionType
   | TitleTextSectionType
   | FooterType
-  | SilentFeaturesType 
+  | SilentFeaturesType
   | SpecificationCategoryType;
-  
-import { ButtonType } from "./common";
+
 
 // ... existing imports
 
@@ -94,7 +93,7 @@ export type SectionType =
   // ... other sections ...
   | SpecificationSectionType // <-- Add this line
   | FooterType;
-  
+
 export interface FooterLinkType {
   label?: string;
   url?: string;
@@ -189,7 +188,7 @@ export interface DemoSectionType {
 
 export interface ContactUsSectionType {
   _type: "contactUsSection";
-   id?: string;
+  id?: string;
   maintitle?: string;
   titletext?: string;
   contactUs?: ContactUsItemType[];
@@ -208,7 +207,7 @@ export interface ContactHeroSectionType {
   title?: string;
   image?: ImageType;
   description?: string;
-  button?: ButtonType[];
+  buttons?: ButtonType[];
 }
 
 export interface Page extends SanityDocument {
@@ -232,10 +231,10 @@ export interface HomeHeroSectionType {
   id?: string;
   title?: RichTextType;
   description?: RichTextType;
- image?: CustomImageType;
- mobileImage?: CustomImageType;
- buttons?: ButtonType[];
- lists?: string[];
+  image?: CustomImageType;
+  mobileImage?: CustomImageType;
+  buttons?: ButtonType[];
+  lists?: string[];
 
 }
 export interface HeroSectionType {

@@ -1,9 +1,7 @@
 import React from "react";
 import { HeroRemediateSectionType } from "../../../lib/sanity/types/page";
 import RichText from "../commons/richText";
-import { resolveUrl } from "../../../lib/utils/resolveUrl";
-import { LinkType } from "../../../lib/sanity/types/linkType";
-import Link from "next/link";
+import Link from "../commons/link";
 
 const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
   title,
@@ -11,13 +9,6 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
   rating,
   buttons,
 }) => {
-  const getButtonUrl = (btn: any): string => {
-    if (btn.link && typeof btn.link === "object") {
-      return resolveUrl(btn.link as LinkType) || "#";
-    }
-    if (btn.url) return btn.url;
-    return "#";
-  };
 
   const renderTitle = (text: string) => {
     const words = text.split(" ");
@@ -69,7 +60,8 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
               {buttons.map((btn, index) => (
                 <Link
                   key={index}
-                  href={getButtonUrl(btn)}
+                  to={btn.link || btn.url || "#"}
+                  ariaLabel={btn.label || "Button"}
                   className={`
                     inline-flex items-center justify-center
                     rounded-xl font-semibold transition-all duration-300

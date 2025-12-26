@@ -1,5 +1,5 @@
-import type { SanityClient } from '@sanity/client'
-import { createClient } from '@sanity/client'
+import type { SanityClient } from 'next-sanity'
+import { createClient } from 'next-sanity'
 import { apiVersion, dataset, projectId, useCdn } from '../../config'
 
 export function getClient(token?: string): SanityClient {
@@ -13,10 +13,10 @@ export function getClient(token?: string): SanityClient {
 
   return token
     ? client.withConfig({
-        token: token,
-        useCdn: false,
-        ignoreBrowserTokenWarning: true,
-        perspective: 'previewDrafts',
-      })
+      token: token,
+      useCdn: false,
+      ignoreBrowserTokenWarning: true,
+      perspective: 'previewDrafts',
+    })
     : client
 }

@@ -10,7 +10,11 @@ export interface RichTextProps {
 const RichText: React.FC<RichTextProps> = ({ block, isRichTextBlock }) => {
   const { custom_rich_text, richTextLinks } = block || {};
 
-  const RichTextComponents = CreateRichTextComponent({ richTextLinks, isRichTextBlock });
+  if (!custom_rich_text) {
+    return null;
+  }
+
+  const RichTextComponents = CreateRichTextComponent({ richTextLinks: richTextLinks || [], isRichTextBlock });
 
   return (
     <PortableText value={custom_rich_text} components={RichTextComponents} />

@@ -15,17 +15,11 @@ export default {
       title: "Title",
       type: "string",
     },
-    {
-      name: "btn",
-      title: "btn",
+   {
+      name: "buttons",
+      title: "Buttons",
       type: "array",
-      of:[
-        {
-            name:"button",
-            title:"Button",
-            type:"button"
-        }
-      ]
+      of: [{ type: "button" }],
     },
   ],
   preview: {

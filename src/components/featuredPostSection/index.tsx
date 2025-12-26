@@ -1,9 +1,11 @@
+"use client";
 import React, { useState } from "react";
 import {
   FeaturedPostSectionType,
   ButtonType,
 } from "../../../lib/sanity/types/page";
 import SanityImage from "../commons/sanityImage";
+import Link from "../commons/link";
 
 const FeaturedPostSection: React.FC<FeaturedPostSectionType> = ({
   maintitle,
@@ -90,6 +92,31 @@ const FeaturedPostSection: React.FC<FeaturedPostSectionType> = ({
                   <p className="text-sm text-gray-500">{item.date}</p>
                 )}
               </div>
+            ))}
+          </div>
+        )}
+
+        {/* Buttons */}
+        {button && button.length > 0 && (
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8">
+            {button.map((item, index) => (
+              <Link
+                key={index}
+                to={item.link || item.url || "#"}
+                ariaLabel={item.label || "Button"}
+                className={`
+                  inline-flex items-center justify-center
+                  rounded-xl font-semibold transition-all duration-300
+                  px-6 py-3 text-base lg:text-lg
+                  ${
+                    index === 0
+                      ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg"
+                      : "bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50"
+                  }
+                `}
+              >
+                {item.label}
+              </Link>
             ))}
           </div>
         )}

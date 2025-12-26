@@ -15,6 +15,6 @@ export const resolveUrl = (link: LinkType) => {
         case LINK_TYPES?.reference:
             return resolveLink({ slug: link?.slug, type: link?.pageType })
         default:
-            return link?.url
+            return link?.url || (link as any)?.link
     }
 }

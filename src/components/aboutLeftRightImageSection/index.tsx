@@ -1,6 +1,7 @@
 import React from "react";
 import RichText from "../commons/richText";
 import SanityImage from "../commons/sanityImage";
+import Link from "../commons/link";
 import { AboutLeftRightImageSectionType } from "../../../lib/sanity/types/page";
 
 const AboutLeftRightImageSection: React.FC<AboutLeftRightImageSectionType> = ({
@@ -27,6 +28,19 @@ const AboutLeftRightImageSection: React.FC<AboutLeftRightImageSectionType> = ({
           {item?.titleText && (
             <div className="text-base sm:text-lg lg:text-2xl text-gray-600 max-w-2xl text-justify [&>p]:leading-loose lg:[&>p]:leading-[1.90] [&>p]:mb-5">
               <RichText block={item.titleText} />
+            </div>
+          )}
+
+          {/* Button */}
+          {item?.button?.label && (
+            <div className="mt-6">
+              <Link
+                to={item.button.link || item.button.url || "#"}
+                ariaLabel={item.button.label || "Button"}
+                className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white text-base font-semibold rounded-xl transition-all duration-300 shadow-lg"
+              >
+                {item.button.label}
+              </Link>
             </div>
           )}
         </div>

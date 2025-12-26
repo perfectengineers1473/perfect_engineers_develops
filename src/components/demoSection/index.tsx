@@ -2,6 +2,7 @@ import React from "react";
 import { DemoSectionType } from "../../../lib/sanity/types/page";
 import SanityImage from "../commons/sanityImage";
 import RichText from "../commons/richText";
+import Link from "../commons/link";
 
 const DemoSection: React.FC<DemoSectionType> = ({
   title,
@@ -136,12 +137,13 @@ const DemoSection: React.FC<DemoSectionType> = ({
 
             {/* SUBMIT BUTTON */}
             {submitButtonText?.label && (
-              <a
-                href={submitButtonText.link || "#"}
+              <Link
+                to={submitButtonText.link || submitButtonText.url || "#"}
+                ariaLabel={submitButtonText.label || "Submit"}
                 className="flex items-center justify-center w-full h-12 rounded-lg text-white bg-gray-800 font-semibold hover:text-white hover:bg-gray-800/60 transition"
               >
                 {submitButtonText.label}
-              </a>
+              </Link>
             )}
           </div>
         </div>

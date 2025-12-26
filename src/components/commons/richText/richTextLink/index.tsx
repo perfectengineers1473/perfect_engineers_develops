@@ -25,8 +25,8 @@ const RichTextLink: React.FC<
 
   const richTextSectionReferenceUrl = "#" + anchor;
 
-  let href: string | LinkType;
-  let target: string;
+  let href: string | LinkType = "#";
+  let target: string = "_self";
 
   switch (type) {
     case "reference":

@@ -17,9 +17,7 @@ export type PortableTextStyleType =
 const RichTextBlock = ({
   value,
   children,
-}: PortableTextComponentProps<
-  Omit<PortableTextBlock, "style"> & { style: PortableTextStyleType }
->) => {
+}: PortableTextComponentProps<PortableTextBlock>) => {
   switch (value.style) {
     case "h1":
       return <h1 className="text-[32px] sm:text-[46px] md:text-[56px] xl:text-[72px] leading-[110%] tracking-[-0.02em] pt-5 md:pt-11 pb-4 font-semibold">{children}</h1>;

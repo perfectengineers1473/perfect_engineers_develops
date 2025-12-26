@@ -20,6 +20,12 @@ export default {
       type: "image",
     },
     {
+      name: "button",
+      title: "Button",
+      type: "array",
+      of: [{ type: "button" }],
+    },
+    {
       name: "features",
       title: "Features",
       type: "array",

@@ -21,17 +21,12 @@ export default {
       type: "string",
     },
     {
-      name: "button",
-      title: "Button",
+      name: "buttons",
+      title: "Buttons",
       type: "array",
-      of:[
-        {
-            name:"btn",
-            title:"Btn",
-            type:"button",
-        },
-      ]
-    },
+      of: [{ type: "button" }],
+    }
+
   ],
   preview: {
     select: {

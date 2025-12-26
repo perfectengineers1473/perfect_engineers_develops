@@ -4,11 +4,12 @@ import SanityImage from "../commons/sanityImage";
 import Link from "../commons/link";
 
 const ContactHeroSection: React.FC<ContactHeroSectionType> = ({
-  button,
+  buttons,
   description,
   image,
   title,
 }) => {
+  
   return (
     <section className="w-full lg:min-h-screen flex lg:items-center bg-linear-to-b from-green-200 via-green-50 to-gray-100 py-16 lg:py-24 overflow-hidden">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -17,7 +18,7 @@ const ContactHeroSection: React.FC<ContactHeroSectionType> = ({
           {/* LEFT CONTENT */}
           <div className="flex flex-col text-left max-w-xl animate-fade-up">
             <h1 className=" text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 mb-6">
-              {title.split(" ").map((word, i) => (
+              {(title || "").split(" ").map((word, i) => (
                 <span key={i} className={i === 2 ? "text-purple-600" : ""}>
                   {word}{" "}
                 </span>
@@ -37,9 +38,9 @@ const ContactHeroSection: React.FC<ContactHeroSectionType> = ({
               </p>
             )}
 
-            {button && button.length > 0 && (
+            {buttons && buttons.length > 0 && (
               <div className="flex gap-4">
-                {button.map((item, index) => (
+                {buttons.map((item: any, index: number) => (
                   <Link
                     key={index}
                     to={item.link || item.url || "#"}

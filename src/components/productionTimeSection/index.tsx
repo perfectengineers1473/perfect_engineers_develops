@@ -59,7 +59,27 @@ const ProductionTimeSection: React.FC<ProductionTimeSectionType> = ({
                 );
               })}
             </div>
-          )}          
+          )}
+
+          {/* Buttons */}
+          {buttons && buttons.length > 0 && (
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center animate-fade-in-up">
+              {buttons.map((item, index) => (
+                <Link
+                  key={index}
+                  to={item.link || item.url || "#"}
+                  ariaLabel={item.label || "Button"}
+                  className={`px-8 py-4 text-base font-semibold lg:text-xl rounded-2xl transition-all duration-300 shadow-lg ${
+                    index === 0
+                      ? "bg-white text-purple-900 hover:bg-gray-100"
+                      : "bg-transparent border-2 border-white text-white hover:bg-white/10"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

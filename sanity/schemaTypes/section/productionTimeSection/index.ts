@@ -33,25 +33,7 @@ export default {
       name: "buttons",
       title: "Buttons",
       type: "array",
-      of: [
-        {
-          type: "object",
-          name: "button",
-          title: "button",
-          fields: [
-            {
-              name: "label",
-              title: "Label",
-              type: "string",
-            },
-            {
-              name: "labelurl",
-              title: "Button URL",
-              type: "url",
-            },
-          ],
-        },
-      ],
+      of: [{ type: "button" }],
     },
   ],
   preview: {

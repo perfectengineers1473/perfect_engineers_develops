@@ -43,9 +43,9 @@ const Footer: React.FC<FooterType> = ({
             </p>
 
             {/* SOCIAL ICONS */}
-            {sociallogolink?.length > 0 && (
+            {(sociallogolink?.length ?? 0) > 0 && (
               <div className="flex gap-4 mb-10">
-                {sociallogolink.map((item, i) => (
+                {sociallogolink?.map((item, i) => (
                   <Link
                     key={i}
                     href={item.sociallogolink || "#"}
@@ -138,7 +138,7 @@ const Footer: React.FC<FooterType> = ({
                   {section.label?.map((item, i) => (
                     <li key={i}>
                       <Link
-                        href={resolveUrl(item.link) || "#"}
+                        href={item.link ? (resolveUrl(item.link) || "#") : "#"}
                         className="
                           inline-block
                           hover:text-gray-900
