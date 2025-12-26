@@ -20,27 +20,38 @@ const FeaturedPostSection: React.FC<FeaturedPostSectionType> = ({
       : features;
 
   return (
-    <section className="relative w-full bg-white py-16 lg:py-24">
+    <section className="relative w-full bg-linear-to-b from-green-100 to-gray-50 pt-16 pb-16 lg:pt-24 lg:pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-12 lg:mb-16 animate-fade-in-up">
-          {maintitle && (
-            <p className="text-sm uppercase tracking-wider text-blue-600 font-semibold mb-4">
-              {maintitle}
-            </p>
-          )}
-          {title && (
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
-              {title}
-            </h2>
-          )}
+        <div className="mb-8 animate-fade-in-up">
+          <div className="flex flex-col items-center gap-4 text-center">
+            {maintitle && (
+              <span className="text-sm md:text-base lg:text-2xl font-medium text-gray-500 tracking-wide">
+                {maintitle}
+              </span>
+            )}
+
+            {title && (
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold text-gray-900 leading-tight max-w-3xl">
+                {title}
+              </h2>
+            )}
+
+            {/* divider */}
+            <div className="mt-2 h-0.5 w-24 bg-gray-300"></div>
+          </div>
         </div>
 
         {/* Main Image */}
         {image && (
-          <div className="flex justify-center mb-16 animate-fade-in">
-            <div className="relative flex w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
-              <SanityImage src={image} />
+          <div className="mb-10 animate-fade-in">
+            <div className="relative mx-auto max-w-2xl rounded-4xl">
+              <div className="relative overflow-hidden bg-white border border-gray-200 rounded-4xl">
+                <SanityImage
+                  src={image}
+                  className="w-full h-full object-cover rounded-4xl"
+                />
+              </div>
             </div>
           </div>
         )}
@@ -85,36 +96,35 @@ const FeaturedPostSection: React.FC<FeaturedPostSectionType> = ({
 
         {/* Read More / Show Less */}
         {features && features.length > 3 && (
-  <div className="flex justify-end mb-10">
-    <button
-      onClick={() => setShowAll(!showAll)}
-      className="
+          <div className="flex justify-end ">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="
         group inline-flex items-center gap-2
         text-base font-semibold text-blue-600
         hover:text-blue-700
         transition-all duration-300
       "
-    >
-      {showAll ? "Show Less" : "Read More"}
+            >
+              {showAll ? "Show Less" : "Read More"}
 
-      {/* Arrow */}
-      <svg
-        className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 5l7 7-7 7"
-        />
-      </svg>
-    </button>
-  </div>
-)}
-
+              {/* Arrow */}
+              <svg
+                className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

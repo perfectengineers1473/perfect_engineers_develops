@@ -5,11 +5,11 @@ const MapSection = () => {
      <section className="w-full bg-white pb-12 lg:pb-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Section Title */}
-        <div className="mb-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+        <div className="mb-8 text-center w-full bg-gray-300 rounded-4xl p-3">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
             Our Location
           </h2>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-sm sm:text-base lg:text-base text-gray-600">
             Visit Perfect Engineers at our manufacturing facility
           </p>
         </div>

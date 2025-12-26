@@ -9,21 +9,8 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
   businessHour,
 }) => {
   return (
-    <section className="relative w-full bg-white py-16 lg:py-24">
+    <section className="relative w-full bg-white pt-16 pb-10 lg:pt-24 lg:pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        {/* <div className="text-center mb-12 lg:mb-16 animate-fade-in-up">
-          {maintitle && (
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-              {maintitle}
-            </h2>
-          )}
-
-          {titletext && (
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              {titletext}
-            </p>
-          )}
-        </div> */}
 
         {/* Contact Cards */}
         {contactUs && contactUs.length > 0 && (
@@ -31,12 +18,15 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
             {contactUs.map((item, index) => (
               <div
                 key={index}
-                className="bg-linear-to-br from-white via-purple-400/45 to-white rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'both' }}
+                className="bg-white border border-gray-200 rounded-2xl p-8 text-center shadow-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up"
+                style={{
+                  animationDelay: `${index * 0.1}s`,
+                  animationFillMode: "both",
+                }}
               >
                 {item.image && (
                   <div className="flex justify-center mb-6">
-                    <div className="w-16 h-16 bg-transparent rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center">
                       <SanityImage src={item.image} />
                     </div>
                   </div>
@@ -66,16 +56,19 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
 
         {/* Business Hours */}
         {businessHour && businessHour.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
+          <div className="grid grid-cols-1 gap-8">
             {businessHour.map((hour, index) => (
               <div
                 key={index}
-                className="bg-linear-to-br from-white via-purple-400/45 to-white rounded-2xl p-8 animate-fade-in-up"
-                style={{ animationDelay: `${0.4 + index * 0.1}s`, animationFillMode: 'both' }}
+                className="bg-white border border-gray-200 rounded-2xl p-8 shadow-xl animate-fade-in-up"
+                style={{
+                  animationDelay: `${0.4 + index * 0.1}s`,
+                  animationFillMode: "both",
+                }}
               >
                 <div className="flex items-center gap-4 mb-6">
                   {hour.iconImage && (
-                    <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-md">
+                    <div className="w-12 h-12 bg-white border border-gray-200 rounded-lg flex items-center justify-center shadow-2xl">
                       <SanityImage src={hour.iconImage} />
                     </div>
                   )}
@@ -89,20 +82,20 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
                 {hour.textInfo && hour.textInfo.length > 0 && (
                   <div className="space-y-4">
                     {hour.textInfo.map((info, i) => (
-                      <div key={i} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-4 border-b border-gray-200 last:border-0">
+                      <div
+                        key={i}
+                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-4 border-b border-gray-200 last:border-0"
+                      >
                         {info.textTime && (
                           <p className="text-base font-semibold text-gray-900">
-                            {info.textTime}
-                            <br></br>
-                            {info.textTime1}
-                            <br></br>
-                            {info.textTime2}
-                            <br></br>
-                            {info.textTime3}
-                            <br></br>
+                            {info.textTime}<br />
+                            {info.textTime1}<br />
+                            {info.textTime2}<br />
+                            {info.textTime3}<br />
                             {info.textTime4}
                           </p>
                         )}
+
                         {info.descriptions && (
                           <p className="text-sm text-gray-600">
                             {info.descriptions}

@@ -17,11 +17,11 @@ const SilentFeaturesSection: React.FC<SilentFeaturesProps> = ({
   logo,
 }) => {
   return (
-    <section className="pb-10 bg-white">
+    <section className="pb-7 bg-white">
       <div className="container mx-auto px-4">
         {title && (
           <div className="flex justify-center mb-8">
-            <h2 className="text-2xl font-bold text-center px-8 py-4 text-gray-500 border border-gray-300 rounded-b-2xl rounded-t-none bg-purple-300/60 inline-block">
+            <h2 className="text-2xl font-bold text-center px-8 py-4 w-screen text-gray-600 border border-gray-300 rounded-b-2xl rounded-t-none bg-gray-300/60 inline-block">
               {title}
             </h2>
           </div>
