@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import { HomeHeroSectionType } from "../../../lib/sanity/types/page";
 import RichText from "../commons/richText";

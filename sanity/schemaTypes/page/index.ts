@@ -56,10 +56,8 @@ export default defineType({
         { type: "imageSection" },
         { type: "recentPostSection" },
         { type: "titleTextSection" },
-        
-        // New Sections
         { type: "specificationSection" },
-        { type: "silentFeaturesSection" }, // <--- Your new section is here
+        { type: "silentFeaturesSection" },
       ],
     }),
   ],

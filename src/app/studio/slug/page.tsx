@@ -1,14 +1,13 @@
-import { client } from "@/lib/client";
+
 import { notFound } from "next/navigation";
 
-/* ================================
-   IMPORT ALL YOUR SECTIONS
-   ================================ */
-import ContactUsSection from "@/src/components/contactUsSection";
-import HomeHeroSection from "@/src/components/homeHeroSection";
-import FeaturedPostSection from "@/src/components/featuredPostSection";
-import ProductionTimeSection from "@/src/components/productionTimeSection";
-import ImageSection from "@/src/components/imageSection";
+
+import ImageSection from "@/components/imageSection";
+import { client } from "lib/client";
+import ContactUsSection from "@/components/contactUsSection";
+import HomeHeroSection from "@/components/homeHeroSection";
+import FeaturedPostSection from "@/components/featuredPostSection";
+import ProductionTimeSection from "@/components/productionTimeSection";
 
 /* ================================
    SANITY QUERY
