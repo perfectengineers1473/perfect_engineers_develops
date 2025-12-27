@@ -16,6 +16,7 @@
     "next": "16.0.7",
     "next-sanity": "^11.6.10",
     "next-sanity-image": "^6.2.0",
+    "nodemailer": "^7.0.12",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-fast-marquee": "^1.6.5",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",

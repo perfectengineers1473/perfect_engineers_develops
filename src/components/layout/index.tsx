@@ -31,11 +31,11 @@ const Layout: React.FC<LayoutProps> = ({
       
       {/* FIXED: Removed the <HeaderSection /> line that caused the crash */}
       
-      {/* <NavbarSection 
+      <NavbarSection 
         logo={headerData?.logo} 
         btn={headerData?.btn}
         navlinks={navLinkData?.links} 
-      /> */}
+      />
 
       <main className="grow w-full">
         <div className="w-full mx-auto">
