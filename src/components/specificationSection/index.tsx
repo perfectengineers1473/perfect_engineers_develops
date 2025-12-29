@@ -28,16 +28,16 @@ const SpecificationSection: React.FC<SpecificationSectionType> = ({
         {/* Render each Category as a separate Table */}
         <div className="flex flex-col gap-12">
           {categories.map((category) => (
-            <div key={category._key} className="w-full">
+            <div key={category._key} className="w-full overflow-x-auto">
               
               {/* Table Title (Category Name) */}
               <h3 className="text-xl font-bold text-gray-800 mb-4 pl-2 border-l-4 border-blue-600">
                 {category.title}
               </h3>
 
-              {/* Responsive Table Wrapper */}
-              <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
-                <table className="w-full text-sm text-left border-collapse">
+              {/* Responsive Table Wrapper: allow horizontal scroll via table min-width on small screens */}
+              <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm max-w-full">
+                <table className="w-full text-sm text-left border-collapse min-w-[900px] md:min-w-full">
                   
                   {/* TABLE HEADERS */}
                   <thead className="bg-gray-100 text-gray-700 font-bold uppercase text-xs">

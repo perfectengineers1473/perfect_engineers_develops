@@ -3,6 +3,7 @@ import { ContactHeroSectionType } from "../../../lib/sanity/types/page";
 import SanityImage from "../commons/sanityImage";
 import Link from "../commons/link";
 import Button from "../commons/button";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 const ContactHeroSection: React.FC<ContactHeroSectionType> = ({
   buttons,
@@ -26,18 +27,32 @@ const ContactHeroSection: React.FC<ContactHeroSectionType> = ({
             </h1>
 
             {description && (
-              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-10">{description}</p>
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-10">
+                {description}
+              </p>
             )}
 
             {buttons && buttons.length > 0 && (
-              <div className="flex gap-4">
-                {buttons.map((item: any, index: number) => (
-                  <div
+              <div className="flex sm:flex-row items-center gap-4">
+                {buttons.map((btn, index) => (
+                  <Link
                     key={index}
-                    className={`inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-300 px-6 py-3 text-xs sm:text-3xl md:text-lg lg:text-xl ${index === 0 ? "bg-purple-600 text-white hover:bg-purple-600 shadow-lg" : "bg-white text-purple-600 border border-indigo-300 hover:bg-indigo-50"}`}
+                    to={btn.link || btn.url || "#"}
+                    ariaLabel={btn.label || "Button"}
+                    className={`
+                             inline-flex items-center justify-center
+                             rounded-xl font-semibold transition-all duration-300
+                             px-6 py-3 text-xs sm:text-3xl md:text-lg lg:text-xl
+                             ${
+                               index === 0
+                                 ? "bg-purple-600 text-white hover:bg-purple-700 shadow-lg"
+                                 : "bg-white text-purple-600 border border-purple-600 hover:bg-purple-50"
+                             }
+                           `}
                   >
-                     <Button block={item} />
-                  </div>
+                    {btn.label}
+                    <MdKeyboardDoubleArrowRight />
+                  </Link>
                 ))}
               </div>
             )}

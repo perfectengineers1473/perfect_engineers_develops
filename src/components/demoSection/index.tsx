@@ -5,6 +5,7 @@ import RichText from "../commons/richText";
 import Link from "../commons/link";
 
 const DemoSection: React.FC<DemoSectionType> = ({
+  id,
   title,
   heroImage,
   firstNameLabel,
@@ -17,7 +18,7 @@ const DemoSection: React.FC<DemoSectionType> = ({
   submitButtonText,
 }) => {
   return (
-    <section className="relative w-full bg-linear-to-b from-white via-green-200 to-purple-200 py-24">
+    <section id={id} className="relative w-full bg-linear-to-b from-white via-green-200 to-purple-200 py-24">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* TITLE */}

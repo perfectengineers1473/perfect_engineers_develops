@@ -172,6 +172,7 @@ export interface FeaturedPostSectionType {
 
 export interface DemoSectionType {
   _type: "demoSection";
+  id?: string;
   title?: string;
   heroImage?: ImageType;
 
@@ -197,6 +198,7 @@ export interface ContactUsSectionType {
 
 export interface ContactMapSectionType {
   _type: "ContactMapSection";
+  id?: string;
   title?: string;
   description?: string;
   button?: ButtonType;

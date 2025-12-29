@@ -6,6 +6,13 @@ export default {
   type: "object",
   fields: [
     {
+      name: "id",
+      title: "Id",
+      type: "string",
+      description:
+        "Use the same ID provided in the anchor link to navigate to a specific section on the same page.",
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",
