@@ -43,6 +43,16 @@ ${labelLinkFields}
 }
 `;
 
+export const imageWithLinkFields = /* groq */ `
+_type,
+image{
+${imageFields}
+},
+link{
+${linkFields}
+}
+`;
+
 export const imageTitleLabelLinkFields = /* groq */ `
 _type,
 title,
