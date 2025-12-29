@@ -115,12 +115,12 @@ export interface FooterType {
 }
 
 export interface TitleTextSectionType {
-  _type: "TitleTextSection";
+  _type: "titleTextSection";
   titleText?: TitleTextSectionsType[];
 }
 
 export interface RecentPostSectionType {
-  _type: "RecentPostSection";
+  _type: "recentPostSection";
   title?: string;
   seemore?: string;
   blog?: BlogType[];

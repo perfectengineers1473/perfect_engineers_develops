@@ -55,7 +55,7 @@ export default defineType({
         { type: "homeRightImageSection" },
         { type: "imageSection" },
         { type: "recentPostSection" },
-        { type: "titleTextSection" },
+        { type: "titleTextSection" }, 
         { type: "specificationSection" },
         { type: "silentFeaturesSection" },
       ],

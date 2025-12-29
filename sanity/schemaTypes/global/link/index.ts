@@ -19,23 +19,31 @@ export const linkFields = [
     weak: true,
     options: { disableNew: true },
     to: [{ type: "page" }],
+    hidden: ({ parent }: { parent?: { type?: string } }) =>
+      parent?.type !== "reference",
   },
   {
     name: "link",
     title: "URL",
     type: "string",
+    hidden: ({ parent }: { parent?: { type?: string } }) =>
+      parent?.type !== "externalReference",
   },
   {
     name: "openTheLinkinANewWindow",
     title: "Open The Link In A New Window?",
     type: "boolean",
-    initialValue: false,
+    hidden: ({ parent }: { parent?: { type?: string } }) =>
+      parent?.type !== "externalReference",
+    initialValue: false
   },
   {
     name: "anchor",
     title: "Anchor",
     type: "string",
     description: "Provide a section id to navigate on the same page",
+    hidden: ({ parent }: { parent?: { type?: string } }) =>
+      parent?.type !== "sectionReference",
   },
 ];
 

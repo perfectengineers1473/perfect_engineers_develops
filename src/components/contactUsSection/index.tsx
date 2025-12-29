@@ -7,9 +7,10 @@ const ContactUsSection: React.FC<ContactUsSectionType> = ({
   titletext,
   contactUs,
   businessHour,
+  id
 }) => {
   return (
-    <section className="relative w-full bg-white pt-16 pb-10 lg:pt-24 lg:pb-16">
+    <section id={id} className="relative w-full bg-white pt-16 pb-10 lg:pt-24 lg:pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
 
         {/* Contact Cards */}
