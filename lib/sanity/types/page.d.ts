@@ -74,13 +74,13 @@ export type SectionType =
   | TitleTextSectionType
   | FooterType
   | SilentFeaturesType
-  | SpecificationCategoryType;
+  | SpecificationSectionType;
 
 
 // ... existing imports
 
-export interface SpecificationCategoryType {
-  _type: "specificationCategory";
+export interface SpecificationSectionType {
+  _type: "specificationSection";
   headline?: string;
   description?: string;
   categories?: SpecificationCategory[];

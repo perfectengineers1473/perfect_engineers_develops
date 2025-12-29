@@ -9,7 +9,6 @@ export const specificationCategory = defineType({
       name: "title",
       title: "Category Title (e.g., Dimensions)",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "items",

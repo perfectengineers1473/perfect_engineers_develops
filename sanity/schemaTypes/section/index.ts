@@ -14,6 +14,7 @@ import recentPostSection from "./recentPostSection";
 
 // FIXED: Added curly braces { } because this is a named export
 import { silentFeaturesSection } from "./silentFeaturesSection";
+import { specificationSection } from "./specificationSection";
 
 import titleTextSection from "./titleTextSection";
 
@@ -33,6 +34,7 @@ export const sectionsTypes = [
   recentPostSection,
   titleTextSection,
   silentFeaturesSection,
+  specificationSection
 ];
 
 export default sectionsTypes;

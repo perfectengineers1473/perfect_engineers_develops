@@ -170,40 +170,21 @@ export const silentFeaturesSectionFields = /* groq */ `
 export const specificationSectionFields = /* groq */ `
     _type,
     id,
-    specificationCategory[]{
-        title,
-        items[]{
-            label,
-            value
-        }
-    }
-`;
-
-export const specificationItem = /* groq */ `
-    _type,
-    id,
-    model,
-    coolingCapacity,
-    storageCapacity,
-    height,
-    depth,
-    width,
-    faucets
-`;
-
-export const specificationSection = /* groq */ `
-    _type,
-    id,
     headline,
     description,
     categories[]{
         title,
         items[]{
-            label,
-            value
+            model,
+            coolingCapacity,
+            storageCapacity,
+            height,
+            depth,
+            width,
+            faucets
         }
     }
-`;
+`
 
 export const titleTextSectionFields = /* groq */ `
     _type,

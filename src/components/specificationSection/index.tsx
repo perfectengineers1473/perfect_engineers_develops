@@ -1,8 +1,8 @@
-import { SpecificationCategoryType } from "lib/sanity/types/page";
+import { SpecificationSectionType } from "lib/sanity/types/page";
 import React from "react";
 
 
-const SpecificationSection: React.FC<SpecificationCategoryType> = ({
+const SpecificationSection: React.FC<SpecificationSectionType> = ({
   headline,
   description,
   categories,
