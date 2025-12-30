@@ -4,7 +4,7 @@ import React from "react";
 // Using @/ alias as configured in your tsconfig.json
 import HomeHeroSection from "@/components/homeHeroSection";
 // Ensure these paths exist. If HeaderSection is inside 'header', update accordingly.
-import NavbarSection from "@/components/headerSection/navbarSection"; 
+import HeaderSection from "@/components/headerSection";
 
 // FIXED: Folder name is 'featuredPostSection' (with a 'd')
 import FeaturedPostSection from "@/components/featuredPostSection"; 
@@ -35,11 +35,12 @@ const Page = ({
       {/* Header Section */}
       
       
-      {/* STEP 3 FIX: Pass the specific props our new Navbar expects */}
-      <NavbarSection 
-        logo={header?.logo} 
-        btn={header?.btn}
-        navlinks={nav?.links} 
+      {/* Header (logo + nav) */}
+      <HeaderSection
+        logo={header?.logo}
+        logotitle={header?.logotitle}
+        buttonlinks={nav?.links}
+        sociallogolink={header?.sociallogolink || []}
       />
 
       {/* FIXED: Using Spread Operator (...) 

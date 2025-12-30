@@ -3,6 +3,7 @@ import { HeroRemediateSectionType } from "../../../lib/sanity/types/page";
 import RichText from "../commons/richText";
 import Link from "../commons/link";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import HeaderSection from "../headerSection";
 
 const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
   title,
@@ -22,6 +23,7 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
 
   return (
     <section className="relative items-center justify-center flex w-full lg:h-screen bg-linear-to-b from-green-100 to-gray-50 py-20 lg:py-28 overflow-hidden">
+      
       <div className="container  mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="flex flex-col items-center text-center">
           {/* ⭐ Rating */}

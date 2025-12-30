@@ -332,6 +332,7 @@ export type SocialLogoLink = {
 
 export type HeaderType = {
   logo: {
+    alt: string | undefined;
     asset: ImageAsset;
   };
   logotitle: string;

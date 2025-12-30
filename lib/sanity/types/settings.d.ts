@@ -3,14 +3,12 @@ import { LinkType } from "./linkType";
 
 export interface NavItemsType {
   _type: "navItem";
-  title?: string;
-  link?: LinkType;
+  buttonlinks?: ButtonType[];
 }
 export interface HeaderType {
   _type: "header";
   logo?: CustomImageType;
-  navItems: NavItemsType[];
-  cta: ButtonType
+  logotitle?: string;
 }
 export interface FooterLinksType {
   _type: "footerLinkBlock";
