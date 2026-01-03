@@ -9,7 +9,7 @@ export default {
     name: "buttonlinks",
     title: "Button Links",
     type: "array",
-    of: [{ type: "button" }]
+    of: [{ type: "labelLink" }]
   }
 ],
 } as SchemaTypeDefinition;

@@ -49,10 +49,18 @@ _type,
 logo{
 ${imageFields}
 },
-navItems[]{
-${navItemFields}
-},
-cta{
-${buttonFields}
+logotitle,
+`;
+
+export const navLinkFields = /* groq */ `
+_id,
+_type,
+buttonlinks[]{
+_type,
+"label": label,
+"link": link{
+${linkFields}
+}
 }
 `;
+

@@ -1,15 +1,17 @@
 import { ButtonType, CustomImageType, IconLabelLinkType, LabelLinkType, RichTextType, TitleContentButtonType } from "./common";
 import { LinkType } from "./linkType";
 
-export interface NavItemsType {
-  _type: "navItem";
-  buttonlinks?: ButtonType[];
-}
 export interface HeaderType {
   _type: "header";
   logo?: CustomImageType;
   logotitle?: string;
 }
+
+export interface NavLinkType {
+  _type: "navLink";
+  buttonlinks?: LabelLinkType[];
+}
+
 export interface FooterLinksType {
   _type: "footerLinkBlock";
   title?: string;

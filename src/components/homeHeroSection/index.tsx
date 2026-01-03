@@ -6,6 +6,7 @@ import SanityImage from "../commons/sanityImage";
 import Link from "../commons/link";
 
 const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
+  id,
   title,
   buttons,
   description,
@@ -26,7 +27,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
   }, [lists]);
 
   return (
-    <section className="relative w-full -mt-8 lg:h-screen overflow-hidden bg-white flex items-center">
+    <section id={id} className="relative w-full -mt-8 lg:h-screen overflow-hidden bg-white flex items-center">
       <div className="absolute lg:top-7 left-0 w-full flex justify-center items-start ">
     <span className="block h-px w-0 lg:bg-gray-400 animate-divider"></span>
   </div>

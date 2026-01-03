@@ -3,7 +3,7 @@ import type { AppProps, AppContext } from "next/app";
 import App from "next/app";
 import Layout from "@/components/layout";
 import { fetchDataFromSanity } from "../../lib/sanity";
-import { footerquery, footerbottomquery, headerquery, navlinkquery } from "../../lib/queries";
+import { footerquery, footerbottomquery, headerquery, navlinkSectionquery } from "../../lib/queries";
 import { FooterType } from "../../lib/sanity/types/page";
 import { FooterBottomType } from "../../lib/sanity/types/common";
 
@@ -35,7 +35,7 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
       fetchDataFromSanity<FooterType[]>({ query: { groqQuery: footerquery } }),
       fetchDataFromSanity<FooterBottomType[]>({ query: { groqQuery: footerbottomquery } }),
       fetchDataFromSanity<any>({ query: { groqQuery: headerquery } }),
-      fetchDataFromSanity<any>({ query: { groqQuery: navlinkquery } }),
+      fetchDataFromSanity<any>({ query: { groqQuery: navlinkSectionquery } }),
     ]);
 
     return {

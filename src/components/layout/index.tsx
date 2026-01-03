@@ -32,7 +32,7 @@ const Layout: React.FC<LayoutProps> = ({
         <HeaderSection
           logo={headerData.logo}
           logotitle={headerData.logotitle}
-          buttonlinks={navLinkData?.links || []}
+          buttonlinks={navLinkData?.buttonlinks || []}
           sociallogolink={[]}
         />
       )}

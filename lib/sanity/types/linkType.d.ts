@@ -9,16 +9,18 @@ export type CoreLinkFields = {
 export type LinkFields<T> = CoreLinkFields & T;
 export interface ExternalReferenceFields {
   type: LINK_TYPES.externalReference;
-  url: string;
+  link: string;
+  url?: string;
 }
 export interface InternalReferenceFields {
   type: LINK_TYPES.reference;
-  slug: string;
-  pageType: string;
+  page: { slug: { current: string } };
+  slug?: string;
+  pageType?: string;
 }
 export interface SectionReferenceFields {
   type: LINK_TYPES.sectionReference;
-  url: `#${string}` | null;
+  anchor: string;
 }
 
 export type LinkType = LinkFields<
