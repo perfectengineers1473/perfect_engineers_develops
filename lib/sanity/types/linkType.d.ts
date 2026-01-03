@@ -21,6 +21,7 @@ export interface InternalReferenceFields {
 export interface SectionReferenceFields {
   type: LINK_TYPES.sectionReference;
   anchor: string;
+  url?: string;
 }
 
 export type LinkType = LinkFields<

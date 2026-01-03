@@ -11,7 +11,7 @@ export enum LINK_TYPES {
 export const resolveUrl = (link: LinkType) => {
     switch (link?.type) {
         case LINK_TYPES?.sectionReference:
-            return link?.anchor ? `#${link.anchor}` : '#'
+            return link?.url || (link?.anchor ? `#${link.anchor}` : '#')
         case LINK_TYPES?.reference:
             return resolveLink({ slug: link?.slug || link?.page?.slug?.current, type: 'page' })
         default:
