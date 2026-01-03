@@ -12,7 +12,7 @@ const ContactHeroSection: React.FC<ContactHeroSectionType> = ({
   title,
 }) => {
   return (
-    <section className="w-full lg:min-h-screen flex lg:items-center bg-linear-to-b from-green-200 via-green-50 to-gray-100 py-16 lg:py-24 overflow-hidden">
+    <section className="w-full lg:min-h-screen flex lg:items-center bg-linear-to-b from-green-200 via-green-50 to-gray-100 pt-5 pb-20  lg:pt-5 lg:pb-28 overflow-hidden">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* FLEX WRAPPER */}
         <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-14">
