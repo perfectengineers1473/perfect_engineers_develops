@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import { useEffect } from "react";
 import type { AppProps, AppContext } from "next/app";
 import App from "next/app";
 import Layout from "@/components/layout";
@@ -15,6 +16,17 @@ interface MyAppProps extends AppProps {
 }
 
 function MyApp({ Component, pageProps, footerData, footerBottomData, headerData, navLinkData }: MyAppProps) {
+  useEffect(() => {
+    // Check if there is a hash in the URL
+    if (window.location.hash) {
+      // Scroll to top immediately
+      window.scrollTo(0, 0);
+      
+      // Remove the hash from the URL
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  }, []);
+
   return (
     <Layout 
       footerData={footerData} 
