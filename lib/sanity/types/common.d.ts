@@ -349,10 +349,7 @@ export type NavLinkItem = {
   link: string;
 };
 
-export type NavLinkType = {
-  _type: "navLink";
-  links: NavLinkItem[];
-};
+
 
 export type ImageAsset = {
   _id?: string;
