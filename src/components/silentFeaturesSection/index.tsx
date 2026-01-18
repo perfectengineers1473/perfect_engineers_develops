@@ -1,10 +1,11 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import SanityImage from "../commons/sanityImage";
-import Marquee from "react-fast-marquee";
 
 interface LogoItem {
   _key: string;
-  logoImage: any; 
+  logoImage: any;
 }
 
 interface SilentFeaturesProps {
@@ -14,37 +15,81 @@ interface SilentFeaturesProps {
 
 const SilentFeaturesSection: React.FC<SilentFeaturesProps> = ({
   title,
-  logo,
+  logo = [],
 }) => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [trackWidth, setTrackWidth] = useState(0);
+
+  useEffect(() => {
+    if (!trackRef.current) return;
+    setTrackWidth(trackRef.current.scrollWidth / 2);
+  }, [logo]);
+
+  if (!logo.length) return null;
+
   return (
-    <section className="pb-7 bg-white">
+    <section className="pb-7 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         {title && (
           <div className="flex justify-center mb-8">
-            <h2 className="text-2xl font-bold text-center px-8 py-4 w-screen text-gray-600 border border-gray-300 rounded-b-2xl rounded-t-none bg-gray-300/60 inline-block">
+            <h2 className="text-2xl font-bold text-center px-8 py-4 w-screen text-gray-600 border border-gray-300 rounded-b-2xl bg-gray-300/60">
               {title}
             </h2>
           </div>
         )}
-        <Marquee autoFill speed={40} className="py-4">
-          <div className="flex items-center gap-10 px-10">
-            {logo?.map((item, index) => (
+
+        <div className="relative w-full overflow-hidden">
+          <div
+            ref={trackRef}
+            className="flex gap-10 px-10 w-max marquee-track"
+            style={{
+              ["--marquee-distance" as any]: `-${trackWidth}px`,
+            }}
+          >
+            {[...logo, ...logo].map((item, index) => (
               <div
-                key={item._key || index}
-                className="w-28 h-28 flex items-center justify-center"
+                key={`${item._key}-${index}`}
+                className="w-20 h-20 flex items-center justify-center shrink-0"
               >
                 {item.logoImage && (
                   <SanityImage
                     src={item.logoImage}
                     alt="Feature Logo"
-                    className="max-w-full max-h-full object-contain"
+                    width={80}
+                    height={80}
+                    quality={40}
+                    loading="lazy"
+                    decoding="async"
+                    className="object-contain"
                   />
                 )}
               </div>
             ))}
           </div>
-        </Marquee>
+        </div>
       </div>
+
+      <style jsx>{`
+        .marquee-track {
+          animation: marquee 30s linear infinite;
+          will-change: transform;
+        }
+
+        @keyframes marquee {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(var(--marquee-distance));
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track {
+            animation: none;
+          }
+        }
+      `}</style>
     </section>
   );
 };

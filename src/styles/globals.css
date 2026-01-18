@@ -9,12 +9,6 @@
   --accent: #0ea5e9;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
 body {
   background: #ffffff;
@@ -89,7 +83,48 @@ html {
 }
 
 
-@keyframes fadeSlide {
+@keyframes homeherolistanimation {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-home-hero-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  animation-name: homeherolistanimation;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  will-change: opacity, transform;
+}
+
+
+
+
+/* @keyframes fadeSlide {
   0% {
     opacity: 0;
     transform: translateY(6px);
@@ -113,7 +148,7 @@ html {
 
 .animate-fadeSlide {
 animation: fadeSlide 5s ease-in-out infinite;
-}
+} */
 
 
 /* Hide scrollbar (Chrome, Safari, Edge) */

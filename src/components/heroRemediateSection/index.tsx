@@ -22,7 +22,7 @@ const HeroRemediateSection: React.FC<HeroRemediateSectionType> = ({
   };
 
   return (
-    <section className="relative items-center justify-center flex w-full lg:h-screen bg-linear-to-b from-green-100 to-gray-50 pt-5 pb-20  lg:pt-5 lg:pb-28 overflow-hidden">
+    <section className="relative items-center justify-center flex w-full lg:h-screen bg-gray-50 pt-5 pb-20  lg:pt-5 lg:pb-28 overflow-hidden">
       
       <div className="container  mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="flex flex-col items-center text-center">

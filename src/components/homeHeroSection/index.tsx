@@ -1,5 +1,5 @@
-"use client"
-import React, { useEffect, useState } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import { HomeHeroSectionType } from "../../../lib/sanity/types/page";
 import RichText from "../commons/richText";
 import SanityImage from "../commons/sanityImage";
@@ -11,33 +11,41 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
   buttons,
   description,
   image,
-  lists,
+  lists = [],
   mobileImage,
 }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    if (!lists || lists.length === 0) return;
+    if (lists.length > 1) {
+      const interval = setInterval(() => {
+        setIsFading(true);
+        setTimeout(() => {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % lists.length);
+          setIsFading(false);
+        }, 500); // Fade-out duration
+      }, 3000); // Time each item is displayed
 
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % lists.length);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, [lists]);
-
+      return () => clearInterval(interval);
+    }
+  }, [lists.length]);
   return (
-    <section id={id} className="relative w-full -mt-8 lg:h-screen overflow-hidden bg-white flex items-center">
-      <div className="absolute lg:top-7 left-0 w-full flex justify-center items-start ">
-    <span className="block h-px w-0 lg:bg-gray-400 animate-divider"></span>
-  </div>
-      {/* Wider container for large screens */}
-      <div className="relative  z-10 mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 mb-10 lg:py-24 max-w-[2000px]">
+    <section
+      id={id}
+      className="relative w-full -mt-8 lg:h-screen overflow-hidden bg-white flex items-center"
+    >
+      {/* Divider */}
+      <div className="absolute lg:top-7 left-0 w-full flex justify-center items-start">
+        <span className="block h-px w-0 lg:bg-gray-400 animate-divider"></span>
+      </div>
+
+      <div className="relative z-10 mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 mb-10 lg:py-24 max-w-[2000px]">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-15">
-          
-          {/* Text Content */}
+
+          {/* ================= TEXT CONTENT ================= */}
           <div className="w-full lg:w-1/2 text-center lg:text-left">
-            
+
             {/* Title */}
             {title?.custom_rich_text && (
               <div className="mb-6 lg:mb-8">
@@ -56,28 +64,49 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
               </div>
             )}
 
-            {/* Animated List (UNCHANGED) */}
-            {lists && lists.length > 0 && (
+            {/* ================= ANIMATED LIST ================= */}
+            {lists.length > 0 && (
               <div className="mb-10 flex justify-center lg:justify-start">
-                <div className="relative h-9 md:h-10 overflow-hidden">
-                  <div className="flex items-start gap-3 animate-fadeSlide">
-                    <svg
-                      className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mt-0.5 shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                <div className="flex items-start gap-3">
+
+                  {/* Icon */}
+                  <svg
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mt-1 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+
+                  {/* Animated text */}
+                  <div className="relative h-8 sm:h-9 overflow-hidden min-w-[320px]">
+                  <style>{`
+                    @keyframes slideIn {
+                      from { transform: translateY(100%); opacity: 0; }
+                      to { transform: translateY(0); opacity: 1; }
+                    }
+                    .animate-slide-in {
+                      animation: slideIn 0.5s ease-out forwards;
+                    }
+                  `}</style>
+                  {lists.length > 0 && (
+                    <span
+                      key={currentIndex}
+                      className={`absolute inset-0 flex items-center transition-all duration-500 ease-in-out ${
+                        isFading ? "opacity-0 -translate-y-full" : "opacity-100 translate-y-0 animate-slide-in"
+                      } text-red-700 font-medium`}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700">
-                      {lists[activeIndex]}
+                      {lists[currentIndex]}
                     </span>
-                  </div>
+                  )}
+                </div>
+
                 </div>
               </div>
             )}
@@ -103,19 +132,17 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
             )}
           </div>
 
-          {/* Image Content */}
+          {/* ================= IMAGE CONTENT ================= */}
           {(image || mobileImage) && (
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-4xl">
-                
-                {/* Desktop Image */}
+
                 {image && (
                   <div className="hidden lg:block rounded-3xl overflow-hidden shadow-2xl">
                     <SanityImage src={image} />
                   </div>
                 )}
 
-                {/* Mobile Image */}
                 {mobileImage && (
                   <div className="block lg:hidden rounded-3xl overflow-hidden shadow-2xl">
                     <SanityImage src={mobileImage} />
@@ -125,9 +152,9 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
               </div>
             </div>
           )}
+
         </div>
       </div>
-      
     </section>
   );
 };

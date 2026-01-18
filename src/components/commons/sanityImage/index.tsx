@@ -14,7 +14,8 @@ const SanityImage: React.FC<SanityImageProps> = ({ src, alt, ...props }) => {
     <NextImage
       {...image}
       alt={alt ?? src?.alt ?? "Image"}
-      quality={100}
+      quality={75}
+      loading="lazy"
       {...props}
     />
   ) : null;

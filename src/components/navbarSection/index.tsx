@@ -39,7 +39,7 @@ const NavbarSection: React.FC<NavbarSectionProps> = ({
                   ? "px-5 py-4 text-lg font-medium"
                   : "px-4 py-2 text-sm font-medium"
               }
-              bg-linear-to-br from-gray-300 via-purple-100 to-white hover:bg-transparent
+              bg-gray-300 hover:bg-transparent
             `}
           >
             {/* Gradient hover layer */}
