@@ -18,30 +18,26 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
 
   return (
     <>
-      {/* HEADER */}
-      <header className="sticky top-0 inset-x-0 z-50 bg-gray-50  backdrop-blur-xl">
-        {/* Gradient Accent Line */}
+      <header className="sticky top-0 inset-x-0 z-50 bg-gray-50 backdrop-blur-xl">
         <div className="h-0.5 w-full bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 animate-gradient" />
-
-        <div className="mx-auto max-w-[1500px] px-6">
-          <div className="flex h-10 sm:h-14 lg:h-20 items-center justify-between">
-            {/* LOGO */}
+        <div className="mx-auto max-w-[1500px] px-6 lg:px-3 lg:py-3 py-2">
+          <div className="flex h-14 sm:h-16 lg:h-20 items-center justify-between">
             <div className="flex items-center gap-3 font-semibold tracking-tight">
               {logo?.asset?.url ? (
                 <img
                   src={logo.asset.url}
                   alt={logotitle || "Logo"}
                   className="
-                      max-w-full object-contain transition-all duration-300
-                      h-20 sm:h-24 lg:h-44 
-                    "
+                    max-w-full object-contain transition-all duration-300
+                    h-28 sm:h-20 lg:h-52
+                  "
                 />
               ) : (
                 <span
                   className="
-                      text-base sm:text-lg lg:text-xl xl:text-2xl
-                      font-semibold
-                    "
+                    text-lg sm:text-xl lg:text-xl xl:text-2xl
+                    font-semibold
+                  "
                 >
                   {logotitle}
                 </span>
@@ -56,9 +52,16 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
             {/* MOBILE TOGGLE */}
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden"
+              className="
+                lg:hidden
+                flex items-center justify-center
+                h-12 w-12
+                active:scale-95
+                transition
+              "
+              aria-label="Open menu"
             >
-              <RiMenu5Fill />
+              <RiMenu5Fill className="text-2xl text-slate-900" />
             </button>
           </div>
         </div>

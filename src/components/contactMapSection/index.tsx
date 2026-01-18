@@ -7,7 +7,7 @@ const ContactMapSection: React.FC<ContactMapSectionType> = ({
   title,
 }) => {
   return (
-    <section id={id} className="w-full bg-white px-2 pb-12 lg:pb-20">
+    <section id={id} className="w-full bg-white px-2 pb-12 lg:pb-20  scroll-mt-20 lg:scroll-mt-28 ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Section Header */}
         <div className="mb-8 text-center w-full bg-gray-300 rounded-4xl p-4">

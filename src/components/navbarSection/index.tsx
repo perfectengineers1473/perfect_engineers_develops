@@ -11,51 +11,92 @@ interface NavbarSectionProps extends NavLinkType {
   onLinkClick?: () => void;
 }
 
+const normalizePath = (path: string) =>
+  path.replace(/\/$/, "") || "/";
+
 const NavbarSection: React.FC<NavbarSectionProps> = ({
   buttonlinks,
   mobile = false,
   onLinkClick,
 }) => {
-  const pathname = usePathname();
+  const pathname = normalizePath(usePathname());
 
   return (
-    <nav className={`flex ${mobile ? "flex-col gap-4" : "items-center gap-2"}`}>
-      {buttonlinks
-        ?.filter((btn) => {
-          const href = resolveUrl(btn.link!);
-          return href !== pathname; 
-        })
-        .map((btn, index) => (
+    <nav className={`flex ${mobile ? "flex-col gap-4" : "items-center gap-3"}`}>
+      {buttonlinks?.map((btn, index) => {
+        const href = normalizePath(resolveUrl(btn.link!));
+        const isCurrent = href === pathname;
+
+        return (
           <Link
             key={index}
-            href={resolveUrl(btn.link!)}
+            href={href}
             onClick={onLinkClick}
             className={`
-              relative group overflow-hidden rounded-xl
-              transition-all duration-300 ease-out
-              active:scale-[0.96]
+              relative overflow-hidden rounded-2xl
+              transition-all duration-200 ease-out
+              active:scale-[0.97]
+
               ${
                 mobile
-                  ? "px-5 py-4 text-lg font-medium"
-                  : "px-4 py-2 text-sm font-medium"
+                  ? `
+                    ${isCurrent ? "hidden" : ""}
+                    px-6 py-4
+                    text-lg font-semibold
+                    text-center
+                    flex items-center justify-center
+
+                    bg-white
+                    text-slate-900
+                    border border-slate-200
+
+                    shadow-[0_6px_18px_-6px_rgba(15,23,42,0.18)]
+                    active:bg-slate-100
+                  `
+                  : `
+                    px-6 py-3
+                    text-base lg:text-lg font-semibold
+                    border backdrop-blur-md
+                    relative group
+
+                    ${
+                      isCurrent
+                        ? `
+                          lg:bg-blue-700
+                          lg:text-white
+                          lg:shadow-xl
+                        `
+                        : `
+                          lg:bg-white/70
+                          lg:text-gray-900
+                          lg:border-gray-300
+                          lg:hover:bg-white
+                        `
+                    }
+
+                    lg:hover:-translate-y-0.5
+                  `
               }
-              bg-gray-300 hover:bg-transparent
             `}
           >
-            {/* Gradient hover layer */}
-            <span className="absolute inset-0 bg-linear-to-r from-indigo-500/15 via-purple-500/15 to-pink-500/15 opacity-0 group-hover:opacity-100 transition" />
+            {/* Desktop hover overlay */}
+            {!mobile && !isCurrent && (
+              <span
+                className="
+                  absolute inset-0 opacity-0
+                  group-hover:opacity-100
+                  transition-opacity duration-300
+                  bg-slate-900/5
+                "
+              />
+            )}
 
-            {/* Glow */}
-            <span className="absolute inset-0 rounded-xl shadow-[0_0_0_0_rgba(99,102,241,0.4)]
-              group-hover:shadow-[0_10px_30px_-10px_rgba(168,85,247,0.6)]
-              transition-all"
-            />
-
-            <span className="relative z-10 font-mono">
+            <span className="relative z-10 font-mono text-center">
               {btn.label}
             </span>
           </Link>
-        ))}
+        );
+      })}
     </nav>
   );
 };
