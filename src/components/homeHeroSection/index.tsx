@@ -15,21 +15,23 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
   mobileImage,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false);
+  const [phase, setPhase] = useState<"enter" | "exit">("enter");
 
   useEffect(() => {
-    if (lists.length > 1) {
-      const interval = setInterval(() => {
-        setIsFading(true);
-        setTimeout(() => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % lists.length);
-          setIsFading(false);
-        }, 500); // Fade-out duration
-      }, 3000); // Time each item is displayed
+    if (lists.length <= 1) return;
 
-      return () => clearInterval(interval);
-    }
+    const interval = setInterval(() => {
+      setPhase("exit");
+
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % lists.length);
+        setPhase("enter");
+      }, 700); // exit duration
+    }, 3500); // total duration per item
+
+    return () => clearInterval(interval);
   }, [lists.length]);
+
   return (
     <section
       id={id}
@@ -66,7 +68,7 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
 
             {/* ================= ANIMATED LIST ================= */}
             {lists.length > 0 && (
-              <div className="mb-10 flex justify-center lg:justify-start">
+              <div className="mb-10 flex justify-center items-center lg:justify-start lg:items-center">
                 <div className="flex items-start gap-3">
 
                   {/* Icon */}
@@ -86,26 +88,39 @@ const HomeHeroSection: React.FC<HomeHeroSectionType> = ({
 
                   {/* Animated text */}
                   <div className="relative h-8 sm:h-9 overflow-hidden min-w-[320px]">
-                  <style>{`
-                    @keyframes slideIn {
-                      from { transform: translateY(100%); opacity: 0; }
-                      to { transform: translateY(0); opacity: 1; }
-                    }
-                    .animate-slide-in {
-                      animation: slideIn 0.5s ease-out forwards;
-                    }
-                  `}</style>
-                  {lists.length > 0 && (
+                    <style>{`
+                      .enter {
+                        transform: translateY(100%);
+                        opacity: 0;
+                        animation: enter 0.7s ease-out forwards;
+                      }
+                      .exit {
+                        transform: translateY(0);
+                        opacity: 1;
+                        animation: exit 0.7s ease-in forwards;
+                      }
+                      @keyframes enter {
+                        to {
+                          transform: translateY(0);
+                          opacity: 1;
+                        }
+                      }
+                      @keyframes exit {
+                        to {
+                          transform: translateY(-100%);
+                          opacity: 0;
+                        }
+                      }
+                    `}</style>
+
                     <span
-                      key={currentIndex}
-                      className={`absolute inset-0 flex items-center transition-all duration-500 ease-in-out ${
-                        isFading ? "opacity-0 -translate-y-full" : "opacity-100 translate-y-0 animate-slide-in"
-                      } text-red-700 font-medium`}
+                      className={`absolute inset-0 flex items-center text-gray-600 font-medium ${
+                        phase === "enter" ? "enter" : "exit"
+                      }`}
                     >
                       {lists[currentIndex]}
                     </span>
-                  )}
-                </div>
+                  </div>
 
                 </div>
               </div>
