@@ -3,8 +3,6 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-
     const {
       firstName,
       lastName,
@@ -12,9 +10,9 @@ export async function POST(req: Request) {
       company,
       region,
       source,
-    } = body;
+    } = await req.json();
 
-    // BASIC VALIDATION (server-side safety)
+    // Validation
     if (!firstName || !lastName || !email || !company || !region) {
       return NextResponse.json(
         { message: "Missing required fields" },
@@ -25,29 +23,52 @@ export async function POST(req: Request) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER, // your gmail
-        pass: process.env.EMAIL_PASS, // app password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
+    /* ===============================
+       1️⃣ ADMIN EMAIL (YOU)
+    =============================== */
     await transporter.sendMail({
-      from: `"Demo Form" <${process.env.EMAIL_USER}>`,
-      to: "vinit.modi8722@gmail.com",
-      subject: "New Demo Form Submission",
+      from: `"Website Demo Request" <${process.env.EMAIL_USER}>`,
+      to: process.env.ADMIN_EMAIL, // YOU
+      replyTo: email, // reply goes to customer
+      subject: `📩 Demo Request from ${firstName} ${lastName}`,
       html: `
         <h2>New Demo Request</h2>
-        <p><strong>First Name:</strong> ${firstName}</p>
-        <p><strong>Last Name:</strong> ${lastName}</p>
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Company:</strong> ${company}</p>
         <p><strong>Region:</strong> ${region}</p>
-        <p><strong>Message:</strong> ${source || "N/A"}</p>
+        <p><strong>Message:</strong></p>
+        <p>${source || "N/A"}</p>
+      `,
+    });
+
+    /* ===============================
+       2️⃣ CUSTOMER THANK-YOU EMAIL
+    =============================== */
+    await transporter.sendMail({
+      from: `"Perfect Engineers" <${process.env.EMAIL_USER}>`,
+      to: email, // CUSTOMER
+      subject: "Thank you for contacting us",
+      html: `
+        <p>Hi ${firstName},</p>
+        <p>
+          Thank you for contacting <strong>Perfect Engineers</strong>.
+          We have received your message and our team will get back to you shortly.
+        </p>
+        <br />
+        <p>Best regards,</p>
+        <p><strong>Perfect Engineers Team</strong></p>
       `,
     });
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error(error);
+    console.error("Mail Error:", error);
     return NextResponse.json(
       { message: "Email sending failed" },
       { status: 500 }
