@@ -21,14 +21,24 @@ const Home: NextPage<PageProps> = ({ page }) => {
   );
 };
 
+import { footerquery, footerbottomquery, headerquery, navlinkSectionquery } from "../../lib/queries";
+import { FooterType } from "../../lib/sanity/types/page";
+import { FooterBottomType } from "../../lib/sanity/types/common";
+
 export const getStaticProps: GetStaticProps<PageProps> = async ({
   draftMode = false,
 }) => {
-  const homePageData = await fetchDataFromSanity<Page>({
-    query: { groqQuery: pageBySlugQuery },
-    queryParams: { slug: "home" },
-    isPreview: draftMode,
-  });
+  const [homePageData, footerDataArray, footerBottomData, headerDataArray, navLinkDataArray] = await Promise.all([
+    fetchDataFromSanity<Page>({
+      query: { groqQuery: pageBySlugQuery },
+      queryParams: { slug: "home" },
+      isPreview: draftMode,
+    }),
+    fetchDataFromSanity<FooterType[]>({ query: { groqQuery: footerquery } }),
+    fetchDataFromSanity<FooterBottomType[]>({ query: { groqQuery: footerbottomquery } }),
+    fetchDataFromSanity<any>({ query: { groqQuery: headerquery } }),
+    fetchDataFromSanity<any>({ query: { groqQuery: navlinkSectionquery } }),
+  ]);
 
   const page = filterSanityDataToSingleItem({
     data: homePageData,
@@ -42,6 +52,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
       page,
       draftMode,
       token: draftMode ? readToken : "",
+      footerData: Array.isArray(footerDataArray) && footerDataArray.length > 0 ? footerDataArray[0] : null,
+      footerBottomData: Array.isArray(footerBottomData) ? footerBottomData : null,
+      headerData: Array.isArray(headerDataArray) && headerDataArray.length > 0 ? headerDataArray[0] : null,
+      navLinkData: Array.isArray(navLinkDataArray) && navLinkDataArray.length > 0 ? navLinkDataArray[0] : null,
     },
     revalidate: REVALIDATE_DURATION,
   };

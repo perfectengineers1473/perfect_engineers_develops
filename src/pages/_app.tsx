@@ -8,14 +8,8 @@ import { footerquery, footerbottomquery, headerquery, navlinkSectionquery } from
 import { FooterType } from "../../lib/sanity/types/page";
 import { FooterBottomType } from "../../lib/sanity/types/common";
 
-interface MyAppProps extends AppProps {
-  footerData?: FooterType | null;
-  footerBottomData?: FooterBottomType[] | null;
-  headerData?: any;
-  navLinkData?: any;
-}
-
-function MyApp({ Component, pageProps, footerData, footerBottomData, headerData, navLinkData }: MyAppProps) {
+// MyApp.getInitialProps removed to enable Automatic Static Optimization
+function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     // Check if there is a hash in the URL
     if (window.location.hash) {
@@ -26,6 +20,9 @@ function MyApp({ Component, pageProps, footerData, footerBottomData, headerData,
       window.history.replaceState(null, "", window.location.pathname + window.location.search);
     }
   }, []);
+
+  // Extract global data from pageProps
+  const { footerData, footerBottomData, headerData, navLinkData } = pageProps;
 
   return (
     <Layout 
@@ -38,35 +35,5 @@ function MyApp({ Component, pageProps, footerData, footerBottomData, headerData,
     </Layout>
   );
 }
-
-MyApp.getInitialProps = async (appContext: AppContext) => {
-  const appProps = await App.getInitialProps(appContext);
-
-  try {
-    const [footerDataArray, footerBottomData, headerDataArray, navLinkDataArray] = await Promise.all([
-      fetchDataFromSanity<FooterType[]>({ query: { groqQuery: footerquery } }),
-      fetchDataFromSanity<FooterBottomType[]>({ query: { groqQuery: footerbottomquery } }),
-      fetchDataFromSanity<any>({ query: { groqQuery: headerquery } }),
-      fetchDataFromSanity<any>({ query: { groqQuery: navlinkSectionquery } }),
-    ]);
-
-    return {
-      ...appProps,
-      footerData: Array.isArray(footerDataArray) && footerDataArray.length > 0 ? footerDataArray[0] : null,
-      footerBottomData: Array.isArray(footerBottomData) ? footerBottomData : null,
-      headerData: Array.isArray(headerDataArray) && headerDataArray.length > 0 ? headerDataArray[0] : null,
-      navLinkData: Array.isArray(navLinkDataArray) && navLinkDataArray.length > 0 ? navLinkDataArray[0] : null,
-    };
-  } catch (error) {
-    console.error("Error fetching global data:", error);
-    return {
-      ...appProps,
-      footerData: null,
-      footerBottomData: null,
-      headerData: null,
-      navLinkData: null,
-    };
-  }
-};
 
 export default MyApp;
