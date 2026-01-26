@@ -33,8 +33,7 @@ export async function POST(req: Request) {
     =============================== */
     await transporter.sendMail({
       from: `"Website Demo Request" <${process.env.EMAIL_USER}>`,
-      to: process.env.ADMIN_EMAIL, // YOU
-      replyTo: email, // reply goes to customer
+      to: process.env.ADMIN_EMAIL, // reply goes to customer
       subject: `📩 Demo Request from ${firstName} ${lastName}`,
       html: `
         <h2>New Demo Request</h2>
@@ -47,12 +46,9 @@ export async function POST(req: Request) {
       `,
     });
 
-    /* ===============================
-       2️⃣ CUSTOMER THANK-YOU EMAIL
-    =============================== */
     await transporter.sendMail({
       from: `"Perfect Engineers" <${process.env.EMAIL_USER}>`,
-      to: email, // CUSTOMER
+      to: email,
       subject: "Thank you for contacting us",
       html: `
         <p>Hi ${firstName},</p>
