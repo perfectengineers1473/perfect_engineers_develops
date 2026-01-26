@@ -33,7 +33,8 @@ export async function POST(req: Request) {
     =============================== */
     await transporter.sendMail({
       from: `"Website Demo Request" <${process.env.EMAIL_USER}>`,
-      to: process.env.ADMIN_EMAIL, // reply goes to customer
+      to: process.env.ADMIN_EMAIL,
+      replyTo: email,
       subject: `📩 Demo Request from ${firstName} ${lastName}`,
       html: `
         <h2>New Demo Request</h2>
