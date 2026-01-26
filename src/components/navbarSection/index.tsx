@@ -19,7 +19,7 @@ const NavbarSection: React.FC<NavbarSectionProps> = ({
   mobile = false,
   onLinkClick,
 }) => {
-  const pathname = normalizePath(usePathname());
+  const pathname = normalizePath(usePathname() || "");
 
   return (
     <nav className={`flex ${mobile ? "flex-col gap-4" : "items-center gap-3"}`}>
