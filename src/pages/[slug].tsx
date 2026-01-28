@@ -27,7 +27,7 @@ const DynamicPage: NextPage<PageProps> = ({ page }) => {
 
   return (
     <>
-      <PageView page={page} slug={page.slug?.current || "/"} />
+      <PageView page={page} slug={page.slug?.current || "/home"} />
     </>
   );
 };
@@ -40,7 +40,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = pages
     .filter((page) => page.slug) // Filter out pages without slugs
     .map((page) => ({
-      params: { slug: page.slug || "/" },
+      params: { slug: page.slug || "/home" },
     }));
 
   return {
