@@ -1,5 +1,6 @@
 import React from "react";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
+import { useRouter } from "next/router";
 import { SharedPageProps } from "../../lib/sanity/types";
 import { Page } from "../../lib/sanity/types/page";
 
@@ -14,9 +15,19 @@ export interface PageProps extends SharedPageProps {
 }
 
 const DynamicPage: NextPage<PageProps> = ({ page }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return (
+      <div className="flex items-center justify-center min-h-[50vh]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
+
   return (
     <>
-      <PageView page={page} slug={page.slug?.current || ""} />
+      <PageView page={page} slug={page.slug?.current || "/"} />
     </>
   );
 };
@@ -29,12 +40,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = pages
     .filter((page) => page.slug) // Filter out pages without slugs
     .map((page) => ({
-      params: { slug: page.slug },
+      params: { slug: page.slug || "/" },
     }));
 
   return {
     paths,
-    fallback: "blocking", // or 'true' if you want to use ISR
+    fallback: true, // or 'true' if you want to use ISR
   };
 };
 
@@ -52,20 +63,22 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
     return { notFound: true };
   }
 
-  const [pageData, footerDataArray, footerBottomData, headerDataArray, navLinkDataArray] = await Promise.all([
-    fetchDataFromSanity<Page>({
-      query: { groqQuery: pageBySlugQuery },
-      queryParams: { slug },
-      isPreview: draftMode,
-    }),
-    fetchDataFromSanity<FooterType[]>({ query: { groqQuery: footerquery } }),
-    fetchDataFromSanity<FooterBottomType[]>({ query: { groqQuery: footerbottomquery } }),
-    fetchDataFromSanity<any>({ query: { groqQuery: headerquery } }),
-    fetchDataFromSanity<any>({ query: { groqQuery: navlinkSectionquery } }),
-  ]);
+  const query = `{
+    "page": ${pageBySlugQuery},
+    "footer": ${footerquery},
+    "footerBottom": ${footerbottomquery},
+    "header": ${headerquery},
+    "navLink": ${navlinkSectionquery}
+  }`;
+
+  const data = await fetchDataFromSanity<any>({
+    query: { groqQuery: query },
+    queryParams: { slug },
+    isPreview: draftMode,
+  });
 
   const page = filterSanityDataToSingleItem({
-    data: pageData,
+    data: data?.page,
     isPreview: draftMode,
   });
 
@@ -76,14 +89,13 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
       page,
       draftMode,
       token: draftMode ? readToken : "",
-      footerData: Array.isArray(footerDataArray) && footerDataArray.length > 0 ? footerDataArray[0] : null,
-      footerBottomData: Array.isArray(footerBottomData) ? footerBottomData : null,
-      headerData: Array.isArray(headerDataArray) && headerDataArray.length > 0 ? headerDataArray[0] : null,
-      navLinkData: Array.isArray(navLinkDataArray) && navLinkDataArray.length > 0 ? navLinkDataArray[0] : null,
+      footerData: Array.isArray(data?.footer) && data.footer.length > 0 ? data.footer[0] : null,
+      footerBottomData: Array.isArray(data?.footerBottom) ? data.footerBottom : null,
+      headerData: Array.isArray(data?.header) && data.header.length > 0 ? data.header[0] : null,
+      navLinkData: Array.isArray(data?.navLink) && data.navLink.length > 0 ? data.navLink[0] : null,
     },
     revalidate: REVALIDATE_DURATION,
   };
 };
 
 export default DynamicPage;
-

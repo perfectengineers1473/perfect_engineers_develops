@@ -11,21 +11,39 @@ interface NavbarSectionProps extends NavLinkType {
   onLinkClick?: () => void;
 }
 
-const normalizePath = (path: string) =>
-  path.replace(/\/$/, "") || "/";
+/**
+ * Safe path normalizer
+ */
+const normalizePath = (path?: string | null) => {
+  if (!path) return "/";
+  if (path === "/") return "/";
+  return path.replace(/\/+$/, "");
+};
 
 const NavbarSection: React.FC<NavbarSectionProps> = ({
   buttonlinks,
   mobile = false,
   onLinkClick,
 }) => {
-  const pathname = normalizePath(usePathname() || "");
+  const pathname = normalizePath(usePathname());
+
+  /**
+   * Hydration guard
+   * - prevents mobile from hiding current page on first load
+   */
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <nav className={`flex ${mobile ? "flex-col gap-4" : "items-center gap-3"}`}>
       {buttonlinks?.map((btn, index) => {
-        const href = normalizePath(resolveUrl(btn.link!));
-        const isCurrent = href === pathname;
+        const href = normalizePath(resolveUrl(btn.link!) || "/");
+
+        const isCurrent =
+          pathname === href || (pathname === "/" && href === "/");
 
         return (
           <Link
@@ -40,7 +58,7 @@ const NavbarSection: React.FC<NavbarSectionProps> = ({
               ${
                 mobile
                   ? `
-                    ${isCurrent ? "hidden" : ""}
+                    ${mobile && mounted && isCurrent ? "hidden" : ""}
                     px-6 py-4
                     text-lg font-semibold
                     text-center

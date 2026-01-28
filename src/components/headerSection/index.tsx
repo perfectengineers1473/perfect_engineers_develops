@@ -4,6 +4,7 @@ import React from "react";
 import { HeaderType, NavLinkType } from "lib/sanity/types";
 import NavbarSection from "@/components/navbarSection";
 import { RiMenu5Fill } from "react-icons/ri";
+import Link from "next/link";
 
 interface HeaderSectionProps extends HeaderType {
   buttonlinks?: NavLinkType["buttonlinks"];
@@ -24,14 +25,16 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           <div className="flex h-14 sm:h-16 lg:h-20 items-center justify-between">
             <div className="flex items-center gap-3 font-semibold tracking-tight">
               {logo?.asset?.url ? (
-                <img
+                <Link href="/">
+                  <img
                   src={logo.asset.url}
                   alt={logotitle || "Logo"}
                   className="
                     max-w-full object-contain transition-all duration-300
                     h-28 sm:h-20 lg:h-52
-                  "
-                />
+                  "/>
+                  </Link>
+                   
               ) : (
                 <span
                   className="

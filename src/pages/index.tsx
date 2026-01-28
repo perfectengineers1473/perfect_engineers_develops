@@ -16,7 +16,7 @@ export interface PageProps extends SharedPageProps {
 const Home: NextPage<PageProps> = ({ page }) => {
   return (
     <>
-      <PageView page={page} slug={page.slug?.current || "home"} />
+      <PageView page={page} slug={page.slug?.current || "/"} />
     </>
   );
 };
@@ -28,20 +28,22 @@ import { FooterBottomType } from "../../lib/sanity/types/common";
 export const getStaticProps: GetStaticProps<PageProps> = async ({
   draftMode = false,
 }) => {
-  const [homePageData, footerDataArray, footerBottomData, headerDataArray, navLinkDataArray] = await Promise.all([
-    fetchDataFromSanity<Page>({
-      query: { groqQuery: pageBySlugQuery },
-      queryParams: { slug: "home" },
-      isPreview: draftMode,
-    }),
-    fetchDataFromSanity<FooterType[]>({ query: { groqQuery: footerquery } }),
-    fetchDataFromSanity<FooterBottomType[]>({ query: { groqQuery: footerbottomquery } }),
-    fetchDataFromSanity<any>({ query: { groqQuery: headerquery } }),
-    fetchDataFromSanity<any>({ query: { groqQuery: navlinkSectionquery } }),
-  ]);
+  const query = `{
+    "page": ${pageBySlugQuery},
+    "footer": ${footerquery},
+    "footerBottom": ${footerbottomquery},
+    "header": ${headerquery},
+    "navLink": ${navlinkSectionquery}
+  }`;
+
+  const data = await fetchDataFromSanity<any>({
+    query: { groqQuery: query },
+    queryParams: { slug: "/" },
+    isPreview: draftMode,
+  });
 
   const page = filterSanityDataToSingleItem({
-    data: homePageData,
+    data: data?.page,
     isPreview: draftMode,
   });
 
@@ -52,10 +54,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
       page,
       draftMode,
       token: draftMode ? readToken : "",
-      footerData: Array.isArray(footerDataArray) && footerDataArray.length > 0 ? footerDataArray[0] : null,
-      footerBottomData: Array.isArray(footerBottomData) ? footerBottomData : null,
-      headerData: Array.isArray(headerDataArray) && headerDataArray.length > 0 ? headerDataArray[0] : null,
-      navLinkData: Array.isArray(navLinkDataArray) && navLinkDataArray.length > 0 ? navLinkDataArray[0] : null,
+      footerData: Array.isArray(data?.footer) && data.footer.length > 0 ? data.footer[0] : null,
+      footerBottomData: Array.isArray(data?.footerBottom) ? data.footerBottom : null,
+      headerData: Array.isArray(data?.header) && data.header.length > 0 ? data.header[0] : null,
+      navLinkData: Array.isArray(data?.navLink) && data.navLink.length > 0 ? data.navLink[0] : null,
     },
     revalidate: REVALIDATE_DURATION,
   };

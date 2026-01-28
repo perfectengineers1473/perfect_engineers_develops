@@ -59,8 +59,8 @@ const ContactHeroSection: React.FC<ContactHeroSectionType> = ({
 
           {/* RIGHT IMAGE */}
           {image && (
-            <div className="flex justify-center lg:justify-end shrink-0 animate-fade-in">
-              <div className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-[500px] lg:h-[500px] rounded-full bg-white/60 backdrop-blur shadow-xl flex items-center justify-center animate-ball-bounce">
+            <div className="flex justify-center lg:justify-end shrink-0   animate-fade-in">
+              <div className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-[500px] lg:h-[500px] rounded-full bg-purple-600 backdrop-blur shadow-2xl flex items-center justify-center animate-ball-bounce">
                 <SanityImage
                   src={image}
                   className="w-full h-full object-contain rounded-full"
