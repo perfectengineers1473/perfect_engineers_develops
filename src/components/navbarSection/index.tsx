@@ -58,7 +58,7 @@ const NavbarSection: React.FC<NavbarSectionProps> = ({
               ${
                 mobile
                   ? `
-                    
+                    ${mobile && mounted && isCurrent ? "hidden" : ""}
                     px-6 py-4
                     text-lg font-semibold
                     text-center
