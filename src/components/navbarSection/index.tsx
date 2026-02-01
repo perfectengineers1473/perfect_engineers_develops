@@ -43,7 +43,7 @@ const NavbarSection: React.FC<NavbarSectionProps> = ({
         const href = normalizePath(resolveUrl(btn.link!) || "/");
 
         const isCurrent =
-          pathname === href || (pathname === "/" && href === "/");
+          pathname === href || (pathname === "/" && (href === "/" || href === "/home")); // Added check for /home when at root
 
         return (
           <Link
@@ -58,7 +58,7 @@ const NavbarSection: React.FC<NavbarSectionProps> = ({
               ${
                 mobile
                   ? `
-                    ${mobile && mounted && isCurrent ? "hidden" : ""}
+                    
                     px-6 py-4
                     text-lg font-semibold
                     text-center

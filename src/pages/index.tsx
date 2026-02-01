@@ -16,7 +16,7 @@ export interface PageProps extends SharedPageProps {
 const Home: NextPage<PageProps> = ({ page }) => {
   return (
     <>
-      <PageView page={page} slug={page.slug?.current || "/home"} />
+      <PageView page={page} slug={page.slug?.current || "home"} />
     </>
   );
 };
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
 
   const data = await fetchDataFromSanity<any>({
     query: { groqQuery: query },
-    queryParams: { slug: "/home" },
+    queryParams: { slug: "home" },
     isPreview: draftMode,
   });
 
