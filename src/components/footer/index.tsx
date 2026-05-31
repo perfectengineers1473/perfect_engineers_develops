@@ -36,7 +36,7 @@ const Footer: React.FC<FooterType> = ({
       </div>
 
       {/* Accent stripe */}
-      <div className="h-1 w-full bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400" />
+      <div className="h-1 w-full bg-linear-to-r from-gray-200 via-gray-300 to-gray-200" />
 
       <div
         className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 shadow-inner"

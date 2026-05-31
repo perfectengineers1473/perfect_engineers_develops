@@ -27,32 +27,46 @@ const ProductionTimeSection: React.FC<ProductionTimeSectionType> = ({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full lg:h-screen flex items-center justify-center py-24 bg-linear-to-br from-white via-purple-800/40 to-white overflow-hidden"
+      className="relative w-full py-24 bg-gray-50 overflow-hidden"
     >
-      {/* Optimized background blur */}
-      <div className="absolute -top-24 -left-24 w-72 h-72 bg-purple-400/20 rounded-full blur-2xl" />
-      <div className="absolute top-1/2 -right-24 w-72 h-72 bg-indigo-400/20 rounded-full blur-2xl" />
+      <div className="relative container mx-auto max-w-7xl px-6 z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1f2937] mb-4 tracking-tight">
+            Our Impact By The Numbers
+          </h2>
+          <div className="w-16 h-1 bg-[#343e4b] mx-auto rounded-full"></div>
+        </div>
 
-      <div className="relative container mx-auto max-w-7xl px-6">
-        {Production && Production.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-16">
-            {Production.map((item, index) => {
-              const value = Number(item?.value?.replace(/\D/g, "")) || 0;
-              const suffix = item?.value?.replace(/[0-9]/g, "") || "";
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          {[
+            {
+              value: "22Days",
+              label: "Average Mean Time To Remediate (MTTR)",
+            },
+            {
+              value: "80%",
+              label: "Reduction in time spent on manual patching",
+            },
+            {
+              value: "20$K+",
+              label: "In savings by consolidating tools",
+            },
+          ].map((item, index) => {
+            const value = Number(item.value.replace(/\D/g, "")) || 0;
+            const suffix = item.value.replace(/[0-9]/g, "");
 
-              return (
-                <StatCard
-                  key={index}
-                  value={value}
-                  suffix={suffix}
-                  label={item.label}
-                  delay={index * 200}
-                  visible={visible}
-                />
-              );
-            })}
-          </div>
-        )}
+            return (
+              <StatCard
+                key={index}
+                value={value}
+                suffix={suffix}
+                label={item.label}
+                delay={index * 200}
+                visible={visible}
+              />
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -76,6 +90,7 @@ const StatCard = memo(function StatCard({
   visible,
 }: StatCardProps) {
   const [show, setShow] = useState(false);
+  const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
     if (!visible) return;
@@ -83,25 +98,51 @@ const StatCard = memo(function StatCard({
     return () => clearTimeout(timer);
   }, [visible, delay]);
 
+  useEffect(() => {
+    if (!show) return;
+    
+    // Counting animation logic
+    let startTimestamp: number | null = null;
+    const duration = 2000; // 2 seconds animation
+    
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      
+      // easeOutExpo curve for smooth deceleration
+      const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      
+      setDisplayValue(Math.floor(easeOut * value));
+      
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        setDisplayValue(value);
+      }
+    };
+    
+    window.requestAnimationFrame(step);
+  }, [show, value]);
+
   return (
     <div
-      className={`bg-white/15 backdrop-blur-lg rounded-3xl p-10 sm:p-16 lg:p-24 shadow-xl border border-white/20
-      transition-all duration-700 will-change-transform
-      ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      className={`bg-white rounded-2xl p-8 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100
+      hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-700 ease-out flex flex-col items-center justify-center
+      ${show ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"}`}
     >
       {/* VALUE */}
-      <div className="flex items-baseline justify-center gap-1 text-white mb-4">
-        <span className="text-6xl sm:text-7xl lg:text-8xl font-extrabold">
-          {show ? value : 0}
+      <div className="flex items-baseline justify-center gap-1 mb-4">
+        <span className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-blue-600">
+          {displayValue}
         </span>
-        <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white/70">
+        <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#343e4b]">
           {suffix}
         </span>
       </div>
 
       {/* LABEL */}
       {label && (
-        <p className="text-base sm:text-lg text-white/80 max-w-xs mx-auto text-center">
+        <p className="text-sm sm:text-base text-gray-600 max-w-[200px] mx-auto text-center leading-relaxed font-medium">
           {label}
         </p>
       )}

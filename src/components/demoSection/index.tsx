@@ -85,162 +85,170 @@ const DemoSection: React.FC<DemoSectionType> = ({
   return (
     <section
       id={id}
-      className="relative w-full bg-linear-to-b from-white via-green-200 to-purple-200 py-24"
+      className="relative w-full py-10 sm:py-16 bg-white scroll-mt-24 lg:scroll-mt-32"
     >
-      <div className="mx-auto max-w-7xl px-6">
-        {/* TITLE */}
-        {title && (
-          <h1 className="text-gray-800 text-4xl sm:text-5xl lg:text-4xl font-bold mb-16">
-            {title}
-          </h1>
-        )}
-
-        <div className="flex flex-col lg:flex-row gap-20 items-start">
-          {/* IMAGE */}
-          {heroImage && (
-            <div className="order-1 lg:order-2 w-full lg:w-[60%] flex justify-center lg:justify-end">
-              <div className="w-[280px] sm:w-[420px] lg:w-[560px] rounded-2xl overflow-hidden shadow-2xl bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 items-stretch">
+          
+          {/* LEFT: TEXT & IMAGE */}
+          <div className="max-w-2xl flex flex-col h-full justify-between">
+            <div>
+              {title && (
+                <h2 className="text-2xl font-extrabold tracking-tight text-[#1f2937] sm:text-3xl lg:text-4xl mb-4">
+                  {title}
+                </h2>
+              )}
+              <p className="text-base text-gray-600 mb-6 leading-relaxed">
+                Fill out the form to request your personalized demo. Our engineers will get back to you within 24 hours to discuss how we can help.
+              </p>
+            </div>
+            
+            {heroImage && (
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-white flex-1 relative min-h-[250px] w-full [&_img]:absolute [&_img]:inset-0 [&_img]:w-full [&_img]:h-full [&_img]:object-cover">
                 <SanityImage src={heroImage} />
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* FORM */}
-          <form
-            onSubmit={handleSubmit}
-            className="order-2 lg:order-1 w-full lg:w-[60%] max-w-xl
-            bg-transparent shadow-xl shadow-black/30
-            rounded-2xl border-t border-gray-300/65 p-8"
-          >
-            {/* INPUT GRID */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-              {firstNameLabel && (
-                <div>
-                  <label className="block text-sm text-gray-900 mb-2">
-                    {firstNameLabel}
-                  </label>
-                  <input
-                    name="firstName"
-                    value={form.firstName}
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Enter your first name"
-                    className="w-full h-12 rounded-lg bg-white/55 px-4 focus:ring-2 focus:ring-indigo-400"
-                  />
-                </div>
-              )}
+          {/* RIGHT: FORM CARD */}
+          <div className="bg-gray-50 rounded-3xl p-6 sm:p-8 lg:p-10 border border-gray-200 shadow-sm flex flex-col h-full">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              
+              {/* INPUT GRID */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {firstNameLabel && (
+                  <div>
+                    <label className="block text-[13px] font-medium text-gray-700 mb-1">
+                      {firstNameLabel}
+                    </label>
+                    <input
+                      name="firstName"
+                      value={form.firstName}
+                      onChange={handleChange}
+                      type="text"
+                      className="block w-full h-9 rounded-md border border-gray-300 px-3 py-1.5 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm outline-none transition-colors bg-white"
+                    />
+                  </div>
+                )}
 
-              {lastNameLabel && (
-                <div>
-                  <label className="block text-sm text-gray-900 mb-2">
-                    {lastNameLabel}
-                  </label>
-                  <input
-                    name="lastName"
-                    value={form.lastName}
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Enter your last name"
-                    className="w-full h-12 rounded-lg bg-white/55 px-4 focus:ring-2 focus:ring-indigo-400"
-                  />
-                </div>
-              )}
+                {lastNameLabel && (
+                  <div>
+                    <label className="block text-[13px] font-medium text-gray-700 mb-1">
+                      {lastNameLabel}
+                    </label>
+                    <input
+                      name="lastName"
+                      value={form.lastName}
+                      onChange={handleChange}
+                      type="text"
+                      className="block w-full h-9 rounded-md border border-gray-300 px-3 py-1.5 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm outline-none transition-colors bg-white"
+                    />
+                  </div>
+                )}
 
-              {emailLabel && (
-                <div>
-                  <label className="block text-sm text-gray-900 mb-2">
-                    {emailLabel}
-                  </label>
-                  <input
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full h-12 rounded-lg bg-white/55 px-4 focus:ring-2 focus:ring-indigo-400"
-                  />
-                </div>
-              )}
+                {emailLabel && (
+                  <div>
+                    <label className="block text-[13px] font-medium text-gray-700 mb-1">
+                      {emailLabel}
+                    </label>
+                    <input
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      type="email"
+                      className="block w-full h-9 rounded-md border border-gray-300 px-3 py-1.5 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm outline-none transition-colors bg-white"
+                    />
+                  </div>
+                )}
 
-              {companyLabel && (
-                <div>
-                  <label className="block text-sm text-gray-900 mb-2">
-                    {companyLabel}
-                  </label>
-                  <input
-                    name="company"
-                    value={form.company}
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Enter your company"
-                    className="w-full h-12 rounded-lg bg-white/55 px-4 focus:ring-2 focus:ring-indigo-400"
-                  />
-                </div>
-              )}
-            </div>
-
-            {/* REGION */}
-            {regionLabel && (
-              <div className="mb-6">
-                <label className="block text-sm text-gray-900 mb-2">
-                  {regionLabel}
-                </label>
-                <select
-                  name="region"
-                  value={form.region}
-                  onChange={handleChange}
-                  className="w-full h-12 rounded-lg bg-white/55 px-4"
-                >
-                  <option value="">Select region</option>
-                  <option value="India">India</option>
-                  <option value="USA">USA</option>
-                  <option value="Europe">Europe</option>
-                </select>
+                {companyLabel && (
+                  <div>
+                    <label className="block text-[13px] font-medium text-gray-700 mb-1">
+                      {companyLabel}
+                    </label>
+                    <input
+                      name="company"
+                      value={form.company}
+                      onChange={handleChange}
+                      type="text"
+                      className="block w-full h-9 rounded-md border border-gray-300 px-3 py-1.5 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm outline-none transition-colors bg-white"
+                    />
+                  </div>
+                )}
               </div>
-            )}
 
-            {/* MESSAGE */}
-            {sourceLabel && (
-              <div className="mb-6">
-                <label className="block text-sm text-gray-900 mb-2">
-                  {sourceLabel}
-                </label>
-                <textarea
-                  name="source"
-                  value={form.source}
-                  onChange={handleChange}
-                  placeholder="Type your message"
-                  className="w-full h-32 rounded-lg bg-white/55 px-4 py-3"
-                />
-              </div>
-            )}
+              {/* REGION */}
+              {regionLabel && (
+                <div>
+                  <label className="block text-[13px] font-medium text-gray-700 mb-1">
+                    {regionLabel}
+                  </label>
+                  <select
+                    name="region"
+                    value={form.region}
+                    onChange={handleChange}
+                    className="block w-full h-9 rounded-md border border-gray-300 px-3 py-1.5 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm outline-none transition-colors bg-white"
+                  >
+                    <option value="" disabled>Select region</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="Europe">Europe</option>
+                  </select>
+                </div>
+              )}
 
-            {/* DISCLAIMER */}
-            {disclaimer && (
-              <div className="text-xs text-gray-900 mb-6">
-                <RichText block={disclaimer} />
-              </div>
-            )}
+              {/* MESSAGE */}
+              {sourceLabel && (
+                <div>
+                  <label className="block text-[13px] font-medium text-gray-700 mb-1">
+                    {sourceLabel}
+                  </label>
+                  <textarea
+                    name="source"
+                    value={form.source}
+                    onChange={handleChange}
+                    rows={3}
+                    className="block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm outline-none transition-colors bg-white resize-none"
+                  />
+                </div>
+              )}
 
-            {/* ERROR / SUCCESS */}
-            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
-            {success && (
-              <p className="text-green-600 text-sm mb-4">
-                Form submitted successfully!
-              </p>
-            )}
+              {/* ERROR / SUCCESS */}
+              {error && (
+                <div className="rounded-md bg-red-50 p-3">
+                  <p className="text-sm font-medium text-red-800">{error}</p>
+                </div>
+              )}
+              {success && (
+                <div className="rounded-md bg-green-50 p-3">
+                  <p className="text-sm font-medium text-green-800">
+                    Form submitted successfully! We'll be in touch.
+                  </p>
+                </div>
+              )}
 
-            {/* SUBMIT */}
-            {submitButtonText?.label && (
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full h-12 rounded-lg bg-gray-800 text-white font-semibold hover:bg-gray-700 transition disabled:opacity-60"
-              >
-                {loading ? "Sending..." : submitButtonText.label}
-              </button>
-            )}
-          </form>
+              {/* SUBMIT */}
+              {submitButtonText?.label && (
+                <div className="pt-1">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-md shadow-sm text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-60 transition-colors"
+                  >
+                    {loading ? "Sending..." : submitButtonText.label}
+                  </button>
+                </div>
+              )}
+              
+              {/* DISCLAIMER */}
+              {disclaimer && (
+                <div className="text-[11px] text-gray-500 mt-3 text-center leading-tight">
+                  <RichText block={disclaimer} />
+                </div>
+              )}
+            </form>
+          </div>
+          
         </div>
       </div>
     </section>
